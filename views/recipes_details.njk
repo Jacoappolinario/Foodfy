@@ -1,0 +1,73 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>{{ recipe.title }} - Foodfy</title>
+{% endblock %}
+
+{% block content %}
+<div class="recipe__details">
+    <div class="details__image">
+        <img src="{{ recipe.image }}" alt="">
+    </div>
+
+    <div class="details__title">
+        <h1>{{ recipe.title }}</h1>
+    </div>
+
+    <div class="details__author">
+        <p>{{ recipe.author }}</p>
+    </div>
+</div>
+
+<div class="ingredients">
+
+    <div class="divs">
+        <div class="header__div" >
+            <ul>
+                <li><h1>Ingredientes</h1></li>
+                <li><p class="hidden__button">Esconder</p></li>
+            </ul>
+        </div>
+    
+        <div class="hidden__div" id="ingredients__details">
+            <ul>
+                {% for ingredients in recipe.ingredients %}
+                <li>{{ ingredients }}</li>
+                {%endfor%}
+            </ul>
+        </div>
+    </div>
+    
+    <div class="divs">
+        <div class="header__div">
+            <ul>
+                <li><h1>Modo de preparo</h1></li>
+                <li><p class="hidden__button">Esconder</p></li>
+            </ul>
+        </div>
+    
+        <div class="hidden__div" id="preparation__modo">
+            {% for preparation in recipe.preparation %}
+                <p>{{ preparation }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+     <div class="divs">
+        <div class="header__div">
+            <ul>
+                <li><h1>Informações adicionais</h1></li>
+                <li><p class="hidden__button">Esconder</p></li>
+            </ul>
+        </div>
+
+        <div class="hidden__div" id="additional__information">
+            <p>{{ recipe.information }}</p>
+        </div>
+    </div>
+
+</div>
+<script src="/scripts.js"></script>
+{% endblock %}  
+
+        
