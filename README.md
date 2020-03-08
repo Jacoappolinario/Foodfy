@@ -22,7 +22,9 @@
 Desafio feito durante o bootcamp launchbase da Rocketseat.
 
 ## :rocket: Tecnologias Utilizadas
-
+- Node
+- Nodemon
+- Nunjucks
 - HTML
 - CSS
 - JS
@@ -45,7 +47,7 @@ Desafio feito durante o bootcamp launchbase da Rocketseat.
 
 ---
 
-![Preview](https://github.com/pauloricardolacerda/foodfy/blob/master/preview/pag-receitas.png)
+![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/pag-receitas.png)
 
 ---
 
