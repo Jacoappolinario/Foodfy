@@ -22,7 +22,8 @@
 Desafio feito durante o bootcamp launchbase da Rocketseat.
 
 ## :rocket: Tecnologias Utilizadas
-- Node
+- NodeJs
+- Express
 - Nodemon
 - Nunjucks
 - HTML
