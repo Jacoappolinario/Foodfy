@@ -3,14 +3,6 @@
 </h1>
 
 
-<p align="center">
-  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-license">License</a>
-</p>
-
----
-
 
 ![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/footer.png)
 
@@ -28,7 +20,7 @@
 
 ---
 
-##: rocket: Tecnologias
+## Tecnologias
 
 Este projeto foi desenvolvido no [Bootcamp Launchbase da [Rocketseat] (https://rocketseat.com.br/bootcamp) com as seguintes tecnologias:
 
@@ -40,7 +32,7 @@ Este projeto foi desenvolvido no [Bootcamp Launchbase da [Rocketseat] (https://r
 - CSS
 - JS
 
-##: information_source: Como usar
+## Como Usar
 
 Para clonar e executar este aplicativo, você precisará de [Git] (https://git-scm.com), [Node.js v12.16.1] [nodejs] ou superior instalado no seu computador. Na sua linha de comando:
 
@@ -61,3 +53,4 @@ $ npm start
 ## :memo: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](/LICENSE) para mais detalhes.
+
