@@ -4,7 +4,7 @@
 
 
 
-![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/footer.png)
+![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/home.png)
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## Tecnologias
 
-Este projeto foi desenvolvido no [Bootcamp Launchbase da [Rocketseat] (https://rocketseat.com.br/bootcamp) com as seguintes tecnologias:
+Este projeto foi desenvolvido no [Bootcamp Launchbase da [Rocketseat] (https://rocketseat.com.br) com as seguintes tecnologias:
 
 - NodeJs
 - Express
@@ -34,7 +34,7 @@ Este projeto foi desenvolvido no [Bootcamp Launchbase da [Rocketseat] (https://r
 
 ## Como Usar
 
-Para clonar e executar este aplicativo, você precisará de [Git] (https://git-scm.com), [Node.js v12.16.1] [nodejs] ou superior instalado no seu computador. Na sua linha de comando:
+Para clonar e executar este aplicativo, você precisará do [Git] (https://git-scm.com), Node.js v12.16.1 ou superior instalado no seu computador. E Na sua linha de comando:
 
 ```bash
 # Clone este repositório
