@@ -1,40 +1,16 @@
-<h1 align="center">
-    <img alt="Launchbase" src="https://storage.googleapis.com/golden-wind/bootcamp-launchbase/logo.png" width="400px" />
+<h1 align = "center">
+  Foodfy
 </h1>
 
-<h3 align="center">
-  Foodfy
-</h3>
 
-<p align="center">
-
-  <a href="https://rocketseat.com.br">
-    <img alt="Made by Jacó Apolinário" src="https://img.shields.io/badge/made%20by-Jacó%20Apolinário-%23F8952D">
-  </a>
-
-  <a href="LICENSE" >
-    <img alt="License" src="https://img.shields.io/badge/license-MIT-%23F8952D">
-  </a>
-
+<p align = "center">
+  <a href="#rocket-technologies"> Tecnologias </a> & nbsp; & nbsp; & nbsp; & nbsp; | & nbsp; & nbsp; & nbsp; & nbsp;
+  <a href="#information_source-how-to-use"> Como usar </a> & nbsp; & nbsp; & nbsp; & nbsp; | & nbsp; & nbsp; & nbsp;
+  <a href="#memo-license"> Licença </a>
 </p>
 
-## :scroll: Sobre
-Desafio feito durante o bootcamp launchbase da Rocketseat.
-
-## :rocket: Tecnologias Utilizadas
-- NodeJs
-- Express
-- Nodemon
-- Nunjucks
-- HTML
-- CSS
-- JS
-
-## :red_circle: Preview
-
-![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/home.png)
-
 ---
+
 
 ![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/footer.png)
 
@@ -51,6 +27,36 @@ Desafio feito durante o bootcamp launchbase da Rocketseat.
 ![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/pag-receitas.png)
 
 ---
+
+##: rocket: Tecnologias
+
+Este projeto foi desenvolvido no [Bootcamp Launchbase da Rocketseat] (https://rocketseat.com.br/bootcamp) com as seguintes tecnologias:
+
+- NodeJs
+- Express
+- Nodemon
+- Nunjucks
+- HTML
+- CSS
+- JS
+
+##: information_source: Como usar
+
+Para clonar e executar este aplicativo, você precisará de [Git] (https://git-scm.com), [Node.js v12.16.1] [nodejs] ou superior instalado no seu computador. Na sua linha de comando:
+
+`` bash
+# Clone este repositório
+$ git clone https://github.com/Jacoappolinario/Foodfy.git
+
+# Vá para o repositório
+$ cd Foodfy
+
+# Instalar dependências
+$ npm install
+
+# Execute o aplicativo
+$ npm start
+`` ``
 
 ## :memo: Licença
 
