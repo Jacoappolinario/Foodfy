@@ -4,19 +4,19 @@
 
 
 
-![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/home.png)
+![Preview](https://github.com/Jacoappolinario/foodfy/preview/home.png)
 
 ---
 
-![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/about.png)
+![Preview](https://github.com/Jacoappolinario/foodfy/preview/about.png)
 
 ---
 
-![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/recipes.png)
+![Preview](https://github.com/Jacoappolinario/foodfy/preview/recipes.png)
 
 ---
 
-![Preview](https://github.com/Jacoappolinario/foodfy/blob/master/preview/pag-receitas.png)
+![Preview](https://github.com/Jacoappolinario/foodfy/preview/pag-receitas.png)
 
 ---
 
