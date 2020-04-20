@@ -12,8 +12,8 @@ Foodfy é uma site de receitas, onde será possivel os usuarios criar, editar ou
 
 ### 🚩Pré Requisitos
 
-- Git (https://git-scm.com/)
-- Node (https://nodejs.org)
+- [Git](https://git-scm.com/)
+- [Node](https://nodejs.org)
 
 
 ----
