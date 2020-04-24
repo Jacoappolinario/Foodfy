@@ -1,0 +1,30 @@
+{% extends "admin/layout.njk" %}
+
+{% block content %}
+<div class="admin__content">
+    <h2>Gerenciar receitas</h2>
+
+    <div class="card">
+        {% for recipe in recipes %}
+        <div class="card__recipes">
+            
+            <section style="width: 172px; height: 80px; background: url({{ recipe.image }}) no-repeat center center / cover"></section>
+            
+            <section>
+            
+            <div class="list__title">
+                <h1>{{ recipe.title }}</h1>
+            </div>
+
+            <div class="list__author">
+                <p>{{ recipe.author }}</p>
+            </div>
+
+            <a class="list__visualize" href="#">Visualizar</a>
+            </section>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

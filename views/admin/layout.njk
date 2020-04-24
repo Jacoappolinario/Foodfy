@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    {% block head %}
+    {% endblock head %}
+
+    <link rel="stylesheet" href="/style.css">
+
+    <body>
+        <header>
+            <div class="admin-links">
+                <img src="/assets-admin/logo.png" alt="">
+            </div>
+        </header>
+        <div class="content">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </body>
+</html>
