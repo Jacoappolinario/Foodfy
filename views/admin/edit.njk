@@ -1,0 +1,39 @@
+{% extends "admin/layout.njk" %}
+
+{% block head %}
+    <title>Foodfy Admin | Edit</title>
+{% endblock head %}
+
+
+{% block content %}
+    
+    <div class="edit-header">
+        
+        <h2>Editando receita</h2>
+
+        <button type="submit" form="form-delete" id="button-delete">Deleta</button>
+        <button type="submit" form="form-salvar" id="button-salvar">Salvar receita</button>
+    </div>
+
+    <form id="form-salvar" method="POST" action="/admin/recipes?_method=PUT">
+        
+        {% include "admin/fields.njk" %}
+
+        <input 
+        type="hidden" 
+        name="id" 
+        value="{{ recipe.id }}">
+    </form>
+   
+    <form id="form-delete" method="POST" action="/admin/recipes?_method=DELETE">
+        <input 
+        type="hidden" 
+        name="id" 
+        value="{{ recipe.id }}">
+    </form>  
+
+   
+
+
+
+{% endblock content %}

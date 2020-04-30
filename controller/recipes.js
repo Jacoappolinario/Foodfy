@@ -1,7 +1,9 @@
-const data = require("../data")
+const data = require('../data.json')
+const fs = require('fs')
+
 // Home
 exports.home = function(req, res) {
-    return res.render("recipes/home", { recipes: data })
+    return res.render("recipes/home", { recipes: data.recipes })
 }
 // About
 exports.about = function(req, res) {
@@ -9,25 +11,18 @@ exports.about = function(req, res) {
 }
 // Recipes
 exports.recipes = function (req, res) {
-    return res.render("recipes/recipes", { recipes: data })
+    return res.render("recipes/recipes", { recipes: data.recipes })
 }
 // Details Recipes
 exports.details = function (req, res) {
-    const recipeIndex = req.params.index;
+    const { id } = req.params;
     
-    const recipeId = data.find(function(recipeId) {
-        return recipeId == data[recipeIndex]
+    const foundRecipe = data.recipes.find(function(recipes) {
+        return recipes.id == id
     }) 
 
-    if (!recipeId) {
-        return res.render("recipes/not-found")
-    }
+    if (!foundRecipe) return res.render("recipes/not-found")
 
 
-    return res.render("recipes/details", { recipe: recipeId })
-}
-
-// Admin Index
-exports.index = function(req, res) {
-    return res.render("admin/index", { recipes: data })
+    return res.render("recipes/details", { recipe: foundRecipe })
 }
