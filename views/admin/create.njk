@@ -11,7 +11,9 @@
             <button type="submit">Salvar receita</button>
         </div>
 
-        <div class="details">
+        {% include "admin/fields.njk" %}
+
+        {# <div class="details">
 
             <div class="item">
                 <div>Image da receita</div>
@@ -47,7 +49,7 @@
                     <textarea class="input__create-information" cols="30" rows="10" name="information"></textarea>
                 </div>
             </div>
-        </div>
+        </div> #}
     </form>
 
 {% endblock content %}
