@@ -1,7 +1,7 @@
 const express = require('express')
 const routes = express.Router()
-const recipes = require('./controller/recipes')
-const admin = require('./controller/admin')
+const recipes = require('./app/controller/recipes')
+const admin = require('./app/controller/admin')
 
 /*=== Routes Site ===*/
 routes.get('/', function(req, res) {

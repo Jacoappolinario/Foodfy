@@ -1,0 +1,177 @@
+.links-bg {
+    background-color: black;
+}
+
+.links {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 27px 0;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.admin__content h2 {
+    margin-top: 50px;
+    font-size: 24px;
+    line-height: 28px;
+    color: #111111;
+    font-weight: bold;
+}
+
+.card__admin {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+
+.card__recipes{
+    background-color: white;
+    width: 400px;
+    min-height: 80px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.list__image img {
+    width: 172px; 
+    height: 80px; 
+    background: no-repeat center center / cover;
+    border-radius: 8.57px;
+}
+
+.list__title h1 {
+    font-size: 18px;
+    line-height: 21px;
+    color: #111111;
+}
+
+.list__author p {
+    font-size: 14px;
+    line-height: 16px;
+    color: #777777;
+}
+
+.list__visualize {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6558C3;
+    text-decoration: none;
+}
+
+
+/*=== Create ===*/
+
+.create-header {
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button[type="submit"],
+a.button {
+    padding: 8px 32px;
+    background-color: #6558C3;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a.button {
+    text-decoration: none;
+}
+
+.details {
+    margin-top: 30px;
+}
+
+.details .item div:nth-child(1) {
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+    color: #111111;
+    margin-bottom: 10px;
+}
+
+.item {
+    margin-bottom: 30px;
+}
+
+.input__create {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    height: 49px;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.input__create-information {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    height: 257px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: normal;
+    font-family: 'Roboto-Regular';
+}
+
+.button-add {
+    font-size: 16px;
+    line-height: 19px;
+    color: #6558C3;
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/*=== Show ===*/
+
+.show-header {
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.show__details {
+    margin-top: 24px;
+}
+
+.show__ingredients {
+    margin-top: 31px;
+}
+
+/*=== Edit ===*/
+
+.ingredient,
+.preparation {
+    margin-top: 10px;
+}
+
+#button-delete {
+    background-color: #DC4747;
+    margin-right: 10px;
+}
+
+.edit-header {
+    margin-top: 55px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.edit-header h2 {
+    margin-right: auto;
+}

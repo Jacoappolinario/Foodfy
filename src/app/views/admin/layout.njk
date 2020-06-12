@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    {% block head %}
+    {% endblock head %}
+
+    <link rel="stylesheet" href="/styles/general.css">
+    <link rel="stylesheet" href="/styles/admin.css">
+
+    <body>
+        <header class="links-bg">
+            <div class="links">
+                <div class="links-logo">
+                    <a href="#"><img src="/assets/logo-admin.png" alt=""></a>
+                </div>
+                <a href="#">Receitas</a>
+                <a href="#">Chefes</a>
+            </div>
+        </header>
+
+        <div class="content">
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+       <script src="/scripts/scripts.js"></script> 
+       <script src="/scripts/add-button.js"></script>
+    </body>
+</html>
