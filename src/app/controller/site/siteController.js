@@ -1,15 +1,15 @@
-const data = require('../../../data.json')
+const data = require('../../../../data.json')
 const fs = require('fs')
 
 module.exports = {
     home(req, res) {
-        return res.render("recipes/home", { recipes: data.recipes })
+        return res.render("site/recipes/home", { recipes: data.recipes })
     },
     about(req, res) {
-        return res.render("recipes/about")
+        return res.render("site/recipes/about")
     },
     recipes(req, res) {
-        return res.render("recipes/recipes", { recipes: data.recipes })
+        return res.render("site/recipes/recipes", { recipes: data.recipes })
     },
     details(req, res) {
         const { id } = req.params;
@@ -21,6 +21,6 @@ module.exports = {
         if (!foundRecipe) return res.render("recipes/not-found")
 
 
-        return res.render("recipes/details", { recipe: foundRecipe })
+        return res.render("site/recipes/details", { recipe: foundRecipe })
     }
 }

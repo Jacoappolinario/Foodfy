@@ -19,6 +19,7 @@ body {
     width: 940px;
     margin: 0 auto;
     padding-bottom: 60px;
+    box-sizing: border-box;
 }
 
 .links-bg {

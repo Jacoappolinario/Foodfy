@@ -1,8 +1,8 @@
-.links-bg {
+.links-bg-admin {
     background-color: black;
 }
 
-.links {
+.links-admin {
     max-width: 960px;
     margin: 0 auto;
     padding: 27px 0;
@@ -11,6 +11,32 @@
     flex-wrap: wrap;
     align-items: center;
     box-sizing: border-box;
+}
+
+
+.links-logo-admin img {
+    margin-right: 50.4px;
+}
+
+.links-admin a {
+    font-size: 16;
+    line-height: 19px;
+    color: #999999;
+    text-decoration: none;
+}
+
+.links-admin a + a {
+    margin-left: 30px;
+}
+
+.links-admin a.active {
+    font-weight: bold;
+    color: white;
+}
+
+.links-admin a:hover {
+    font-weight: bold;
+    transition: color 200ms;
 }
 
 .admin__content h2 {
@@ -174,4 +200,30 @@ a.button {
 
 .edit-header h2 {
     margin-right: auto;
+}
+
+/*=== Chefs ===*/ 
+
+.chefs__details {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.chef__image img {
+    margin-top: 42px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.chef__name h1 {
+    margin-top: 30px;
+    font-size: 36px;
+    color: #111111;
+}
+
+.chef__amount-recipes p {
+    margin-top: 4px;
+    font-size: 20px;
+    color: #777777;
 }
