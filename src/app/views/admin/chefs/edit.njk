@@ -9,7 +9,7 @@
 </div>
 
 
-<form id="form-salvar" method="POST" action="">
+<form id="form-salvar" method="POST" action="/admin/chefs?_method=PUT">
     {% include "admin/chefs/fields.njk" %}
 
     <input 
@@ -18,7 +18,7 @@
     value="{{ chef.id }}">
 </form>
 
-<form id="form-delete" method="POST" action="">
+<form id="form-delete" method="POST" action="/admin/chefs?_method=DELETE">
     <input 
     type="hidden" 
     name="id" 

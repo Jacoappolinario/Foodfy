@@ -6,3 +6,5 @@ for (item of menuItens) {
         item.classList.add("active")
     }
 }
+
+console.log(currentPage)

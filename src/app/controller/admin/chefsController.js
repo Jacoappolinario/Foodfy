@@ -2,7 +2,9 @@ const Chefs = require('../../models/admin/Chefs')
 
 module.exports = {
     index(req, res) {
-        return
+        Chefs.all(function(chefs) {
+            return res.render("admin/chefs/index", {chefs})
+        })
     },
     create(req, res) {
         return res.render("admin/chefs/create")
@@ -31,9 +33,13 @@ module.exports = {
         })
     },
     put(req, res) {
-        return
+        Chefs.update(req.body, function() {
+            return res.redirect(`/admin/chefs/${req.body.id}`)
+        })
     },
     delete(req, res) {
-        return
+        Chefs.delete(req.body.id, function() {
+            return res.redirect(`/admin/chefs`)
+        })
     }
 }
