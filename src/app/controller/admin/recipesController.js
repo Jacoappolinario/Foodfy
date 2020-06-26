@@ -2,10 +2,14 @@ const Recipe = require('../../models/admin/Recipes')
 
 module.exports = {
     index(req, res) {
-        return
+        Recipe.all(function(recipes) {
+            return res.render("admin/recipes/index", {recipes})
+        })
     },
     create(req, res) {
-        return res.render("admin/recipes/create")
+        Recipe.chefSelectOptions(function(options) {
+            return res.render("admin/recipes/create", { chefOptions: options })
+        })
     },
     post(req, res) {
         const keys = Object.keys(req.body)
@@ -24,10 +28,16 @@ module.exports = {
 
     },
     show(req, res) {
-        return
+        Recipe.find(req.params.id, function(recipe) {
+            return res.render("admin/recipes/show", { recipe })
+        })
     },
     edit(req, res) {
-        return
+        Recipe.find(req.params.id, function(recipe) {
+            Recipe.chefSelectOptions(function(options) {
+                return res.render("admin/recipes/edit", { recipe, chefOptions: options })
+            })
+        })
     },
     put(req, res) {
         return    

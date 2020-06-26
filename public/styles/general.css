@@ -233,6 +233,7 @@ body {
 }
 
 .details__image img {
+    width: 940px;
     height: 280px;
     border-radius: 15px;
 }

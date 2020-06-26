@@ -136,9 +136,9 @@ a.button {
     background-color: white;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    height: 49px;
     font-size: 16px;
     line-height: 19px;
+    padding: 15px 20px;
 }
 
 .input__create-information {
@@ -151,6 +151,7 @@ a.button {
     line-height: 24px;
     font-weight: normal;
     font-family: 'Roboto-Regular';
+    padding: 18px 20px;
 }
 
 .button-add {
