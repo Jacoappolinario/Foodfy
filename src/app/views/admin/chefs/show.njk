@@ -1,5 +1,8 @@
 {% extends "admin/layout.njk" %}
 
+{% block head %}
+    <title>Gerenciar Chefs | {{ chef.name }}</title>
+{% endblock %}
 
 {% block content %}
 <div class="show-header">
@@ -17,15 +20,16 @@
     </div>
 
     <div class="chef__amount-recipes">
-        <p>4 receitas</p>
+        <p>{{ chef.total_recipes }} receitas</p>
     </div>
 </div>
 
 <div class="admin__content">
     <h2>Receitas</h2>
 
-    {# <div class="card__admin">
+    <div class="card__admin">
         {% for recipe in recipes %}
+        
         <div class="card__recipes">
             
             <section class="list__image">
@@ -47,7 +51,7 @@
 
         </div>
         {% endfor %}
-    </div> #}
+    </div>
 </div>
 
 {% endblock %}  

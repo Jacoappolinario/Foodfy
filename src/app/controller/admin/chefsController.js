@@ -1,4 +1,5 @@
 const Chefs = require('../../models/admin/Chefs')
+const Recipe = require('../../models/admin/Recipes')
 
 module.exports = {
     index(req, res) {
@@ -19,16 +20,18 @@ module.exports = {
         }
 
         Chefs.create(req.body, function(chef) {
-            return res.send("ok")
+            return res.redirect(`/admin/chefs/${chef.id}`)
         })
     },
     show(req, res) {
-        Chefs.find(req.params.id, function(chef) {
-            return res.render("admin/chefs/show", { chef })
+        Chefs.findChef(req.params.id, function(chef) {
+            Chefs.findRecipe(req.params.id, function(recipes) {
+                return res.render("admin/chefs/show", { chef, recipes })
+            })
         })
     },
     edit(req, res) {
-        Chefs.find(req.params.id, function(chef) {
+        Chefs.findChef(req.params.id, function(chef) {
             return res.render("admin/chefs/edit", { chef })
         })
     },
