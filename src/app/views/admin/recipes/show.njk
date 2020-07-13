@@ -26,43 +26,35 @@
 <div class="show__ingredients">
 
     <div class="divs">
-        <div class="header__div" >
-            <ul>
-                <li><h1>Ingredientes</h1></li>
-            </ul>
+        <div class="header__div-admin" >
+            <h1>Ingredientes</h1>
         </div>
     
-        <div class="hidden__div" id="ingredients__details">
-            <ul>
-                {% for ingredients in recipe.ingredients %}
-                <li>{{ ingredients }}</li>
-                {%endfor%}
-            </ul>
+        <div id="ingredients__details">
+            {% for ingredients in recipe.ingredients %}
+                <p>- {{ ingredients }}</p>
+            {%endfor%}
         </div>
     </div>
     
     <div class="divs">
-        <div class="header__div">
-            <ul>
-                <li><h1>Modo de preparo</h1></li>
-            </ul>
+        <div class="header__div-admin">
+            <h1>Modo de preparo</h1></li>
         </div>
     
-        <div class="hidden__div" id="preparation__modo">
+        <div id="preparation__modo">
             {% for preparation in recipe.preparation %}
-                <p>{{ preparation }}</p>
+                <p>- {{ preparation }}</p>
             {% endfor %}
         </div>
     </div>
 
      <div class="divs">
-        <div class="header__div">
-            <ul>
-                <li><h1>Informações adicionais</h1></li>
-            </ul>
+        <div class="header__div-admin">
+            <h1>Informações adicionais</h1>
         </div>
 
-        <div class="hidden__div" id="additional__information">
+        <div id="additional__information">
             <p>{{ recipe.information }}</p>
         </div>
     </div>
