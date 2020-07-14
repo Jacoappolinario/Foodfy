@@ -10,7 +10,7 @@ routes.get('/', function(req, res) {
 })
 routes.get('/home', siteController.home)
 routes.get('/about', siteController.about)
-routes.get('/recipes/', siteController.recipes)
+routes.get('/recipes', siteController.recipes)
 routes.get('/recipes/:id', siteController.details)
 
 /*=== Routes Admin Recipes ===*/

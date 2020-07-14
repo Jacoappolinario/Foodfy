@@ -1,26 +1,22 @@
-const data = require('../../../../data.json')
-const fs = require('fs')
+const Site = require('../../models/site/Site')
 
 module.exports = {
     home(req, res) {
-        return res.render("site/recipes/home", { recipes: data.recipes })
+        Site.all(function(recipes) {
+            return res.render("site/recipes/home", { recipes })
+        })
     },
     about(req, res) {
         return res.render("site/recipes/about")
     },
     recipes(req, res) {
-        return res.render("site/recipes/recipes", { recipes: data.recipes })
+        Site.all(function(recipes) {
+            return res.render("site/recipes/recipes", { recipes })
+        })
     },
     details(req, res) {
-        const { id } = req.params;
-    
-        const foundRecipe = data.recipes.find(function(recipes) {
-            return recipes.id == id
-        }) 
-
-        if (!foundRecipe) return res.render("recipes/not-found")
-
-
-        return res.render("site/recipes/details", { recipe: foundRecipe })
+        Site.find(req.params.id, function(recipe) {
+            return res.render("site/recipes/details", { recipe })
+        })
     }
 }
