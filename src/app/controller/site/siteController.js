@@ -18,5 +18,15 @@ module.exports = {
         Site.find(req.params.id, function(recipe) {
             return res.render("site/recipes/details", { recipe })
         })
+    },
+    search(req, res) {
+        const { filter } = req.query
+
+        if (filter) {
+            Site.findBy(filter, function(recipes) {
+                return res.render("site/recipes/search", { filter, recipes })
+            })
+        } 
+        
     }
 }

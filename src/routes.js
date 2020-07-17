@@ -12,6 +12,7 @@ routes.get('/home', siteController.home)
 routes.get('/about', siteController.about)
 routes.get('/recipes', siteController.recipes)
 routes.get('/recipes/:id', siteController.details)
+routes.get('/search', siteController.search)
 
 /*=== Routes Admin Recipes ===*/
 routes.get('/admin/recipes', recipesController.index)
@@ -34,8 +35,8 @@ routes.put('/admin/chefs', chefsController.put)
 routes.delete('/admin/chefs', chefsController.delete)
 
 /*=== Not Found ===*/
-// routes.use(function(req, res) {
-//     res.status(404).render("recipes/not-found")
-// })
+routes.use(function(req, res) {
+    res.status(404).render("site/recipes/not-found")
+})
 
 module.exports = routes

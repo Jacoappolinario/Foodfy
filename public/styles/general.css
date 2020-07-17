@@ -24,21 +24,23 @@ body {
 
 .links-bg {
     background-color: white;
+} 
+
+.links__content {
+    width: 940px;
+    margin: 0 auto;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .links {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 30px 0;
-    text-align: left;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    box-sizing: border-box;
 }
 
 .links-logo img {
-    margin-right: 122.1px;
+    margin-right: 122.4px;
 }
 
 .links a {
@@ -60,6 +62,24 @@ body {
 .links a:hover {
     font-weight: bold;
     transition: color 200ms;
+}
+
+.filter form input {
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    width: 246px;
+    padding: 11px 15px 10px 15px;
+}
+
+.button {
+    width: 91px;
+    height: 37px;
+    padding: 9px 20px;
+    background-color: #6558C3;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
 .introduction {
@@ -324,7 +344,6 @@ body {
 .pag-erro {
     text-align: center;
     margin-top: 32px;
-    margin-bottom: 100%;
 }
 
 .pag-erro h1 {
@@ -348,17 +367,19 @@ body {
     text-decoration: underline;
 }
 
+/*=== Pag Search ===*/
+
+.title__search h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
 /*=== Footer ===*/
 
 .footer {
-    /* width: 100%;
-    background-color: #EEEEEE;
-    text-align: center;
-    margin-top: 50px;
-    height: 60px; */
     display: flex;
     background: #EEEEEE;
-    height: 50px;
+    height: 60px;
     width: 100%;
     align-items: center;
     position: absolute;
