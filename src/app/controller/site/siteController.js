@@ -19,6 +19,11 @@ module.exports = {
             return res.render("site/recipes/details", { recipe })
         })
     },
+    chefs(req, res) {
+        Site.chefs(function(chefs) {
+            return res.render("site/recipes/chefs", { chefs })
+        })
+    },
     search(req, res) {
         const { filter } = req.query
 

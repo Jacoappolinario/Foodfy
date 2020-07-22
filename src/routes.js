@@ -12,6 +12,7 @@ routes.get('/home', siteController.home)
 routes.get('/about', siteController.about)
 routes.get('/recipes', siteController.recipes)
 routes.get('/recipes/:id', siteController.details)
+routes.get('/chefs', siteController.chefs)
 routes.get('/search', siteController.search)
 
 /*=== Routes Admin Recipes ===*/

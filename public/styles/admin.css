@@ -67,8 +67,7 @@
 
 .list__image img {
     width: 172px; 
-    height: 80px; 
-    background: no-repeat center center / cover;
+    height: 80px;
     border-radius: 8.57px;
 }
 
@@ -102,7 +101,7 @@
 }
 
 button[type="submit"],
-a.button {
+a.button-admin {
     padding: 8px 32px;
     background-color: #6558C3;
     border-radius: 4px;
@@ -111,7 +110,7 @@ a.button {
     font-weight: bold;
 }
 
-a.button {
+a.button-admin {
     text-decoration: none;
 }
 
@@ -216,6 +215,7 @@ a.button {
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .chef__name h1 {
@@ -253,8 +253,8 @@ a.button {
 .chefs__list-image img {
     width: 64px; 
     height: 64px; 
-    background: no-repeat center center / cover;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .chefs__list-name h1 {
