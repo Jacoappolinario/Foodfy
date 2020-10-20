@@ -1,17 +1,20 @@
 const Recipe = require('../../models/admin/Recipes')
 
 module.exports = {
-    index(req, res) {
-        Recipe.all(function(recipes) {
-            return res.render("admin/recipes/index", {recipes})
-        })
+    async index(req, res) {
+        let results = await Recipe.all()
+        const recipes = results.rows
+        
+        return res.render("admin/recipes/index", { recipes })
     },
-    create(req, res) {
-        Recipe.chefSelectOptions(function(options) {
-            return res.render("admin/recipes/create", { chefOptions: options })
-        })
+    async create(req, res) {
+        let results = await Recipe.chefSelectOptions()
+        const chefOptions = results.rows
+        
+            return res.render("admin/recipes/create", { chefOptions })
+        
     },
-    post(req, res) {
+    async post(req, res) {
         const keys = Object.keys(req.body)
 
         for (key of keys) {
@@ -20,26 +23,32 @@ module.exports = {
             }
         }
 
-        Recipe.create(req.body, function(recipe) {
-            return res.redirect(`/admin/recipes/${recipe.id}`)
-        })
+        let results = await Recipe.create(req.body)
+        const recipe = results.rows[0].id 
+        
+        return res.redirect(`/admin/recipes/${recipe}`)
+       
 
-        // return res.redirect(`/admin/recipes/${id}`)
+    },
+    async show(req, res) {
+        let results = await Recipe.find(req.params.id) 
+        const recipe = results.rows[0]
 
+        return res.render("admin/recipes/show", { recipe })
+    
     },
-    show(req, res) {
-        Recipe.find(req.params.id, function(recipe) {
-            return res.render("admin/recipes/show", { recipe })
-        })
+    async edit(req, res) {
+        let results = await Recipe.find(req.params.id) 
+        const recipe = results.rows[0]
+
+        results = await Recipe.chefSelectOptions()
+        const chefOptions = results.rows 
+        
+        return res.render("admin/recipes/edit", { recipe, chefOptions})
+           
+       
     },
-    edit(req, res) {
-        Recipe.find(req.params.id, function(recipe) {
-            Recipe.chefSelectOptions(function(options) {
-                return res.render("admin/recipes/edit", { recipe, chefOptions: options })
-            })
-        })
-    },
-    put(req, res) {
+    async put(req, res) {
         const keys = Object.keys(req.body)
 
         for (key of keys) {
@@ -48,13 +57,15 @@ module.exports = {
             }
         }
 
-        Recipe.update(req.body, function() {
-            return res.redirect(`/admin/recipes/${req.body.id}`)
-        })   
+        await Recipe.update(req.body)
+        
+        return res.redirect(`/admin/recipes/${req.body.id}`)
+        
     },
-    delete(req, res) {
-        Recipe.delete(req.body.id, function() {
-            return res.redirect(`/admin/recipes`)
-        })
+    async delete(req, res) {
+        await Recipe.delete(req.body.id) 
+        
+        return res.redirect(`/admin/recipes`)
+        
     }
 }
