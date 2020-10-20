@@ -11,7 +11,7 @@ module.exports = {
             LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
             ORDER BY recipes.id ASC`)
     },
-    create(data, callback) {
+    create(data) {
         const query = `
                     INSERT INTO recipes (
                         chef_id,
