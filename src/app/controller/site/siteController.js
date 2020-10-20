@@ -1,36 +1,45 @@
 const Site = require('../../models/site/Site')
 
 module.exports = {
-    home(req, res) {
-        Site.all(function(recipes) {
-            return res.render("site/recipes/home", { recipes })
-        })
+    async home(req, res) {
+        let results = await Site.all() 
+        const recipes = results.rows
+        
+        return res.render("site/recipes/home", { recipes })
     },
     about(req, res) {
         return res.render("site/recipes/about")
     },
-    recipes(req, res) {
-        Site.all(function(recipes) {
-            return res.render("site/recipes/recipes", { recipes })
-        })
+    async recipes(req, res) {
+        let results = await Site.all()
+        const recipes = results.rows 
+        
+        return res.render("site/recipes/recipes", { recipes })
+        
     },
-    details(req, res) {
-        Site.find(req.params.id, function(recipe) {
-            return res.render("site/recipes/details", { recipe })
-        })
+    async details(req, res) {
+        let results = await Site.find(req.params.id)
+        const recipe = results.rows[0]
+        
+        return res.render("site/recipes/details", { recipe })
+       
     },
-    chefs(req, res) {
-        Site.chefs(function(chefs) {
-            return res.render("site/recipes/chefs", { chefs })
-        })
+    async chefs(req, res) {
+        let results = await Site.chefs()
+        const chefs = results.rows 
+        
+        return res.render("site/recipes/chefs", { chefs })
+        
     },
-    search(req, res) {
+    async search(req, res) {
         const { filter } = req.query
 
         if (filter) {
-            Site.findBy(filter, function(recipes) {
-                return res.render("site/recipes/search", { filter, recipes })
-            })
+            let results = Site.findBy(filter)
+            const recipes = results.rows 
+                
+            return res.render("site/recipes/search", { filter, recipes })
+            
         } 
         
     }
