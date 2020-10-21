@@ -1,4 +1,4 @@
-{% extends "admin/layout.njk" %}
+{% extends "layouts/admin.njk" %}
 
 {% block head %}
     <title>Gerenciar Receitas | Create</title>
@@ -11,7 +11,7 @@
             <button type="submit">Salvar receita</button>
         </div>
 
-        {% include "admin/recipes/fields.njk" %}
+        {% include "includes/recipes/fields.njk" %}
 
     </form>
 

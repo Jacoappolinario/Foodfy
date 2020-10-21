@@ -37,7 +37,7 @@ routes.delete('/admin/chefs', chefsController.delete)
 
 /*=== Not Found ===*/
 routes.use(function(req, res) {
-    res.status(404).render("site/recipes/not-found")
+    res.status(404).render("site/not-found")
 })
 
 module.exports = routes

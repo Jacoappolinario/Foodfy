@@ -1,4 +1,4 @@
-{% extends "admin/layout.njk" %}
+{% extends "layouts/admin.njk" %}
 
 {% block head %}
     <title>{{ chef.name }} | Edit</title>
@@ -14,7 +14,7 @@
 
 
 <form id="form-salvar" method="POST" action="/admin/chefs?_method=PUT">
-    {% include "admin/chefs/fields.njk" %}
+    {% include "includes/chefs/fields.njk" %}
 
     <input 
     type="hidden" 
@@ -29,7 +29,7 @@
     value="{{ chef.id }}">
 </form>
 
-{% include "admin/confirm.njk" %}
+{% include "includes/confirm.njk" %}
 
 
 {% endblock content %}

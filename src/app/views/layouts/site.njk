@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    {% block head %}
+    {% endblock %}
+    
+    <link rel="stylesheet" href="/styles/general.css">
+    
+    <body>
+        {% include "parts/site/header.njk" %}
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        {% include "parts/site/footer.njk" %}
+
+    </body>
+</html>
