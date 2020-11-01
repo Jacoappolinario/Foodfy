@@ -3,8 +3,8 @@
     <br><br>
     <b>Foodfy</b>
     <p align="center">
-        <img src="">
-        <img src="">
+        <img src="https://img.shields.io/badge/By-Jac%C3%B3%20Apolin%C3%A1rio-blue">
+        <img src="https://img.shields.io/badge/License-MIT-blue">
     </p>
 </h3>
 
@@ -43,4 +43,4 @@ Lançado em 2020 (Trabalho em andamento) Esse projeto está sob a licença MIT. 
 
 ---
 
-Feito com 💙 by [Jacó Apolinário](https://github.com/Jacoappolinario/)
+Feito com 💙 by [Jacó Apolinário](https://www.linkedin.com/in/jacoapolinario/)
