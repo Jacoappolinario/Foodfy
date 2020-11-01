@@ -2,6 +2,7 @@
     <img alt="foodfy" title"#logo" src="public/assets/chef.png">
     <br><br>
     <b>Foodfy</b>
+    <br>
     <p align="center">
         <img src="https://img.shields.io/badge/By-Jac%C3%B3%20Apolin%C3%A1rio-blue">
         <img src="https://img.shields.io/badge/License-MIT-blue">
