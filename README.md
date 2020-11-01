@@ -29,7 +29,7 @@ $ git clone https://github.com/Jacoappolinario/Foodfy.git
 $ cd Foodfy
 
 ```
-Adicione credenciais de acesso ao banco de dados no arquivo src / app / config / db.js.
+Adicione credenciais de acesso ao banco de dados no arquivo src / config / db.js.
 
 ```bash
 # Baixe as dependências:
