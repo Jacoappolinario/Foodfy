@@ -1,18 +1,20 @@
 CREATE TABLE "chefs" (
   "id" SERIAL PRIMARY KEY,
-  "name" text,
-  "file_id" int,
-  "created_at" timestamp DEFAULT (now())
+  "name" text NOT NULL,
+  "file_id" int NOT NULL,
+  "created_at" timestamp DEFAULT (now()),
+  "update_at" timestamp DEFAULT (now())
 );
 
 CREATE TABLE "recipes" (
   "id" SERIAL PRIMARY KEY,
-  "chef_id" int,
-  "title" text,
-  "ingredients" text[],
-  "preparation" text[],
-  "information" text,
-  "created_at" timestamp DEFAULT (now())
+  "chef_id" int NOT NULL,
+  "title" text NOT NULL,
+  "ingredients" text[] NOT NULL,
+  "preparation" text[] NOT NULL,
+  "information" text NOT NULL,
+  "created_at" timestamp DEFAULT (now()),
+  "update_at" timestamp DEFAULT (now())
 );
 
 CREATE TABLE "files" (

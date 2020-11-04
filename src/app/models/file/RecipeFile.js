@@ -1,17 +1,17 @@
 const db = require('../../../config/db')
 
 module.exports = {
-    create(data) {
+    create(recipe_id, file_id) {
         const query = `
-                    INSERT INTO files (
-                        name,
-                        path
+                    INSERT INTO recipes_files (
+                        recipe_id,
+                        file_id
                     ) VALUES ($1, $2)
                     RETURNING id
                     `
         const values = [
-            data.filename,
-            data.path
+            recipe_id,
+            file_id
         ]
 
         return db.query(query, values)
