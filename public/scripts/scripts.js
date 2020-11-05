@@ -10,11 +10,12 @@ for (let card of cards) {
 const PhotosUpload = {
     input: "",
     preview: document.querySelector('#photos-preview'),
-    uploadLimit: 5,
+    uploadLimit: "",
     files: [],
-    handleFileInput(event) {
+    handleFileInput(event, limit) {
         const { files: filesList } = event.target
         PhotosUpload.input = event.target
+        PhotosUpload.uploadLimit = limit
         
         if (PhotosUpload.hasLimit(event)) return 
 

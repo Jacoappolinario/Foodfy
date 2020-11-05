@@ -438,3 +438,16 @@ form .item #photos-preview img {
 #photos-preview .photo:hover i {
     opacity: 1;
 }
+
+form .item #photos-upload p {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #6558C3;
+    color: white;
+
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    
+    font-size: 16px;
+}

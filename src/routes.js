@@ -32,8 +32,8 @@ routes.get('/admin/chefs/create', chefsController.create)
 routes.get('/admin/chefs/:id', chefsController.show)
 routes.get('/admin/chefs/:id/edit', chefsController.edit)
 
-routes.post('/admin/chefs', chefsController.post)
-routes.put('/admin/chefs', chefsController.put)
+routes.post('/admin/chefs', multer.array("photos", 1), chefsController.post)
+routes.put('/admin/chefs', multer.array("photos", 1), chefsController.put)
 routes.delete('/admin/chefs', chefsController.delete)
 
 /*=== Not Found ===*/
