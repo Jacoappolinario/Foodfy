@@ -8,17 +8,17 @@ module.exports = {
                 FROM chefs 
                 ORDER BY id ASC`) 
     },
-    create(data) {
+    create(data, fileId) {
         const query = `
                 INSERT INTO chefs (
                     name,
-                    created_at
+                    file_id
                 ) VALUES ($1, $2)
                 RETURNING id
                 `
         const values = [
             data.name,
-            date(Date.now()).iso
+            fileId
         ]
 
         return db.query(query, values)

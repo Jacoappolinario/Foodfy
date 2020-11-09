@@ -1,4 +1,5 @@
 const Chefs = require('../../models/admin/Chefs')
+const File = require('../../models/file/File')
 
 module.exports = {
     async index(req, res) {
@@ -20,10 +21,18 @@ module.exports = {
             }
         }
 
-        let results = await Chefs.create(req.body) 
-        const chef = results.rows[0].id
+        if (req.files.length == 0) 
+            return res.send('Please, send at last one image')
+
+
+        const filePromise = req.files.map(file => File.create({...file}))
+        let results = await filePromise[0]
+        const fileId = results.rows[0].id
+
+        results = await Chefs.create(req.body, fileId)
+        const chefId = results.rows[0].id
         
-        return res.redirect(`/admin/chefs/${chef}`)
+        return res.redirect(`/admin/chefs/${chefId}`)
        
     },
     async show(req, res) {
