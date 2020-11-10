@@ -4,9 +4,7 @@ const { date } = require('../../../lib/utils')
 module.exports = {
     all(){
         return db.query(`
-            SELECT 
-            recipes.id, recipes.image, recipes.title,
-            chefs.name AS author
+            SELECT recipe.*, chefs.name AS author
             From recipes
             LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
             ORDER BY recipes.id ASC`)
@@ -40,6 +38,13 @@ module.exports = {
                 FROM recipes
                 LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
                 WHERE recipes.id = $1`, [id])
+    },
+    files(id) {
+        return db.query(`
+            SELECT * FROM files
+            LEFT JOIN recipes_files
+            ON (files.id = recipes_files.file_id)
+            WHERE recipes_files.recipe_id = $1`, [id])
     },
     chefSelectOptions() {
         return db.query(`SELECT id,name FROM chefs`)

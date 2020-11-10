@@ -58,12 +58,19 @@ module.exports = {
         let results = await Recipe.find(req.params.id) 
         const recipe = results.rows[0]
 
+        //get chefs options
         results = await Recipe.chefSelectOptions()
         const chefOptions = results.rows 
+
+        //get imagens
+        results = await Recipe.files(recipe.id)
+        let files = results.rows
+        files = files.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+        }))
         
-        return res.render("admin/recipes/edit", { recipe, chefOptions})
-           
-       
+        return res.render("admin/recipes/edit", { recipe, chefOptions, files})
     },
     async put(req, res) {
         const keys = Object.keys(req.body)
