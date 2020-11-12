@@ -69,6 +69,7 @@ module.exports = {
             ...file,
             src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
         }))
+
         
         return res.render("admin/recipes/edit", { recipe, chefOptions, files})
     },
