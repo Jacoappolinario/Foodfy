@@ -15,7 +15,7 @@
         <button type="submit" form="form-salvar" id="button-salvar">Salvar receita</button>
     </div>
 
-    <form id="form-salvar" method="POST" action="/admin/recipes?_method=PUT">
+    <form id="form-salvar" method="POST" action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
         
         {% include "includes/recipes/fields.njk" %}
 

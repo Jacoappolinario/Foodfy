@@ -16,9 +16,8 @@ module.exports = {
                         title,
                         ingredients,
                         preparation,
-                        information,
-                        created_at
-                    ) VALUES ($1, $2, $3, $4, $5, $6)
+                        information
+                    ) VALUES ($1, $2, $3, $4, $5)
                     RETURNING id
                     `
         const values = [
@@ -26,8 +25,7 @@ module.exports = {
             data.title,
             data.ingredients,
             data.preparation,
-            data.information,
-            date(Date.now()).iso
+            data.information
         ]
 
         return db.query(query, values)
@@ -53,17 +51,15 @@ module.exports = {
         const query = `
             UPDATE recipes SET
                 chef_id=($1),
-                image=($2),
-                title=($3),
-                ingredients=($4),
-                preparation=($5),
-                information=($6)
-                WHERE id = $7  
+                title=($2),
+                ingredients=($3),
+                preparation=($4),
+                information=($5)
+                WHERE id = $6  
             `
         
         const values = [
             data.chef,
-            data.image,
             data.title,
             data.ingredients,
             data.preparation,
