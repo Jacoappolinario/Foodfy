@@ -26,7 +26,7 @@ module.exports = {
 
             await db.query(`DELETE FROM recipes_files WHERE file_id = $1`, [id])
 
-            await db.query(`DELETE FROM files WHERE id = $1`)
+            await db.query(`DELETE FROM files WHERE id = $1`, [id])
 
         } catch(err) {
             console.error(err)
