@@ -82,6 +82,19 @@ module.exports = {
             }
         }
 
+        if (req.files.length != 0) {
+            const newFilesPromise = req.files.map(file =>
+                File.create({...file}))
+
+            const filesResults = await Promise.all(newFilesPromise)
+            const recipeFile = filesResults.map(file => {
+                const fileId = file.rows[0].id
+                RecipeFile.create(req.body.id, fileId)
+            }) 
+
+            await Promise.all(recipeFile)
+        }
+
         if (req.body.removed_files) {
             // 1,2,3,
             const removedFiles = req.body.removed_files.split(",") // [1,2,3]
