@@ -4,7 +4,7 @@ const { date } = require('../../../lib/utils')
 module.exports = {
     all(){
         return db.query(`
-            SELECT recipe.*, chefs.name AS author
+            SELECT recipes.*, chefs.name AS author
             From recipes
             LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
             ORDER BY recipes.id ASC`)
