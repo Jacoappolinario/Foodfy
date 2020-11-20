@@ -13,7 +13,7 @@ module.exports = [
         '30 ml de água gelada'
       ],
       preparation: [
-        'Misture todoos os ingredientes muito bem e amasse para que fique tudo muito bem misturado.',
+        'Misture todos os ingredientes muito bem e amasse para que fique tudo muito bem misturado.',
         'Faça porções de 90 g a 100 g.',
         'Forre um plástico molhado em uma bancada e modele os hambúrgueres utilizando um aro como base.',
         'Faça um de cada vez e retire o aro logo em seguida.',
