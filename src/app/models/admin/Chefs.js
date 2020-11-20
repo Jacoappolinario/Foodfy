@@ -41,16 +41,21 @@ module.exports = {
             WHERE chefs.id = $1
             ORDER BY recipes.id ASC`, [id])
     },
+    filesChef(id) {
+        return db.query(`
+        SELECT files.*, chefs.file_id
+        FROM files
+        LEFT JOIN chefs ON (files.id = chefs.file_id)
+        WHERE chefs.file_id = $1`, [id])
+    },
     update(data) {
         const query = `
             UPDATE chefs SET
-                name=($1),
-                avatar_url=($2)
-                WHERE id = $3
+                name=($1)
+                WHERE id = $2
             `
         const values = [
             data.name,
-            data.avatar_url,
             data.id
         ]
 

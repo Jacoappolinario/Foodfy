@@ -48,11 +48,34 @@ module.exports = {
     async edit(req, res) {
         let results = await Chefs.findChef(req.params.id) 
         const chef = results.rows[0]
+
+        //get image
+        results = await Chefs.filesChef(chef.file_id)
+        let fileChef = results.rows
+        fileChef = fileChef.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+        }))
         
-        return res.render("admin/chefs/edit", { chef })
+        return res.render("admin/chefs/edit", { chef, fileChef })
         
     },
     async put(req, res) {
+        const keys = Object.keys(req.body)
+
+        for (key of keys) {
+            if (req.body[key] == "" && key != "removed_files") {
+                return res.send("Please, fill all fields")
+            }
+        }
+
+        // if (req.files.length != 0) {
+        //     const newFilePromise = req.files.map(file => 
+        //         File.create({...file}))
+            
+        //     await Promise.all(newFilePromise)
+        // }
+
         await Chefs.update(req.body) 
         
         return res.redirect(`/admin/chefs/${req.body.id}`)

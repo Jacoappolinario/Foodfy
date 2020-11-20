@@ -27,6 +27,19 @@
                     <i class="material-icons">add</i>
                 </div>
             </div>
+            {% if fileChef %}
+                {% for image in fileChef %}
+                    <div class="photo" id="{{ image.id }}">
+                        <img src="{{ image.src }}" alt="{{ image.name }}">
+                        <i class="material-icons"
+                            onclick="PhotosUpload.removedOldPhoto(event)"
+                        >
+                        close  
+                        </i>
+                    </div>
+                {% endfor %}
+                <input type="hidden" name="removed_files">
+            {% endif %}
         </div>
     </div>
 
