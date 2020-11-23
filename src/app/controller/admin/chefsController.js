@@ -1,4 +1,5 @@
 const Chefs = require('../../models/admin/Chefs')
+const Recipes = require('../../models/admin/Recipes')
 const File = require('../../models/file/File')
 
 module.exports = {
@@ -39,10 +40,16 @@ module.exports = {
         let results = await Chefs.findChef(req.params.id) 
         const chef = results.rows[0]
 
-        results = await Chefs.findRecipe(req.params.id)
+        results = await Chefs.findRecipe(chef.id)
         const recipes = results.rows 
+
+        results = await Chefs.filesChef(chef.id)
+        const files = results.rows.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+        }))
         
-        return res.render("admin/chefs/show", { chef, recipes })
+        return res.render("admin/chefs/show", { chef, recipes, files })
         
     },
     async edit(req, res) {

@@ -33,20 +33,21 @@ module.exports = {
     },
     findRecipe(id) {
         return db.query(`
-            SELECT 
-            recipes.id, recipes.image, recipes.title,
-            chefs.name AS author
-            From recipes
-            LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
-            WHERE chefs.id = $1
-            ORDER BY recipes.id ASC`, [id])
+        SELECT recipes.id, 
+        recipes.title,
+        chefs.name AS author
+        FROM recipes
+        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+        WHERE chefs.id = $1
+        ORDER BY recipes.id ASC`, [id])
     },
     filesChef(id) {
         return db.query(`
-        SELECT files.*, chefs.file_id
+        SELECT files.*, chefs.file_id 
         FROM files
         LEFT JOIN chefs ON (files.id = chefs.file_id)
-        WHERE chefs.file_id = $1`, [id])
+        WHERE chefs.id = $1
+        ORDER BY files.id ASC`, [id])
     },
     update(data) {
         const query = `
