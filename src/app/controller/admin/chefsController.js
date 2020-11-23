@@ -1,5 +1,4 @@
 const Chefs = require('../../models/admin/Chefs')
-const Recipes = require('../../models/admin/Recipes')
 const File = require('../../models/file/File')
 
 module.exports = {
