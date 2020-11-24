@@ -8,7 +8,11 @@
 
 <div class="edit-header">
     <h2>Editando Chef</h2>
-    <button type="submit" form="form-delete" id="button-delete">Deletar</button>
+    {% if chef.total_recipes == '0' %}
+        <button type="submit" form="form-delete" id="button-delete">Delete</button>
+    {% else %}
+        <button type="submit" form="form-delete" id="button-delete" onclick="ErrorMessage.error()">Delete</button>
+    {% endif %}
     <button type="submit" form="form-salvar" id="button-salvar">Salvar Chef</button>
 </div>
 

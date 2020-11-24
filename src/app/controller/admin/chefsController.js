@@ -55,6 +55,9 @@ module.exports = {
         let results = await Chefs.findChef(req.params.id) 
         const chef = results.rows[0]
 
+        results = await Chefs.findRecipe(chef.id)
+        const chefRecipes = results.rows
+
         //get image
         results = await Chefs.filesChef(chef.file_id)
         let fileChef = results.rows
