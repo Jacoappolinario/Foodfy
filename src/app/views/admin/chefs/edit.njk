@@ -18,7 +18,7 @@
 
 
 <form id="form-salvar" method="POST" action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
-    {% include "includes/chefs/fields.njk" %}
+    {% include "admin/includes/chefs/fields.njk" %}
 
     <input 
     type="hidden" 
@@ -33,7 +33,7 @@
     value="{{ chef.id }}">
 </form>
 
-{% include "includes/confirm.njk" %}
+{% include "admin/includes/confirm.njk" %}
 
 
 {% endblock content %}
