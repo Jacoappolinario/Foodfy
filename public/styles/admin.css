@@ -1,5 +1,9 @@
+:root {
+    --primary-color: black;
+}
+
 .links-bg-admin {
-    background-color: black;
+    background-color: var(--primary-color);
 }
 
 .links-admin {

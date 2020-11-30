@@ -3,24 +3,37 @@
 * {
     margin: 0;
     padding: 0;
-    border: 0;
+    box-sizing: border-box;
+
+    text-decoration: none;
+    list-style-type: none;
+    border: none;
+}
+
+html, body {
+    min-height: 100vh;
 }
 
 body {
     background-color: white;
     font-family: 'Roboto', sans-serif;
     color: #111111;  
-    position: relative;
-    padding-bottom: 50px;
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .content {
-    width: 940px;
+    width: 90%;
+    max-width: 940px;
     margin: 0 auto;
-    padding-bottom: 60px;
-    box-sizing: border-box;
+    
 }
+
+footer {
+    margin-top: auto;
+}
+
+/*=== HEADER ===*/
 
 .links-bg {
     background-color: white;
@@ -427,19 +440,11 @@ body {
 
 /*=== Footer ===*/
 
-.footer {
-    display: flex;
+footer {
     background: #EEEEEE;
-    height: 60px;
-    width: 100%;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }
 
-.footer p {
-    flex: 1;
+footer p {
     text-align: center;
     font-size: 14px;
     line-height: 16px;
