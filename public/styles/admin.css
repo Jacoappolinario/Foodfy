@@ -1,9 +1,5 @@
-:root {
-    --primary-color: black;
-}
-
 .links-bg-admin {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
 }
 
 .links-admin {
