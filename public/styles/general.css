@@ -350,7 +350,8 @@ footer p {
     align-items: center;
 }
 
-button[type="submit"],
+#button-save,
+#button-delete,
 a.button-admin {
     padding: 8px 32px;
     background-color: #6558C3;

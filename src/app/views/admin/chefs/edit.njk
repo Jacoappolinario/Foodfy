@@ -13,11 +13,11 @@
     {% else %}
         <button type="submit" form="form-delete" id="button-delete" onclick="ErrorMessage.error()">Delete</button>
     {% endif %}
-    <button type="submit" form="form-salvar" id="button-salvar">Salvar Chef</button>
+    <button type="submit" form="form-save" id="button-save">Salvar Chef</button>
 </div>
 
 
-<form id="form-salvar" method="POST" action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
+<form id="form-save" method="POST" action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
     {% include "admin/includes/chefs/fields.njk" %}
 
     <input 

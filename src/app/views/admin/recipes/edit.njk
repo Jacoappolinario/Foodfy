@@ -12,10 +12,10 @@
         <h2>Editando receita</h2>
 
         <button type="submit" form="form-delete" id="button-delete">Deleta</button>
-        <button type="submit" form="form-salvar" id="button-salvar">Salvar receita</button>
+        <button type="submit" form="form-save" id="button-save">Salvar receita</button>
     </div>
 
-    <form id="form-salvar" method="POST" action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
+    <form id="form-save" method="POST" action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
         
         {% include "admin/includes/recipes/fields.njk" %}
 
