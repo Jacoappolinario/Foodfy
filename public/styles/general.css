@@ -50,76 +50,7 @@ footer p {
     padding: 23px;
 }
 
-/*=== Header ===*/
-
-header {
-    background-color: var(--primary-color);
-    color: black;
-
-    width: 100%;
-    padding: 32px 0;
-    text-align: left;
-}
-
-header div.container {
-    width: 940px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header div.container a {
-    justify-self: start;
-}
-
-/*=== Search ===*/
-
-form.search {
-    display: grid;
-    grid-template-columns: 246px 91px;
-    align-items: center;
-    grid-gap: 8px;
-}
-
-form.search input {
-    background: #FFFFFF;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px; 
-    padding: 11px 15px 10px 15px;
-}
-
-nav.primary ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 30px;
-    align-items: center;
-}
-
-nav.primary ul li a {
-    color: black;
-}
-
-nav.primary ul li a:active {
-    font-weight: bold;
-    color: black;
-}
-
-nav.primary ul li a:hover {
-    font-weight: bold;
-    transition: color 200ms;
-}
-
-.button {
-    height: 37px;
-    padding: 9px 20px;
-    background-color: #6558C3;
-    color: white;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-/*=== Site ===*/
+/*=== Site Style ===*/
 
 .introduction {
     display: grid;
@@ -321,51 +252,6 @@ nav.primary ul li a:hover {
     padding-bottom: 47px;
 }
 
-/*=== Chefs ===*/
-.chefs__cards-content {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-}
-
-.card__chefs{
-    background-color: white;
-    width: auto;
-    min-height: 80px;
-
-    display: grid;
-    grid-template-columns: 64px 176px;
-    gap: 20px;
-    align-items: center;
-}
-
-.chefs__list-image img {
-    width: 64px; 
-    height: 64px; 
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.chefs__list-name h1 {
-    font-size: 18px;
-    line-height: 21px;
-    color: #111111;
-}
-
-.chefs__list-name p {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #666666;
-}
-
-.chefs__list-visualize {
-    font-size: 14px;
-    font-weight: bold;
-    color: #6558C3;
-    text-decoration: none;
-}
-
 /*=== PAG 404 ===*/
 
 .pag-erro {
@@ -401,5 +287,514 @@ nav.primary ul li a:hover {
     font-weight: bold;
 }
 
+/*=== Admin Style ===*/
+
+.admin__content h2 {
+    margin-top: 50px;
+    font-size: 24px;
+    line-height: 28px;
+    color: #111111;
+    font-weight: bold;
+}
+
+.card__admin {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 
 
+.card__recipes{
+    background-color: white;
+    width: 400px;
+    min-height: 80px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.list__image img {
+    width: 172px; 
+    height: 80px;
+    border-radius: 8.57px;
+}
+
+.list__title h1 {
+    font-size: 18px;
+    line-height: 21px;
+    color: #111111;
+}
+
+.list__author p {
+    font-size: 14px;
+    line-height: 16px;
+    color: #777777;
+}
+
+.list__visualize {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6558C3;
+    text-decoration: none;
+}
+
+
+/*=== Create ===*/
+
+.create-header {
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button[type="submit"],
+a.button-admin {
+    padding: 8px 32px;
+    background-color: #6558C3;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a.button-admin {
+    text-decoration: none;
+}
+
+.details {
+    margin-top: 30px;
+}
+
+.details .item div:nth-child(1) {
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+    color: #111111;
+    margin-bottom: 10px;
+}
+
+.item {
+    margin-bottom: 30px;
+}
+
+.input__create {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+
+.input__create-information {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    height: 257px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: normal;
+    font-family: 'Roboto-Regular';
+    padding: 18px 20px;
+    box-sizing: border-box;
+}
+
+.button-add {
+    font-size: 16px;
+    line-height: 19px;
+    color: #6558C3;
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/*=== Show ===*/
+
+.show-header {
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.show__details {
+    margin-top: 24px;
+}
+
+.show__ingredients {
+    margin-top: 31px;
+}
+
+/*=== Edit ===*/
+
+.ingredient,
+.preparation {
+    margin-top: 10px;
+}
+
+#button-delete {
+    background-color: #DC4747;
+    margin-right: 10px;
+}
+
+.edit-header {
+    margin-top: 55px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.edit-header h2 {
+    margin-right: auto;
+}
+
+/*=== Chefs ===*/ 
+
+.chefs__details {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.chef__image img {
+    margin-top: 42px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chef__name h1 {
+    margin-top: 30px;
+    font-size: 36px;
+    color: #111111;
+}
+
+.chef__amount-recipes p {
+    margin-top: 4px;
+    font-size: 20px;
+    color: #777777;
+}
+
+/*=== Index Chefs ===*/
+
+.chefs__cards-content {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.card__chefs{
+    background-color: white;
+    width: auto;
+    min-height: 80px;
+
+    display: grid;
+    grid-template-columns: 64px 176px;
+    gap: 20px;
+    align-items: center;
+}
+
+.chefs__list-image img {
+    width: 64px; 
+    height: 64px; 
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chefs__list-name h1 {
+    font-size: 18px;
+    line-height: 21px;
+    color: #111111;
+}
+
+.chefs__list-visualize {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6558C3;
+    text-decoration: none;
+}
+
+/*=== Details Recipes Admin ===*/
+
+.details__image img {
+    width: 940px;
+    height: 280px;
+    border-radius: 15px;
+}
+
+.details__title h1 {
+    margin-top: 50px;
+    font-size: 36px;
+    line-height: 42px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.details__author p {
+    font-size: 20px;
+    line-height: 24px;
+    color: #777777;
+    text-align: center;
+}
+
+.ingredients {
+    margin-top: 50px;
+}
+
+.header__div-admin h1 {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: bold;
+}
+
+.header__div-admin p {
+    font-size: 12px;
+    line-height: 14px;
+    color: #999999;
+    cursor: pointer;
+}
+
+#ingredients__details {
+    margin-top: 20px;
+    margin-bottom: 41px;
+}
+
+#ingredients__details p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    margin-left: 8px;
+}
+
+#preparation__modo {
+    margin-top: 20px;
+    margin-bottom: 41px;
+}
+
+#preparation__modo p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    margin-left: 8px;
+    
+}
+
+#additional__information p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    margin-top: 20px;
+    margin-left: 8px;
+}
+
+/*photos upload*/
+
+form .item #photos-upload {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+    
+    width: 149px;
+}
+
+form .item .photos-add {
+    border: 1px solid #DDDDDD;
+    border-radius: 3.5px;
+    color: #777777;
+    margin-top: 5.5px;
+
+    width: 149px;
+    height: 149px;
+
+    text-align: center;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+form .item .photos-add i {
+    font-size: 250%;
+}
+
+form .item #photos-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+form .item #photos-preview {
+    display: grid;
+    grid-template-columns: repeat(6, 149px);
+    grid-gap: 8px;
+    align-items: center;
+}
+
+form .item #photos-preview img {
+    border-radius: 3.5px;
+    width: 100%;
+    height: 149px;
+    object-fit: cover;
+}
+
+#photos-preview .photo {
+    position: relative;
+}
+
+#photos-preview .photo i {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    color: red;
+
+    width: 149px;
+    height: 149px;
+
+    /* Centralizar o icone no meio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 250%;
+    cursor: pointer;
+
+    transition: opacity 200ms;
+
+    opacity: 0;
+}
+
+#photos-preview .photo:hover i {
+    opacity: 1;
+}
+
+form .item #photos-upload p {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #6558C3;
+    color: white;
+
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    
+    font-size: 16px;
+}
+
+/*=== Recipes gallery ===*/
+
+.gallery {
+    width: 100%;
+}
+
+.highlight > img {
+    width: 940px;
+    height: 280px;
+    border-radius: 15px;
+
+    object-fit: cover;
+
+    cursor: zoom-in;
+}
+
+.gallery-preview {
+    justify-content: right;
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    grid-gap: 8px;
+}
+
+.gallery-preview img {
+    width: 100%;
+    height: 49.7px;
+    border: 1px solid #DDDDDD;
+    border-radius: 3.5px;
+
+    object-fit: cover;
+
+    opacity: 0.6;
+
+    cursor: pointer;
+
+    transition: 200ms;
+}
+
+.gallery-preview img:hover,
+.gallery-preview img.active {
+    opacity: 1;
+}
+
+/*=== Lightbox gallery ===*/
+
+.highlight .lightbox-target {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+
+    overflow: hidden;
+    z-index: 100;
+
+    top: -100%;
+    left: 0;
+    opacity: 0;
+
+    transition: opacity 400ms;
+}
+
+.highlight .lightbox-target img {
+    margin: auto;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+
+    width: 90%;
+    height: 90%;
+
+    object-fit: contain;
+}
+
+.highlight .lightbox-target a.lightbox-close {
+    width: 50px;
+    height: 50px;
+
+    background: white;
+
+    position: absolute;
+    top: -80px;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    transition: 400ms;
+}

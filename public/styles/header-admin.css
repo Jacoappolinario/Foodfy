@@ -1,0 +1,88 @@
+/*=== Header Admin ===*/
+
+header {
+    background-color: black;
+    color: black;
+
+    width: 100%;
+    padding: 27px 0;
+    text-align: left;
+}
+
+header div.container {
+    width: 954px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+header div.container a {
+    justify-self: start;
+}
+
+.logo img {
+    margin-right: 50.4px;
+}
+
+nav.primary ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
+    align-items: center;
+}
+
+nav.primary ul a {
+    color: white;
+}
+
+nav.primary ul li a.active {
+    font-weight: bold;
+    color: white;
+}
+
+nav.primary ul li a:hover {
+    font-weight: bold;
+    transition: color 200ms;
+}
+
+/* .links-bg-admin {
+    background-color: var(--secondary-color);
+} */
+
+/* .links-admin {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 27px 0;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+
+.links-logo-admin img {
+    margin-right: 50.4px;
+}
+
+.links-admin a {
+    font-size: 16;
+    line-height: 19px;
+    color: #999999;
+    text-decoration: none;
+}
+
+.links-admin a + a {
+    margin-left: 30px;
+}
+
+.links-admin a.active {
+    font-weight: bold;
+    color: white;
+}
+
+.links-admin a:hover {
+    font-weight: bold;
+    transition: color 200ms;
+} */
