@@ -1,12 +1,3 @@
-const cards = document.querySelectorAll('.card')
-
-for (let card of cards) {
-    card.addEventListener("click", function() {
-        const id = card.getAttribute('id')
-        window.location.href = `/recipes/${id}`
-    })
-}
-
 const PhotosUpload = {
     input: "",
     preview: document.querySelector('#photos-preview'),
@@ -108,45 +99,5 @@ const PhotosUpload = {
             }
         }
         photoDiv.remove()
-    }
-}
-
-const ImageGallery = {
-    highlight: document.querySelector('.gallery .highlight > img'),
-    previews: document.querySelectorAll('.gallery-preview img'),
-    setImage(e) {
-        const { target } = e
-
-        ImageGallery.previews.forEach(preview => preview.classList.remove('active'))
-
-        target.classList.add('active')
-
-        ImageGallery.highlight.src = target.src
-        Lightbox.image.src = target.src
-    }
-}
-
-const Lightbox = {
-    target: document.querySelector('.lightbox-target'),
-    image: document.querySelector('.lightbox-target img'),
-    closeButton: document.querySelector('.lightbox-target a.lightbox-close'),
-    open() {
-        Lightbox.target.style.opacity = 1
-        Lightbox.target.style.top = 0
-        Lightbox.target.style.botton = 0 
-        Lightbox.closeButton.style.top = 0
-    },
-    close() {
-        Lightbox.target.style.opacity = 0
-        Lightbox.target.style.top = "-100%"
-        Lightbox.target.style.botton = "initial"
-        Lightbox.closeButton.style.top = "-80px"
-    }
-}
-
-const ErrorMessage = {
-    error() {
-        alert("Erro! Chef possui receitas");
-        event.preventDefault()
     }
 }
