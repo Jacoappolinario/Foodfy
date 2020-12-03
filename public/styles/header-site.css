@@ -58,7 +58,7 @@ nav.primary ul li a:hover {
     transition: color 200ms;
 }
 
-.button {
+.button.filter {
     height: 37px;
     padding: 9px 20px;
     background-color: #6558C3;

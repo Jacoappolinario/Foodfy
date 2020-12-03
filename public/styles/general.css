@@ -50,6 +50,21 @@ footer p {
     padding: 23px;
 }
 
+.button {
+    background-color: #6558C3;
+    color: white;
+    
+    padding: 8px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.button.delete {
+    background-color: #DC4747;
+    margin-right: 10px;
+}
+
 /*=== Site Style ===*/
 
 .introduction {
@@ -350,21 +365,6 @@ footer p {
     align-items: center;
 }
 
-#button-save,
-#button-delete,
-a.button-admin {
-    padding: 8px 32px;
-    background-color: #6558C3;
-    border-radius: 4px;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-a.button-admin {
-    text-decoration: none;
-}
-
 .details {
     margin-top: 30px;
 }
@@ -389,7 +389,6 @@ a.button-admin {
     font-size: 16px;
     line-height: 19px;
     padding: 15px 20px;
-    box-sizing: border-box;
 }
 
 .input__create-information {
@@ -403,7 +402,6 @@ a.button-admin {
     font-weight: normal;
     font-family: 'Roboto-Regular';
     padding: 18px 20px;
-    box-sizing: border-box;
 }
 
 .button-add {
@@ -438,11 +436,6 @@ a.button-admin {
 .ingredient,
 .preparation {
     margin-top: 10px;
-}
-
-#button-delete {
-    background-color: #DC4747;
-    margin-right: 10px;
 }
 
 .edit-header {
@@ -596,7 +589,7 @@ a.button-admin {
     margin-left: 8px;
 }
 
-/*photos upload*/
+/*=== Photos Upload ===*/
 
 form .item #photos-upload {
     position: relative;
@@ -617,7 +610,6 @@ form .item .photos-add {
     height: 149px;
 
     text-align: center;
-    box-sizing: border-box;
 
     display: flex;
     align-items: center;
@@ -698,7 +690,7 @@ form .item #photos-upload p {
 
     width: 100%;
     text-align: center;
-    box-sizing: border-box;
+
     
     font-size: 16px;
 }

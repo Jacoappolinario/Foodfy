@@ -9,11 +9,11 @@
 <div class="edit-header">
     <h2>Editando Chef</h2>
     {% if chef.total_recipes == '0' %}
-        <button type="submit" form="form-delete" id="button-delete">Delete</button>
+        <button type="submit" form="form-delete" class="button delete">Delete</button>
     {% else %}
-        <button type="submit" form="form-delete" id="button-delete" onclick="ErrorMessage.error()">Delete</button>
+        <button type="submit" form="form-delete" class="button delete" onclick="ErrorMessage.error()">Delete</button>
     {% endif %}
-    <button type="submit" form="form-save" id="button-save">Salvar Chef</button>
+    <button type="submit" form="form-save" class="button">Salvar Chef</button>
 </div>
 
 
