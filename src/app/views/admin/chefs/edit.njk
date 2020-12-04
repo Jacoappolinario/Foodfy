@@ -9,9 +9,9 @@
 <div class="edit-header">
     <h2>Editando Chef</h2>
     {% if chef.total_recipes == '0' %}
-        <button type="submit" form="form-delete" class="button delete">Delete</button>
+        <button type="submit" class="button delete" onclick="Message.confirmDelete()">Delete</button>
     {% else %}
-        <button type="submit" form="form-delete" class="button delete" onclick="ErrorMessage.error()">Delete</button>
+        <button type="submit" class="button delete" onclick="Message.error(event)">Delete</button>
     {% endif %}
     <button type="submit" form="form-save" class="button">Salvar Chef</button>
 </div>
@@ -32,8 +32,5 @@
     name="id" 
     value="{{ chef.id }}">
 </form>
-
-{% include "admin/includes/confirm.njk" %}
-
 
 {% endblock content %}
