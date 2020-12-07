@@ -23,7 +23,6 @@ const Message = {
             if (result.isConfirmed) {
               Swal.fire({
                 title: 'Excluído!',
-                text: 'Seu arquivo foi excluído.',
                 icon: 'success',
                 confirmButtonColor: '#6558C3',
                 confirmButtonText: 'OK'
