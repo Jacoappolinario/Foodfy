@@ -179,7 +179,7 @@ footer p {
     margin-top: 20px;
 }
 
-.details__image img {
+.details__image {
     width: 940px;
     height: 280px;
     border-radius: 15px;
