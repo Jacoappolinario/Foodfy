@@ -30,8 +30,7 @@ body {
 .content {
     width: 90%;
     max-width: 940px;
-    margin: 0 auto 50px auto;
-    
+    margin: 0 auto;
 }
 
 footer {
