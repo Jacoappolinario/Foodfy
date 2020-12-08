@@ -35,12 +35,12 @@ module.exports = {
         const { filter } = req.query
 
         if (filter) {
-            let results = Site.findBy(filter)
+            let results = await Site.findBy(filter)
             const recipes = results.rows 
                 
             return res.render("site/search", { filter, recipes })
             
-        } 
+        }
         
     }
 }
