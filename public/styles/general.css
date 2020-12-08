@@ -69,7 +69,7 @@ footer p {
 .introduction {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 940px;
+    max-width: 940px;
     height: 366px;
     background-color: #FBDFDB;
     border-radius: 30px;
