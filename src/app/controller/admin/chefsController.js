@@ -78,13 +78,6 @@ module.exports = {
             }
         }
 
-        // if (req.files.length != 0) {
-        //     const newFilePromise = req.files.map(file => 
-        //         File.create({...file}))
-            
-        //     await Promise.all(newFilePromise)
-        // }
-
         await Chefs.update(req.body) 
         
         return res.redirect(`/admin/chefs/${req.body.id}`)

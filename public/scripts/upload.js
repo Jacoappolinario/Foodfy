@@ -101,3 +101,12 @@ const PhotosUpload = {
         photoDiv.remove()
     }
 }
+
+const AvatarUpload = {
+    selected(event) {
+        const button = event.target.parentNode
+        const buttonText = button.querySelector("p")
+        buttonText.innerHTML = "Avatar Selecionado"
+        buttonText.style.width = "180px"
+    }
+}

@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="item">
+    {# <div class="item">
         <div>Avatar</div>
         <div id="photos-preview">
             <div id="photos-upload">
@@ -41,8 +41,22 @@
                 <input type="hidden" name="removed_files">
             {% endif %}
         </div>
+    </div> #}
+    <div class="item">
+        <div>Avatar</div>
+            <div>
+                <div id="avatar-upload">
+                    <input 
+                    id="avatar-input"
+                    type="file" 
+                    name="photos" 
+                    accept="image/*"
+                    onchange="AvatarUpload.selected(event)"
+                    >
+                    <p>Enviar Avatar</p>
+                </div>
+            </div>
+        </div>
     </div>
-
-
     
 </div>
