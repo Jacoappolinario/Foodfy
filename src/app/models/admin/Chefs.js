@@ -86,6 +86,25 @@ module.exports = {
             console.error(err)
         }
     },
+    avatarUpdate({filename, path, fileId}) {
+        try {
+            const query = `
+            UPDATE files SET
+                name=($1),
+                path=($2)
+                WHERE id = $3
+            `
+            const values = [
+                filename,
+                path,
+                fileId
+            ]
+
+            return db.query(query, values)
+        } catch(err) {
+            console.error(err)
+        }
+    },
     delete(id) {
         try {
             return db.query(`DELETE FROM chefs WHERE id = $1`, [id])

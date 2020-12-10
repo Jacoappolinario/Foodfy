@@ -45,6 +45,13 @@
     <div class="item">
         <div>Avatar</div>
             <div>
+                {% if files %}
+                {% for image in files %}
+                <div>
+                    <input class="input__create" type="text" name="link da receita" value="{{ image.name }}" disabled>
+                </div>
+                {% endfor %}
+                {% endif %}
                 <div id="avatar-upload">
                     <input 
                     id="avatar-input"
@@ -55,6 +62,7 @@
                     >
                     <p>Enviar Avatar</p>
                 </div>
+                <input type="hidden" name="avatar_update">
             </div>
         </div>
     </div>

@@ -55,28 +55,34 @@ module.exports = {
         let results = await Chefs.findChef(req.params.id) 
         const chef = results.rows[0]
 
-        results = await Chefs.findRecipe(chef.id)
-        const chefRecipes = results.rows
+        // results = await Chefs.findRecipe(chef.id)
+        // const chefRecipes = results.rows
 
         //get image
-        results = await Chefs.filesChef(chef.file_id)
-        let fileChef = results.rows
-        fileChef = fileChef.map(file => ({
+        results = await Chefs.filesChef(chef.id)
+        let files = results.rows
+        files = files.map(file => ({
             ...file,
             src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
         }))
         
-        return res.render("admin/chefs/edit", { chef, fileChef })
+        return res.render("admin/chefs/edit", { chef, files })
         
     },
     async put(req, res) {
         const keys = Object.keys(req.body)
 
         for (key of keys) {
-            if (req.body[key] == "" && key != "removed_files") {
+            if (req.body[key] == "" && key != "avatar_update") {
                 return res.send("Please, fill all fields")
             }
         }
+
+        let results = await Chefs.filesChef(req.body.id)
+        const fileId = results.rows[0].file_id
+
+        const filePromise = req.files.map(file => Chefs.avatarUpdate({...file, fileId}))
+        await Promise.all(filePromise)
 
         await Chefs.update(req.body) 
         
