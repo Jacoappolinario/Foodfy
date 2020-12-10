@@ -16,7 +16,7 @@ module.exports = {
         const keys = Object.keys(req.body)
 
         for (key of keys) {
-            if (req.body[key] == "") {
+            if (req.body[key] == "" && key != "avatar_photo") {
                 return res.send("Please, fill all fields")
             }
         }
@@ -73,7 +73,7 @@ module.exports = {
         const keys = Object.keys(req.body)
 
         for (key of keys) {
-            if (req.body[key] == "" && key != "avatar_update") {
+            if (req.body[key] == "" && key != "avatar_photo") {
                 return res.send("Please, fill all fields")
             }
         }
