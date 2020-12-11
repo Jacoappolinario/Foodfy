@@ -84,7 +84,7 @@ module.exports = {
 
         for (key of keys) {
             if (req.body[key] == "" && key != "removed_files") {
-                return res.send("Please, fill all fields")
+                return res.send('Please, fill all fields!')
             }
         }
 
@@ -118,6 +118,12 @@ module.exports = {
         
     },
     async delete(req, res) {
+
+        results = await Recipe.files(req.body.id)
+        let files = results.rows
+        const filesPromise = files.map(file => (File.delete(file.id)))
+        await Promise.all(filesPromise)
+
         await Recipe.delete(req.body.id) 
         
         return res.redirect(`/admin/recipes`)
