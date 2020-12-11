@@ -90,8 +90,9 @@ module.exports = {
     
     },
     async delete(req, res) {
-        await Chefs.delete(req.body.id) 
         
+        await Chefs.delete(req.body.id) 
+
         return res.redirect(`/admin/chefs`)
        
     }
