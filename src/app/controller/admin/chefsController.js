@@ -5,8 +5,24 @@ module.exports = {
     async index(req, res) {
         let results = await Chefs.all()
         const chefs = results.rows
+
+        if (!chefs) return res.send("Chefs not found")
+
+        async function getImage(chefId) {
+            let results = await Chefs.filesChef(chefId)
+            const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
+            
+            return files[0]
+        }
+
+        const chefsPromise = chefs.map(async chef => {
+            chef.img = await getImage(chef.id)
+            return chef
+        }).filter((chef, index) => index > 2 ? false : true)
+
+        const lastAdded = await Promise.all(chefsPromise)
         
-        return res.render("admin/chefs/index", {chefs})
+        return res.render("admin/chefs/index", { chefs: lastAdded })
         
     },
     create(req, res) {

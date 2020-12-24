@@ -8,7 +8,7 @@ module.exports = {
             SELECT recipes.*, chefs.name AS author
             From recipes
             LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
-            ORDER BY recipes.id ASC`)
+            ORDER BY updated_at DESC`)
         } catch(err) {
             console.error(err)
         }
