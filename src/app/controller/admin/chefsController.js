@@ -1,5 +1,6 @@
 const Chefs = require('../../models/admin/Chefs')
 const File = require('../../models/file/File')
+const Recipe = require('../../models/admin/Recipes')
 
 module.exports = {
     async index(req, res) {
@@ -55,16 +56,31 @@ module.exports = {
         let results = await Chefs.findChef(req.params.id) 
         const chef = results.rows[0]
 
-        results = await Chefs.findRecipe(chef.id)
-        const recipes = results.rows 
-
         results = await Chefs.filesChef(chef.id)
         const files = results.rows.map(file => ({
             ...file,
             src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
         }))
+
+        // Get recipe images
+        results = await Chefs.findRecipe(chef.id)
+        const recipes = results.rows 
+
+        async function getImage(recipeId) {
+            let results = await Recipe.files(recipeId)
+            const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
+            
+            return files[0]
+        }
+
+        const recipesPromise = recipes.map(async recipe => {
+            recipe.img = await getImage(recipe.id)
+            return recipe
+        }).filter((recipe, index) => index > 2 ? false : true)
+
+        const lastAdded = await Promise.all(recipesPromise)
         
-        return res.render("admin/chefs/show", { chef, recipes, files })
+        return res.render("admin/chefs/show", { chef, recipes: lastAdded, files })
         
     },
     async edit(req, res) {
