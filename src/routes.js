@@ -4,12 +4,11 @@ const multer = require('./app/middlewares/multer')
 const siteController = require('./app/controller/site/siteController')
 const recipesController = require('./app/controller/admin/recipesController')
 const chefsController = require('./app/controller/admin/chefsController')
+const HomeController = require("./app/controller/site/HomeController")
 
 /*=== Routes Site ===*/
-routes.get('/', function(req, res) {
-    return res.redirect("/home")
-})
-routes.get('/home', siteController.home)
+routes.get('/', HomeController.index)
+
 routes.get('/about', siteController.about)
 routes.get('/recipes', siteController.recipes)
 routes.get('/recipes/:id', siteController.details)

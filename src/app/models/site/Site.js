@@ -7,7 +7,7 @@ module.exports = {
             SELECT recipes.*, chefs.name AS author
             From recipes
             LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
-            ORDER BY recipes.id ASC`)
+            ORDER BY updated_at DESC`)
         } catch(err) {
             console.error(err)
         }
@@ -43,6 +43,18 @@ module.exports = {
             LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
             GROUP BY chefs.id
             ORDER BY total_recipes DESC`) 
+        } catch(err) {
+            console.error(err)
+        }
+    },
+    files(id) {
+        try {
+            return db.query(`
+            SELECT files.*, recipe_id, file_id 
+            FROM files
+            LEFT JOIN recipes_files
+            ON (files.id = recipes_files.file_id)
+            WHERE recipes_files.recipe_id = $1`, [id])
         } catch(err) {
             console.error(err)
         }
