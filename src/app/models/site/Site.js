@@ -58,5 +58,17 @@ module.exports = {
         } catch(err) {
             console.error(err)
         }
-    }
+    },
+    fileschefs(id) {
+        try {
+            return db.query(`
+            SELECT files.*, chefs.file_id
+            FROM files
+            LEFT JOIN chefs ON (files.id = chefs.file_id)
+            WHERE chefs.id = $1
+            ORDER BY files.id ASC`, [id]) 
+        } catch(err) {
+            console.error(err)
+        }
+    },
 }
