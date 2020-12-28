@@ -31,8 +31,14 @@ module.exports = {
     async details(req, res) {
         let results = await Site.find(req.params.id)
         const recipe = results.rows[0]
+
+        results = await Site.files(recipe.id)
+        const files = results.rows.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+        }))
         
-        return res.render("site/details", { recipe })
+        return res.render("site/details", { recipe, files })
        
     },
     async chefs(req, res) {
