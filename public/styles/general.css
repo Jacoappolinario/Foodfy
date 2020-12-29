@@ -27,7 +27,7 @@ body {
     flex-direction: column;
 }
 
-.content {
+.container {
     width: 90%;
     max-width: 940px;
     margin: 0 auto;
@@ -296,7 +296,7 @@ footer p {
 
 /*=== Pag Search ===*/
 
-.title__search h3 {
+.title__search h1 {
     font-size: 24px;
     font-weight: bold;
 }

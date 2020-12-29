@@ -5,15 +5,18 @@ const siteController = require('./app/controller/site/siteController')
 const recipesController = require('./app/controller/admin/recipesController')
 const chefsController = require('./app/controller/admin/chefsController')
 const HomeController = require("./app/controller/site/HomeController")
+const SearchController = require("./app/controller/site/SearchController")
 
 /*=== Routes Site ===*/
 routes.get('/', HomeController.index)
+
+// Search
+routes.get('/search', SearchController.index)
 
 routes.get('/about', siteController.about)
 routes.get('/recipes', siteController.recipes)
 routes.get('/recipes/:id', siteController.details)
 routes.get('/chefs', siteController.chefs)
-routes.get('/search', siteController.search)
 
 /*=== Routes Admin Recipes ===*/
 routes.get('/admin/recipes', recipesController.index)

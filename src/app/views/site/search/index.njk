@@ -1,0 +1,15 @@
+{% extends "layouts/site.njk" %}
+{% import "site/parts/section-recipes.njk" as section %}
+
+{% block head %}
+    <title>Home | Foodfy</title>
+{% endblock %}
+
+{% block content %}     
+
+<section class="search-site">
+
+    {{section.recipes('Buscando por', 'title__search', recipes, filter)}}
+
+</section>
+{% endblock %}
