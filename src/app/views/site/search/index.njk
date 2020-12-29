@@ -9,7 +9,12 @@
 
 <section class="search-site">
 
-    {{section.recipes('Buscando por', 'title__search', recipes, filter)}}
+    <div class="title__search">
+        <h1>Buscando por "{{ search.term }}"</h1>
+        <p>{{ search.total }} encontrados</p>
+    </div>
+
+    {{section.recipes('', '', recipes)}}
 
 </section>
 {% endblock %}

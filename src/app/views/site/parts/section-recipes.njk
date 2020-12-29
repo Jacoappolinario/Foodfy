@@ -1,10 +1,10 @@
-{% macro recipes(name, classes, recipes, filter) %}
+{% macro recipes(name, classes, recipes) %}
 
 <section>
 
     <div class="{{ classes }}">
         {% if name %}
-            <h1>{{ name }} {% if filter %} "{{ filter }}" {% endif %}</h1>
+            <h1>{{ name }}</h1>
         {% endif %}
     </div>
 

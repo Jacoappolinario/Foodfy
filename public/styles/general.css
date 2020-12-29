@@ -231,6 +231,7 @@ footer p {
     font-size: 18px;
     line-height: 28px;
     color: #444444;
+    list-style: disc;
 }
 
 #preparation__modo {

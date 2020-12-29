@@ -26,7 +26,7 @@ module.exports = {
     findBy(filter) {
         try {
             return db.query(`
-            SELECT recipes.*, chefs.name AS chef_name
+            SELECT recipes.*, chefs.name AS author
             FROM recipes
             LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
             WHERE recipes.title ILIKE '%${filter}%'
