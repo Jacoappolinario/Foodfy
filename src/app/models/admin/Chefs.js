@@ -1,5 +1,6 @@
 const db = require("../../../config/db")
 const { date } = require('../../../lib/utils')
+const fs = require('fs')
 
 module.exports = {
     all() {
@@ -105,9 +106,16 @@ module.exports = {
             console.error(err)
         }
     },
-    delete(id) {
+    async delete(id) {
         try {
-            return db.query(`DELETE FROM chefs WHERE id = $1`, [id])
+            const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
+            const file = result.rows[0]
+
+            fs.unlinkSync(file.path)
+
+            await db.query(`DELETE FROM chefs WHERE id = $1`, [id])
+            await db.query(`DELETE FROM files WHERE id = $1`, [id])
+
         } catch(err) {
             console.error(err)
         }
