@@ -87,8 +87,14 @@ module.exports = {
             console.error(err)
         }
     },
-    avatarUpdate({filename, path, fileId}) {
+    async avatarUpdate({filename, path, fileId}) {
         try {
+
+            const result = await db.query(`SELECT * FROM files WHERE id = $1`, [fileId])
+            const file = result.rows[0]
+
+            fs.unlinkSync(file.path)
+
             const query = `
             UPDATE files SET
                 name=($1),
@@ -108,13 +114,19 @@ module.exports = {
     },
     async delete(id) {
         try {
-            const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
+
+            const result = await db.query(`
+                SELECT files.*, chefs.file_id 
+                FROM files
+                LEFT JOIN chefs ON (files.id = chefs.file_id)
+                WHERE chefs.id = $1`, [id])
+
             const file = result.rows[0]
 
             fs.unlinkSync(file.path)
 
             await db.query(`DELETE FROM chefs WHERE id = $1`, [id])
-            await db.query(`DELETE FROM files WHERE id = $1`, [id])
+            await db.query(`DELETE FROM files WHERE id = $1`, [file.id])
 
         } catch(err) {
             console.error(err)
