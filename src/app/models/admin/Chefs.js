@@ -31,7 +31,7 @@ module.exports = {
             console.error(err)
         }
     },
-    findChef(id) {
+    find(id) {
         try {
             return db.query(`
             SELECT chefs.*, count(recipes.id) AS total_recipes
@@ -57,7 +57,7 @@ module.exports = {
             console.error(err)
         }
     },
-    filesChef(id) {
+    files(id) {
         try {
             return db.query(`
             SELECT files.*, chefs.file_id 
@@ -86,7 +86,7 @@ module.exports = {
             console.error(err)
         }
     },
-    async avatarUpdate({filename, path, fileId}) {
+    async updateAvatar({filename, path, fileId}) {
         try {
 
             const result = await db.query(`SELECT * FROM files WHERE id = $1`, [fileId])

@@ -59,7 +59,7 @@ module.exports = {
             console.error(err)
         }
     },
-    fileschefs(id) {
+    filesChefs(id) {
         try {
             return db.query(`
             SELECT files.*, chefs.file_id
@@ -70,5 +70,5 @@ module.exports = {
         } catch(err) {
             console.error(err)
         }
-    },
+    }
 }

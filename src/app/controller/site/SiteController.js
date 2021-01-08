@@ -1,4 +1,3 @@
-const Chefs = require('../../models/admin/Chefs')
 const Site = require('../../models/site/Site')
 
 module.exports = {
@@ -48,7 +47,7 @@ module.exports = {
         if (!chefs) return res.send("Chefs not found")
 
         async function getImage(chefId) {
-            let results = await Chefs.filesChef(chefId)
+            let results = await Site.filesChefs(chefId)
             const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
 
             return files[0]

@@ -123,7 +123,7 @@ module.exports = {
             const lastIndex = removedFiles.length - 1
             removedFiles.splice(lastIndex, 1) // [1,2,3]
             
-            const removedFilesPromise = removedFiles.map(id => File.delete(id))
+            const removedFilesPromise = removedFiles.map(id => File.deleteImage(id))
 
             await Promise.all(removedFilesPromise)
         }
