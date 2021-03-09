@@ -1,4 +1,3 @@
-const Product = require('../../../../../Launchstore/src/app/models/Product')
 const Site = require('../../models/site/Site')
 
 module.exports = {
