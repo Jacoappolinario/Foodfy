@@ -3,9 +3,7 @@ const routes = express.Router()
 
 const SiteController = require('../app/controller/site/SiteController')
 const SearchController = require("../app/controller/site/SearchController")
-const HomeController = require("../app/controller/site/HomeController")
 
-routes.get('/', HomeController.index)
 routes.get('/search', SearchController.index)
 routes.get('/about', SiteController.about)
 routes.get('/recipes', SiteController.recipes)
