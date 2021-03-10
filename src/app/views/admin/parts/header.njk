@@ -1,20 +1,43 @@
 <header>
     <div class="container">
-        <a href="/admin/recipes">
-            <div class="logo">
-                <img src="/assets/logo-admin.png" alt="">
-            </div>
-        </a>
-
         <nav class="primary">
+            <a href="/admin/recipes">
+                <div class="logo">
+                    <img src="/assets/logo-admin.png" alt="">
+                </div>
+            </a>
+
             <ul>
-                <li>
-                    <a href="/admin/recipes">Receitas</a>
+                <li class="menu">
+                    <a href="/admin/recipes">receitas</a>
+                    <div class="submenu">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
                 </li>
-                <li>
-                    <a href="/admin/chefs">Chefs</a>
+                <li class="menu"> 
+                    <a href="/admin/chefs">chefs</a>
+                    <div class="submenu">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </li>
+                <li class="menu">
+                    <a href="/admin/profile">usuários</a>
+                    <div class="submenu">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
                 </li>
             </ul>
         </nav>
+    
+        <form class="exit" action="" method="post">
+            <button>sair</button>
+        </form>
+        
     </div>
 </header>
