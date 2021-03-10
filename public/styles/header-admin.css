@@ -33,13 +33,13 @@ nav.primary ul {
     text-align: center;
 }
 
-nav.primary ul a {
+nav.primary .menu > a {
     color: #999999;
     font-size: 15px;
     text-transform: uppercase;
 }
 
-nav.primary ul li a.active {
+nav.primary .menu > a.active {
     font-weight: bold;
     color: white;
 }

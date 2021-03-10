@@ -25,6 +25,7 @@
     display: block;
     text-align: left;
     border-top: 1px solid #eee;
+    font-size: 14px;
 }
 
 .submenu a:hover {
