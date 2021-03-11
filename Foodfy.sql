@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS foodfydb;
+CREATE DATABASE foodfydb;
+
 CREATE TABLE "recipes" (
   "id" SERIAL UNIQUE PRIMARY KEY,
   "chef_id" integer NOT NULL,
@@ -28,6 +31,19 @@ CREATE TABLE "chefs" (
   "created_at" timestamp DEFAULT (now()),
 );
 
+CREATE TABLE "users" (
+  "id" SERIAL PRIMARY KEY,
+  "name" text NOT NULL,
+  "email" text UNIQUE NOT NULL,
+  "password" text NOT NULL,
+  "reset_token" text,
+  "reset_token_expires" text,
+  "is_admin" BOOLEAN DEFAULT false,
+  "created_at" timestamp DEFAULT (now()),
+  "updated_at" timestamp DEFAULT (now()) 
+)
+
+-- Create procedure
 CREATE FUNCTION trigger_set_timestamp()
 RETURNS TRIGGER AS $$
 BEGIN

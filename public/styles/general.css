@@ -51,7 +51,7 @@ footer p {
     background-color: #6558C3;
     color: white;
     
-    padding: 8px 32px;
+    padding: 9px 48px;
     font-size: 16px;
     font-weight: bold;
     border-radius: 4px;
@@ -60,6 +60,11 @@ footer p {
 .button.delete {
     background-color: #DC4747;
     margin-right: 10px;
+}
+
+.button.cancel {
+    background-color: #8A8A8A;
+    margin-left: 16px;
 }
 
 /*=== Site Style ===*/
@@ -828,4 +833,23 @@ form .item #avatar-input {
     text-decoration: none;
 
     transition: 400ms;
+}
+
+/*=== User Create ===*/
+
+.user-form .details {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.user-form .details .item input[name="name"],
+.user-form .details .item input[name="email"] {
+    width: 450px;
+}
+
+.user-form .details .item .checkbox {
+    margin-top: 33px;
+    font-size: 16px;
+    font-weight: bold;
 }
