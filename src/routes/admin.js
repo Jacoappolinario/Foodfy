@@ -6,6 +6,8 @@ const ChefsController = require('../app/controller/admin/ChefsController')
 
 const UserController = require('../app/controller/admin/UserController')
 
+const UserValidator = require('../app/validators/user')
+
 /*=== Routes Admin Recipes ===*/
 routes.get('/recipes', RecipesController.index)
 routes.get('/recipes/create', RecipesController.create)
@@ -32,8 +34,8 @@ routes.delete('/chefs', ChefsController.delete)
 
 // /*=== Rotas que o administrador irá acessar para gerenciar usuários ===*/
 // routes.get('/admin/users', UserController.list) // Mostrar a lista de usuários cadastrados
-// routes.post('/admin/users', UserController.post) // Cadastrar um usuário
 routes.get('/users/create', UserController.create) // Mostrar o formulário de criação de um usuário
+routes.post('/users', UserValidator.post, UserController.post) // Cadastrar um usuário
 // routes.put('/admin/users/:id', UserController.put) // Editar um usuário
 // routes.get('/admin/users/:id/edit', UserController.edit) // Mostrar o formulário de edição de um usuário
 // routes.delete('/admin/users/:id', UserController.delete) // Deletar um usuário

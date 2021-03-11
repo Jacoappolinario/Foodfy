@@ -6,8 +6,10 @@
     {% include "admin/parts/styles.njk" %}
 
     <body>
+
+        {% include "admin/parts/messages.njk" %}
        
-       {% include "admin/parts/header.njk" %}
+        {% include "admin/parts/header.njk" %}
 
         <div class="container">
             {% block content %}
