@@ -7,11 +7,12 @@
             class="input__create" 
             type="text" 
             name="name"
+            value="{{ user.name }}"
             >
         </div>
 
         <div class="checkbox">
-            <input type="checkbox" name="is_admin" value="true"> Administrador
+            <input type="checkbox" name="is_admin" {% if user.is_admin %} checked {% endif %}> Administrador
         </div>
     </div>
 
@@ -22,6 +23,7 @@
             class="input__create" 
             type="email" 
             name="email"
+            value="{{ user.email }}"
             >
         </div>
     </div>

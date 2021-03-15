@@ -55,7 +55,7 @@ module.exports = {
                 data.name,
                 data.email,
                 passwordHash,
-                data.is_admin
+                data.is_admin || "false"
             ]
 
 

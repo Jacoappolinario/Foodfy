@@ -37,7 +37,7 @@ routes.delete('/chefs', ChefsController.delete)
 routes.get('/users/create', UserController.create) // Mostrar o formulário de criação de um usuário
 routes.post('/users', UserValidator.post, UserController.post) // Cadastrar um usuário
 // routes.put('/admin/users/:id', UserController.put) // Editar um usuário
-// routes.get('/admin/users/:id/edit', UserController.edit) // Mostrar o formulário de edição de um usuário
+routes.get('/users/:id/edit', UserController.edit) // Mostrar o formulário de edição de um usuário
 // routes.delete('/admin/users/:id', UserController.delete) // Deletar um usuário
 
 module.exports = routes

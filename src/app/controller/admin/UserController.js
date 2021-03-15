@@ -12,5 +12,16 @@ module.exports = {
         return res.render("admin/user/create", {
             success: "Usuário Cadastrado!"
         })
+    },
+    async edit(req, res) {
+        const { id } = req.params
+         try {
+            let user = await User.findOne({ where: {id} })
+
+            return res.render("admin/user/edit", { user })
+             
+         } catch(err) {
+             console.error(err)
+         }
     }
 }
