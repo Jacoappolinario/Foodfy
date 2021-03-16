@@ -24,10 +24,6 @@ module.exports = {
     async put(req, res) {
         try {
 
-            const { user } = req
-
-            let { name, email, is_admin } = req.body
-
             await User.update(req.body)
 
             return res.render("admin/user/edit", {
@@ -41,5 +37,8 @@ module.exports = {
                 error: "Algum erro aconteceu!"
             })
         }
+    },
+    async delete(req, res) {
+        return 
     }
 }
