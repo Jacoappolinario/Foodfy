@@ -35,20 +35,13 @@ async function post(req, res, next) {
 }
 
 async function put(req, res, next) {
-    //check if has all fields
+    
     const fillAllFields = checkAllFields(req.body)
     if (fillAllFields) {
         return res.render("admin/user/edit", fillAllFields)
     }
 
-    const { id } = req.body
-
-    const user = await User.findOne({ where: {id} })
-
-    req.user = user
-
     next()
-
 }
 
 module.exports = {

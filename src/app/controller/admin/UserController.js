@@ -39,6 +39,21 @@ module.exports = {
         }
     },
     async delete(req, res) {
-        return 
+        try {
+
+            await User.delete(req.body.id)
+
+            return res.render("admin/user/create", {
+                success: "Usuário deletado com sucesso!"
+            })
+
+            
+        } catch(err) {
+            console.error(err)
+            return res.render("admin/user/edit", {
+                user: req.body,
+                error: "Error ao tentar deletar usuário!"
+            })
+        }
     }
 }
