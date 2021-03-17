@@ -13,7 +13,7 @@ const UserValidator = require('../app/validators/user')
 // Users register
 routes.get('/users/create', UserController.create)
 routes.post('/users', UserValidator.post, UserController.post) 
-// routes.get('/admin/users', UserController.list) // Mostrar a lista de usuários cadastrados
+routes.get('/users', UserController.list)
 
 routes.get('/users/:id/edit', UserController.edit) 
 routes.put('/users', UserValidator.put, UserController.put) 

@@ -4,6 +4,10 @@ const { hash } = require('bcryptjs')
 const mailer = require('../../../lib/mailer')
 
 module.exports = {
+    async all() {
+        const results = await db.query(`SELECT * FROM users`)
+        return results.rows
+    },
     async findOne(filters) {
         let query = "SELECT * FROM users"
 

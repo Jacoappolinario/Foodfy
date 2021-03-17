@@ -10,6 +10,11 @@ module.exports = {
 
         return res.redirect(`/admin/users/${userId}/edit`)
     },
+    async list(req, res) {
+        const users = await User.all()
+
+        return res.render("admin/user/list", { users })
+    },
     async edit(req, res) {
         const { id } = req.params
          try {
@@ -43,9 +48,7 @@ module.exports = {
 
             await User.delete(req.body.id)
 
-            return res.render("admin/user/create", {
-                success: "Usuário deletado com sucesso!"
-            })
+            return res.redirect("/admin/users")
 
             
         } catch(err) {
