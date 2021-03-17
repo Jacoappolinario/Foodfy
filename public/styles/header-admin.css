@@ -27,7 +27,7 @@ nav.primary {
 
 nav.primary ul {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 25px;
     align-items: center;
     text-align: center;
