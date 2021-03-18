@@ -1,0 +1,57 @@
+header {
+    width: 100%;
+    padding: 35px 35px 0px 35px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section.login.container {
+    max-width: 500px;
+}
+
+section.login.container .header h3 {
+    margin-top: 146px;
+    font-family: Helvetica;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+section.login.container .fields {
+    margin-top: 35px;
+    margin-bottom: 32px;
+}
+
+section.login.container .fields .input input {
+    margin-top: 10px;
+    width: 100%;
+
+    padding: 15px 14px;
+
+    box-shadow: 2px 2px 2px -4px rgba(63, 63, 63, .9);
+
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+
+    font-size: 16px;
+    color: #999999;
+}
+
+section.login.container .footer ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section.login.container .footer ul li a {
+    color: #969696;
+}
+
+section.login.container .footer ul li a:hover {
+    color: black;
+    font-weight: bold;
+}
