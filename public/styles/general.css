@@ -906,3 +906,12 @@ form .item #avatar-input {
     color: #F55A5A;
     cursor: pointer;
 }
+
+/* Validate */
+
+.input .error {
+    background-color: #e74c3c;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+}
