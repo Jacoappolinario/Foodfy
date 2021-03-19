@@ -5,10 +5,11 @@ const UserController = require('../app/controller/admin/UserController')
 const ProfileController = require('../app/controller/admin/ProfileController')
 
 const UserValidator = require('../app/validators/user')
+const SessionValidator = require('../app/validators/session')
 
 // Login/logout
 routes.get('/users/login', SessionController.loginForm)
-// routes.post('/login', SessionController.login)
+routes.post('/users/login', SessionValidator.login, SessionController.login)
 // routes.post('logout', SessionController.logout)
 
 // Profile
