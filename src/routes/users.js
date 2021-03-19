@@ -6,6 +6,7 @@ const ProfileController = require('../app/controller/admin/ProfileController')
 
 const UserValidator = require('../app/validators/user')
 const SessionValidator = require('../app/validators/session')
+const ProfileValidator = require('../app/validators/ProfileValidators')
 
 // Login/logout
 routes.get('/users/login', SessionController.loginForm)
@@ -14,7 +15,7 @@ routes.post('/users/logout', SessionController.logout)
 
 // Profile
 routes.get('/users/profile', ProfileController.index) 
-routes.put('/users/profile', ProfileController.put)
+routes.put('/users/profile', ProfileValidator.put, ProfileController.put)
 
 // Users register
 routes.get('/users/create', UserController.create)

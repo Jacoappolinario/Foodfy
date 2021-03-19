@@ -12,7 +12,28 @@ module.exports = {
 
         return res.render("admin/profile/index", { user })
     },
-    put(req, res) {
-        return 
+    async put(req, res) {
+        try {
+            const { user } = req
+
+            let { name, email } = req.body
+
+            await User.update(user.id, {
+                name,
+                email
+            })
+
+            return res.render("admin/profile/index", {
+                user: req.body,
+                success: "Conta atualizada com sucesso!"
+            })
+
+
+        } catch(err) {
+            console.error(err)
+            return res.render("admin/profile/index", {
+                error: "Algum erro aconteceu!"
+            })
+        }
     }
 }
