@@ -843,8 +843,8 @@ form .item #avatar-input {
 
 .user-form .details {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+    /* gap: 40px; */
 }
 
 .user-form .details .item input[name="name"],

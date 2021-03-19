@@ -1,0 +1,25 @@
+{% extends "layouts/admin.njk" %}
+
+{% block head %}
+    <title>Minha Conta</title>
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="/admin/users/profile?_method=PUT">
+    <div class="create-header">
+        <h2>Bem vindo {{ user.name }}</h2>
+        <button class="button" type="submit">Salvar</button>
+    </div>
+
+    <div class="user-form">
+    {% include "admin/profile/fields.njk" %}
+    </div>
+
+    <input 
+    type="hidden" 
+    name="id" 
+    value="{{ user.id }}"
+    >
+
+</form>
+{% endblock content %}

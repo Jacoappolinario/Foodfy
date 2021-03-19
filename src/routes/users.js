@@ -10,7 +10,7 @@ const SessionValidator = require('../app/validators/session')
 // Login/logout
 routes.get('/users/login', SessionController.loginForm)
 routes.post('/users/login', SessionValidator.login, SessionController.login)
-// routes.post('logout', SessionController.logout)
+routes.post('/users/logout', SessionController.logout)
 
 // Profile
 routes.get('/users/profile', ProfileController.index) 

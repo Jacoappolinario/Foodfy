@@ -5,6 +5,10 @@ module.exports = {
     login(req, res) {
         req.session.userId = req.user.id
 
-        return res.redirect("/users/profile")
+        return res.redirect("/admin/users/profile")
+    },
+    logout(req, res) {
+        req.session.destroy()
+        return res.redirect("/admin/users/login")
     }
 }
