@@ -8,23 +8,25 @@ const UserValidator = require('../app/validators/user')
 const SessionValidator = require('../app/validators/session')
 const ProfileValidator = require('../app/validators/ProfileValidators')
 
+const { onlyUsers } = require('../app/middlewares/session')
+
 // Login/logout
 routes.get('/users/login', SessionController.loginForm)
 routes.post('/users/login', SessionValidator.login, SessionController.login)
 routes.post('/users/logout', SessionController.logout)
 
 // Profile
-routes.get('/users/profile', ProfileController.index) 
+routes.get('/users/profile', onlyUsers, ProfileController.index) 
 routes.put('/users/profile', ProfileValidator.put, ProfileController.put)
 
 // Users register
-routes.get('/users/create', UserController.create)
-routes.post('/users', UserValidator.post, UserController.post) 
-routes.get('/users', UserController.list)
+routes.get('/users/create', onlyUsers, UserController.create)
+routes.post('/users', onlyUsers, UserValidator.post, UserController.post) 
+routes.get('/users', onlyUsers, UserController.list)
 
-routes.get('/users/:id/edit', UserController.edit) 
-routes.put('/users', UserValidator.put, UserController.put) 
-routes.delete('/users', UserController.delete)
+routes.get('/users/:id/edit', onlyUsers, UserController.edit) 
+routes.put('/users', onlyUsers, UserValidator.put, UserController.put) 
+routes.delete('/users', onlyUsers, UserController.delete)
 
 
 module.exports = routes

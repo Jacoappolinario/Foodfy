@@ -29,7 +29,13 @@ module.exports = {
     async put(req, res) {
         try {
 
-            await User.update(req.body)
+            let { name, email, is_admin } = req.body
+
+            await User.update(req.body.id, {
+                name,
+                email,
+                is_admin
+            })
 
             return res.render("admin/user/edit", {
                 user: req.body,
