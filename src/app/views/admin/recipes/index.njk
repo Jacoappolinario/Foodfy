@@ -6,8 +6,13 @@
 
 
 {% block content %}
-<div class="admin__content">
+
+<div class="show-header">
     <h2>Gerenciar receitas</h2>
+        <a href="/admin/recipes/create" class="button">Nova receita</a>
+    </div>
+
+<div class="admin__content">
 
     <div class="card__admin">
         {% for recipe in recipes %}
