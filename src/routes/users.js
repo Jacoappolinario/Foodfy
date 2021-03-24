@@ -4,9 +4,9 @@ const SessionController = require('../app/controller/admin/SessionController')
 const UserController = require('../app/controller/admin/UserController')
 const ProfileController = require('../app/controller/admin/ProfileController')
 
-const UserValidator = require('../app/validators/user')
-const SessionValidator = require('../app/validators/session')
-const ProfileValidator = require('../app/validators/ProfileValidators')
+const UserValidator = require('../app/validators/UserValidator')
+const SessionValidator = require('../app/validators/SessionValidator')
+const ProfileValidator = require('../app/validators/ProfileValidator')
 
 const { onlyUsers } = require('../app/middlewares/session')
 

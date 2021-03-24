@@ -1,10 +1,10 @@
-const User = require('../../models/admin/user')
+const Profile = require('../../models/admin/Profile')
 
 module.exports = {
     async index(req, res) {
         const { userId: id } = req.session
 
-        const user = await User.findOne({ where: {id} })
+        const user = await Profile.findOne({ where: {id} })
 
         if (!user) return res.render("admin/session/login", {
             error: "Usuário não encontrado!"
@@ -18,7 +18,7 @@ module.exports = {
 
             let { name, email } = req.body
 
-            await User.update(user.id, {
+            await Profile.update(user.id, {
                 name,
                 email
             })

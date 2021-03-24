@@ -24,18 +24,13 @@ module.exports = {
              
          } catch(err) {
              console.error(err)
+             return res.render("admin/user/edit")
          }
     },
     async put(req, res) {
         try {
 
-            let { name, email, is_admin } = req.body
-
-            await User.update(req.body.id, {
-                name,
-                email,
-                is_admin
-            })
+            await User.update(req.body)
 
             return res.render("admin/user/edit", {
                 user: req.body,

@@ -14,13 +14,11 @@ function checkAllFields(body) {
 }
 
 async function post(req, res, next) {
-    //check if has all fields
     const fillAllFields = checkAllFields(req.body)
     if (fillAllFields) {
         return res.render("admin/user/create", fillAllFields)
     }
 
-    //check if user exists [Email]]
     const { email } = req.body
     const user = await User.findOne({ 
         where: {email} 

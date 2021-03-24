@@ -25,7 +25,7 @@ async function put(req, res, next) {
 
     if (!password) return res.render("admin/profile/index", {
         user: req.body,
-        error: "Coloque sua senha para atualiazar seu cadastro."
+        error: "Coloque sua senha para atualizar seu cadastro."
     })
 
     const user = await User.findOne({ where: {id} })
