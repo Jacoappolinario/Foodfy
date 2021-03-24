@@ -33,18 +33,40 @@ nav.primary ul {
     text-align: center;
 }
 
-nav.primary .menu > a {
+nav.primary ul li a {
     color: #999999;
     font-size: 15px;
     text-transform: uppercase;
 }
 
-nav.primary .menu > a.active {
+nav.primary ul li a.active {
     font-weight: bold;
     color: white;
 }
 
 nav.primary ul li a:hover {
+    font-weight: bold;
+    transition: color 200ms;
+} 
+
+nav.secondary ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+} 
+
+nav.secondary ul li a {
+    color: #999999;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+nav.secondary ul li a.active {
+    font-weight: bold;
+    color: white;
+}
+
+nav.secondary ul li a:hover {
     font-weight: bold;
     transition: color 200ms;
 } 
@@ -58,7 +80,7 @@ form.exit button {
 }
 
 form.exit button:hover {
-    color: white;
+    color: #999999;
     font-weight: bold;
     transition: color 200ms;
 }

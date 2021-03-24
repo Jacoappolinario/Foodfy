@@ -16,8 +16,8 @@ routes.post('/users/login', SessionValidator.login, SessionController.login)
 routes.post('/users/logout', SessionController.logout)
 
 // Profile
-routes.get('/users/profile', onlyUsers, ProfileController.index) 
-routes.put('/users/profile', ProfileValidator.put, ProfileController.put)
+routes.get('/profile', onlyUsers, ProfileController.index) 
+routes.put('/profile', ProfileValidator.put, ProfileController.put)
 
 // Users register
 routes.get('/users/create', onlyUsers, UserController.create)
