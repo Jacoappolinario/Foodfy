@@ -1,27 +1,35 @@
 @keyframes hidemessage {
     to {
-        top: -50px;
         opacity: 0;
     }
 }
 
 .messages {
+    width: 344px;
+    height: 135px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    padding: 16px;
+    align-items: center;
+    padding: 60px 35px;
     position: absolute;
-    width: 100%;
+
+    border-radius: 4px;
+
+
     color: white;
-    top: 0;
+    top: 15px;
+    right: 14px;
+
     opacity: 1;
 
-    animation: hidemessage 400ms 5s ease-out forwards;
+    animation: hidemessage 400ms  5s ease-out forwards;
 }
 
 .messages.error {
-    background: #e74c3c;
+    background:#DC4747;
 }
 
 .messages.success {
-    background: rgb(122, 182, 30);
+    background: #01B12A;
 }
