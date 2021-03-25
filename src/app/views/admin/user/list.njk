@@ -20,9 +20,8 @@
                     <a href="/admin/users/{{user.id}}/edit">Editar</a>
                 </li>
                 <li>
-                    <form method="post" action="/admin/users?_method=DELETE">
-                        <button>Remover</button>
-                
+                    <button type="submit" onclick="Message.confirmDelete()">Remover</button>
+                    <form id="form-delete" method="post" action="/admin/users?_method=DELETE">
                         <input 
                         type="hidden" 
                         name="id" 

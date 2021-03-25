@@ -897,7 +897,7 @@ form .item #avatar-input {
     color: #6558C3;
 }
 
-.list_content .item .list_options ul li form button{
+.list_content .item .list_options ul li button{
     background: none;
     font-family: Helvetica;
     font-size: 14px;
