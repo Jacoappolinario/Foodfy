@@ -861,13 +861,13 @@ form .item #avatar-input {
 .list_content {
     margin-top: 72px;
     display: grid;
-    grid-template-columns: 170px 170px 170px;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
     align-items: center;
     gap: 22px;
 }
 
-.list_content .item div {
+.list_content .item {
     font-family: Helvetica;
     font-size: 18px;
     line-height: 22px;
@@ -881,15 +881,15 @@ form .item #avatar-input {
     color: #777777;
 }
 
-.list_content .item .list_options {
+.list_content .item .list_options ul {
     margin-top: 16px;
-    display: flex;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 40px 60px;
     align-items: center;
+    gap: 16px;
 }
 
-.list_content .item .list_options a {
-    margin-right: 16px;
+.list_content .item .list_options ul li a {
     font-family: Helvetica;
     font-size: 14px;
     line-height: 17px;
@@ -897,7 +897,7 @@ form .item #avatar-input {
     color: #6558C3;
 }
 
-.list_content .item .list_options form button {
+.list_content .item .list_options ul li form button{
     background: none;
     font-family: Helvetica;
     font-size: 14px;
