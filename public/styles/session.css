@@ -9,11 +9,13 @@ header {
     justify-content: center;
 }
 
-section.login.container {
+section.login.container,
+section.password.container {
     max-width: 500px;
 }
 
-section.login.container .header h3 {
+section.login.container .header h3,
+section.password.container .header h3 {
     margin-top: 146px;
     font-family: Helvetica;
     font-size: 24px;
@@ -21,12 +23,19 @@ section.login.container .header h3 {
     text-align: center;
 }
 
-section.login.container .fields {
+section.login.container .fields,
+section.password.container .fields {
     margin-top: 35px;
     margin-bottom: 32px;
 }
 
-section.login.container .fields .input input {
+section.login.container .fields div:nth-child(1),
+section.password.container .fields div:nth-child(1) {
+    font-weight: bold;
+}
+
+section.login.container .fields .input input, 
+section.password.container .fields .input input {
     margin-top: 10px;
     width: 100%;
 
@@ -54,4 +63,10 @@ section.login.container .footer ul li a {
 section.login.container .footer ul li a:hover {
     color: black;
     font-weight: bold;
+}
+
+section.password.container .button-send {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }

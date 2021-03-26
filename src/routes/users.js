@@ -15,6 +15,12 @@ routes.get('/users/login', SessionController.loginForm)
 routes.post('/users/login', SessionValidator.login, SessionController.login)
 routes.post('/users/logout', SessionController.logout)
 
+// Reset password /forgot
+routes.get('/users/forgot-password', SessionController.forgotForm)
+// routes.get('/password-reset', SessionController.resetForm)
+// routes.post('/forgot-password', SessionController.forgot)
+// rorutes.post('/password-reset', SessionController.reset)
+
 // Profile
 routes.get('/profile', onlyUsers, ProfileController.index) 
 routes.put('/profile', ProfileValidator.put, ProfileController.put)

@@ -4,6 +4,7 @@ const multer = require('../app/middlewares/multer')
 const ChefsController = require('../app/controller/admin/ChefsController')
 
 const { onlyUsers } = require('../app/middlewares/session')
+// const ChefsValidator = require('../app/validators/ChefsValidators')
 
 /*=== Routes Admin chefs ===*/
 routes.get('/chefs', onlyUsers, ChefsController.index)
