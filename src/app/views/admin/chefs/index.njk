@@ -8,7 +8,9 @@
 
 <div class="show-header">
     <h2>Gerenciar Chefs</h2>
+    {% if session.isAdmin %}
     <a href="/admin/chefs/create" class="button">Novo chef</a>
+    {% endif %}
 </div>
 
 <div class="admin__content">

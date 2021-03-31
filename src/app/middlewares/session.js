@@ -5,6 +5,15 @@ function onlyUsers(req, res, next) {
     next()
 }
 
+function isAdmin(req, res, next) {
+    if (!req.session.isAdmin) {
+        return res.redirect("/admin/recipes")
+    }
+
+    next()
+}
+
 module.exports = {
-    onlyUsers
+    onlyUsers,
+    isAdmin
 }

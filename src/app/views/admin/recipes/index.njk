@@ -9,7 +9,9 @@
 
 <div class="show-header">
     <h2>Gerenciar receitas</h2>
+        {% if session.isAdmin %}
         <a href="/admin/recipes/create" class="button">Nova receita</a>
+        {% endif %}
     </div>
 
 <div class="admin__content">

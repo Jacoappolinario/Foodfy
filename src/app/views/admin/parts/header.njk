@@ -9,14 +9,19 @@
 
             <ul>
                 <li>
+                    <a href="#">minhas receitas</a>
+                </li>
+                <li>
                     <a href="/admin/recipes">receitas</a>
                 </li>
                 <li> 
                     <a href="/admin/chefs">chefs</a>
                 </li>
+                {% if session.isAdmin %}
                 <li>
                     <a href="/admin/users">usuários</a>
                 </li>
+                {% endif %}
             </ul>
         </nav>
         

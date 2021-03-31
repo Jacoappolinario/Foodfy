@@ -26,9 +26,13 @@ nav.primary {
 }
 
 nav.primary ul {
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 25px;
+    /* display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 25px;
+    grid-gap: 25px; */
     align-items: center;
     text-align: center;
 }
