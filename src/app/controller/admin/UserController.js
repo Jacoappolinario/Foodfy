@@ -1,3 +1,4 @@
+const user = require('../../models/admin/user')
 const User = require('../../models/admin/user')
 
 module.exports = {
@@ -11,9 +12,12 @@ module.exports = {
         return res.redirect(`/admin/users/${userId}/edit`)
     },
     async list(req, res) {
-        const users = await User.all()
+        let users = await User.all()
+        const filteredUsers = users.filter((users) => {
+            return users.id != req.session.userId
+        })
 
-        return res.render("admin/user/list", { users })
+        return res.render("admin/user/list", { users: filteredUsers })
     },
     async edit(req, res) {
         const { id } = req.params
