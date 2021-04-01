@@ -15,7 +15,7 @@ async function isNotAdmin(req, res, next) {
     const recipe = results.rows[0]
     
 
-    if (req.session.userId != recipe.user_id) {
+    if (req.session.userId != recipe.user_id && req.session.isAdmin == false) {
        return res.redirect("/admin/recipes")
     }
 

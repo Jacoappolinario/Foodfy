@@ -7,7 +7,9 @@
 {% block content %}
 <div class="show-header">
     <h2>Receita: {{ recipe.title }}</h2>
+    {% if session.userId == recipe.user_id or session.isAdmin%}
     <a href="/admin/recipes/{{ recipe.id }}/edit" class="button">Editar</a>
+    {% endif %}
 </div>
 <div class="show__details">
     <div class="gallery">
