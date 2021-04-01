@@ -6,6 +6,7 @@ const RecipesController = require('../app/controller/admin/RecipesController')
 const { onlyUsers, isAdmin } = require('../app/middlewares/session')
 
 /*=== Routes Admin Recipes ===*/
+routes.get('/my-recipes', onlyUsers, RecipesController.myRecipes)
 routes.get('/recipes', onlyUsers, RecipesController.index)
 routes.get('/recipes/create', onlyUsers, isAdmin, RecipesController.create)
 routes.get('/recipes/:id', onlyUsers, RecipesController.show)

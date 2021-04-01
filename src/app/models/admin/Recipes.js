@@ -18,15 +18,17 @@ module.exports = {
             const query = `
                     INSERT INTO recipes (
                         chef_id,
+                        user_id,
                         title,
                         ingredients,
                         preparation,
                         information
-                    ) VALUES ($1, $2, $3, $4, $5)
+                    ) VALUES ($1, $2, $3, $4, $5, $6)
                     RETURNING id
                     `
             const values = [
                 data.chef,
+                data.user_id,
                 data.title,
                 data.ingredients,
                 data.preparation,
@@ -48,6 +50,13 @@ module.exports = {
         } catch(err) {
             console.error(err)
         }
+    },
+    findMyRecipes(id) {
+        return db.query(`
+        SELECT recipes.*, chefs.name AS chef_name
+        FROM recipes
+        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+        WHERE recipes.user_id = $1`, [id])
     },
     files(id) {
         try {

@@ -4,6 +4,7 @@ CREATE DATABASE foodfydb;
 CREATE TABLE "recipes" (
   "id" SERIAL UNIQUE PRIMARY KEY,
   "chef_id" integer NOT NULL,
+  "user_id" int,
   "title" text NOT NULL,
   "ingredients" text[] NOT NULL,
   "preparation" text[] NOT NULL,
@@ -28,7 +29,7 @@ CREATE TABLE "chefs" (
   "id" SERIAL PRIMARY KEY,
   "name" text NOT NULL,
   "file_id" INTEGER REFERENCES files(id),
-  "created_at" timestamp DEFAULT (now()),
+  "created_at" timestamp DEFAULT (now())
 );
 
 CREATE TABLE "users" (
@@ -41,7 +42,10 @@ CREATE TABLE "users" (
   "is_admin" BOOLEAN DEFAULT false,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now()) 
-)
+);
+
+-- Foreign Key
+ALTER TABLE "recipes" ADD FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE;
 
 -- Create procedure
 CREATE FUNCTION trigger_set_timestamp()
@@ -52,12 +56,26 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Auto updated_at recipes
 CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON recipes
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
 
+-- Auto updated_at users
 CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON users
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
+
+-- connect pg simple table
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+	"sess" json NOT NULL,
+	"expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+CREATE INDEX "IDX_session_expire" ON "session" ("expire");
