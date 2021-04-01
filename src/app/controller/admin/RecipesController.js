@@ -47,7 +47,7 @@ module.exports = {
 
         const lastAdded = await Promise.all(recipesPromise)
         
-        return res.render("admin/recipes/index", { recipes: lastAdded })
+        return res.render("admin/recipes/my-recipes", { recipes: lastAdded })
     },
     async create(req, res) {
         let results = await Recipe.chefSelectOptions()

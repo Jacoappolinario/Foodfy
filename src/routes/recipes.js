@@ -3,17 +3,17 @@ const routes = express.Router()
 const multer = require('../app/middlewares/multer')
 const RecipesController = require('../app/controller/admin/RecipesController')
 
-const { onlyUsers, isAdmin } = require('../app/middlewares/session')
+const { onlyUsers, isNotAdmin } = require('../app/middlewares/session')
 
 /*=== Routes Admin Recipes ===*/
 routes.get('/my-recipes', onlyUsers, RecipesController.myRecipes)
 routes.get('/recipes', onlyUsers, RecipesController.index)
-routes.get('/recipes/create', onlyUsers, isAdmin, RecipesController.create)
+routes.get('/recipes/create', onlyUsers, RecipesController.create)
 routes.get('/recipes/:id', onlyUsers, RecipesController.show)
-routes.get('/recipes/:id/edit', onlyUsers, isAdmin, RecipesController.edit)
+routes.get('/recipes/:id/edit', onlyUsers, isNotAdmin, RecipesController.edit)
 
-routes.post('/recipes', onlyUsers, isAdmin, multer.array("photos", 5), RecipesController.post)
-routes.put('/recipes', onlyUsers, isAdmin, multer.array("photos", 5), RecipesController.put)
-routes.delete('/recipes', onlyUsers, isAdmin, RecipesController.delete)
+routes.post('/recipes', onlyUsers, isNotAdmin, multer.array("photos", 5), RecipesController.post)
+routes.put('/recipes', onlyUsers, isNotAdmin, multer.array("photos", 5), RecipesController.put)
+routes.delete('/recipes', onlyUsers, isNotAdmin, RecipesController.delete)
 
 module.exports = routes
