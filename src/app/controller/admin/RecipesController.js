@@ -54,7 +54,7 @@ module.exports = {
         let results = await Recipe.chefSelectOptions()
         const chefOptions = results.rows
         
-            return res.render("admin/recipes/create", { chefOptions })
+        return res.render("admin/recipes/create", { chefOptions })
         
     },
     async post(req, res) {

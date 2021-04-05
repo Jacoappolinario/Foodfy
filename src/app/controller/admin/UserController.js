@@ -1,4 +1,3 @@
-const user = require('../../models/admin/user')
 const User = require('../../models/admin/user')
 
 module.exports = {
@@ -10,6 +9,7 @@ module.exports = {
         const userId = await User.create(req.body)
 
         return res.redirect(`/admin/users/${userId}/edit`)
+
     },
     async list(req, res) {
         let users = await User.all()

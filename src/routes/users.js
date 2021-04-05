@@ -8,7 +8,7 @@ const UserValidator = require('../app/validators/UserValidator')
 const SessionValidator = require('../app/validators/SessionValidator')
 const ProfileValidator = require('../app/validators/ProfileValidator')
 
-const { onlyUsers, isAdmin } = require('../app/middlewares/session')
+const { onlyUsers, isAdmin, blockAcess } = require('../app/middlewares/session')
 
 // Login/logout
 routes.get('/users/login', SessionController.loginForm)
@@ -30,7 +30,7 @@ routes.get('/users/create', onlyUsers, isAdmin, UserController.create)
 routes.post('/users', onlyUsers, isAdmin, UserValidator.post, UserController.post) 
 routes.get('/users', onlyUsers, isAdmin, UserController.list)
 
-routes.get('/users/:id/edit', onlyUsers, isAdmin, UserController.edit) 
+routes.get('/users/:id/edit', onlyUsers, isAdmin, blockAcess, UserController.edit) 
 routes.put('/users', onlyUsers, isAdmin, UserValidator.put, UserController.put) 
 routes.delete('/users', onlyUsers, isAdmin, UserController.delete)
 

@@ -1,26 +1,10 @@
-const { renderString } = require('nunjucks')
-const Recipe = require('../models/admin/Recipes')
+const User = require('../models/admin/user')
 
 function onlyUsers(req, res, next) {
     if (!req.session.userId)
         return res.redirect('/admin/users/login')
 
     next()
-}
-
-async function isNotAdmin(req, res, next) {
-    const { id } = req.params
-
-    let results = await Recipe.find(id)
-    const recipe = results.rows[0]
-    
-
-    if (req.session.userId != recipe.user_id && req.session.isAdmin == false) {
-       return res.redirect("/admin/recipes")
-    }
-
-   next()
-
 }
 
 function isAdmin(req, res, next) {
@@ -31,8 +15,20 @@ function isAdmin(req, res, next) {
     next()
 }
 
+async function blockAcess(req, res, next) {
+    const { id } = req.params
+
+    let user = await User.findOne({ where: {id} })
+    
+    if (req.session.userId == user.id) {
+        return res.redirect('/admin/users')
+    }
+
+    next()
+}
+
 module.exports = {
     onlyUsers,
     isAdmin,
-    isNotAdmin
+    blockAcess
 }
