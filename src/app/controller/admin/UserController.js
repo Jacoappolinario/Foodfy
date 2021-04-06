@@ -6,9 +6,12 @@ module.exports = {
     },
     async post(req, res) {
 
-        const userId = await User.create(req.body)
+        await User.create(req.body)
 
-        return res.redirect(`/admin/users/${userId}/edit`)
+        return res.render("admin/user/create", {
+            user: req.body,
+            success: "Usuário criado com sucesso!"
+        })
 
     },
     async list(req, res) {
@@ -41,7 +44,7 @@ module.exports = {
 
             return res.render("admin/user/edit", {
                 user: req.body,
-                success: "Usuaŕio atualizado com sucesso!"
+                success: "Usuário atualizado com sucesso!"
             })
             
         } catch(err) {

@@ -1,18 +1,5 @@
 const Recipe = require('../models/admin/Recipes')
 
-function checkAllFields(body) {
-    const keys = Object.keys(body)
-
-    for (key of keys) {
-        if (body[key] == "") {
-            return {
-                user: body,
-                error: 'Por favor, preencha todos os campos'
-            }
-        }
-    }
-}
-
 async function checksAccess(req, res, next) {
     const { id } = req.params
 
