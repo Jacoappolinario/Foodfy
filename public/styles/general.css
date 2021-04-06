@@ -859,7 +859,7 @@ form .item #avatar-input {
 }
 
 .list_content {
-    margin-top: 72px;
+    margin-top: 24px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
