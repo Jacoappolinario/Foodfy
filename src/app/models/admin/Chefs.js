@@ -1,36 +1,41 @@
 const db = require("../../../config/db")
 const fs = require('fs')
 
-module.exports = {
-    all() {
-        try {
-            return db.query(`
-                SELECT * 
-                FROM chefs 
-                ORDER BY id ASC`) 
-        } catch(err) {
-            console.error(err)
-        }
-    },
-    create(data, fileId) {
-        try {
-            const query = `
-                INSERT INTO chefs (
-                    name,
-                    file_id
-                ) VALUES ($1, $2)
-                RETURNING id
-                `
-            const values = [
-                data.name,
-                fileId
-            ]
+const Base = require('../Base')
 
-            return db.query(query, values)
-        } catch(err) {
-            console.error(err)
-        }
-    },
+Base.init({ table: 'chefs' })
+
+module.exports = {
+    ...Base,
+    // all() {
+    //     try {
+    //         return db.query(`
+    //             SELECT * 
+    //             FROM chefs 
+    //             ORDER BY id ASC`) 
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
+    // create(data, fileId) {
+    //     try {
+    //         const query = `
+    //             INSERT INTO chefs (
+    //                 name,
+    //                 file_id
+    //             ) VALUES ($1, $2)
+    //             RETURNING id
+    //             `
+    //         const values = [
+    //             data.name,
+    //             fileId
+    //         ]
+
+    //         return db.query(query, values)
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
     find(id) {
         try {
             return db.query(`
@@ -69,23 +74,23 @@ module.exports = {
             console.error(err)
         }
     },
-    update(data) {
-        try {
-            const query = `
-            UPDATE chefs SET
-                name=($1)
-                WHERE id = $2
-            `
-            const values = [
-                data.name,
-                data.id
-            ]
+    // update(data) {
+    //     try {
+    //         const query = `
+    //         UPDATE chefs SET
+    //             name=($1)
+    //             WHERE id = $2
+    //         `
+    //         const values = [
+    //             data.name,
+    //             data.id
+    //         ]
 
-            return db.query(query, values)
-        } catch(err) {
-            console.error(err)
-        }
-    },
+    //         return db.query(query, values)
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
     async updateAvatar({filename, path, fileId}) {
         try {
 
@@ -111,24 +116,24 @@ module.exports = {
             console.error(err)
         }
     },
-    async delete(id) {
-        try {
+    // async delete(id) {
+    //     try {
 
-            const result = await db.query(`
-                SELECT files.*, chefs.file_id 
-                FROM files
-                LEFT JOIN chefs ON (files.id = chefs.file_id)
-                WHERE chefs.id = $1`, [id])
+    //         const result = await db.query(`
+    //             SELECT files.*, chefs.file_id 
+    //             FROM files
+    //             LEFT JOIN chefs ON (files.id = chefs.file_id)
+    //             WHERE chefs.id = $1`, [id])
 
-            const file = result.rows[0]
+    //         const file = result.rows[0]
 
-            fs.unlinkSync(file.path)
+    //         fs.unlinkSync(file.path)
 
-            await db.query(`DELETE FROM chefs WHERE id = $1`, [id])
-            await db.query(`DELETE FROM files WHERE id = $1`, [file.id])
+    //         await db.query(`DELETE FROM chefs WHERE id = $1`, [id])
+    //         await db.query(`DELETE FROM files WHERE id = $1`, [file.id])
 
-        } catch(err) {
-            console.error(err)
-        }
-    }
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // }
 }

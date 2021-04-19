@@ -1,4 +1,4 @@
-const User = require('../../models/admin/user')
+const User = require('../../models/admin/User')
 
 module.exports = {
     create(req, res) {
