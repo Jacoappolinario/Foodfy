@@ -1,36 +1,41 @@
 const db = require("../../../config/db")
 const fs = require('fs')
 
-module.exports = {
-    all() {
-        try {
-            return db.query(`
-                SELECT * 
-                FROM chefs 
-                ORDER BY id ASC`) 
-        } catch(err) {
-            console.error(err)
-        }
-    },
-    create(data, fileId) {
-        try {
-            const query = `
-                INSERT INTO chefs (
-                    name,
-                    file_id
-                ) VALUES ($1, $2)
-                RETURNING id
-                `
-            const values = [
-                data.name,
-                fileId
-            ]
+const Base = require('../Base')
 
-            return db.query(query, values)
-        } catch(err) {
-            console.error(err)
-        }
-    },
+Base.init({ table: 'chefs' })
+
+module.exports = {
+    ...Base,
+    // all() {
+    //     try {
+    //         return db.query(`
+    //             SELECT * 
+    //             FROM chefs 
+    //             ORDER BY id ASC`) 
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
+    // create(data, fileId) {
+    //     try {
+    //         const query = `
+    //             INSERT INTO chefs (
+    //                 name,
+    //                 file_id
+    //             ) VALUES ($1, $2)
+    //             RETURNING id
+    //             `
+    //         const values = [
+    //             data.name,
+    //             fileId
+    //         ]
+
+    //         return db.query(query, values)
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
     find(id) {
         try {
             return db.query(`
@@ -57,60 +62,58 @@ module.exports = {
             console.error(err)
         }
     },
-    files(id) {
-        try {
-            return db.query(`
+    async files(id) {
+         const results = await db.query(`
             SELECT files.*, chefs.file_id 
             FROM files
             LEFT JOIN chefs ON (files.id = chefs.file_id)
             WHERE chefs.id = $1
             ORDER BY files.id ASC`, [id])
-        } catch(err) {
-            console.error(err)
-        }
+
+        return results.rows
     },
-    update(data) {
-        try {
-            const query = `
-            UPDATE chefs SET
-                name=($1)
-                WHERE id = $2
-            `
-            const values = [
-                data.name,
-                data.id
-            ]
+    // update(data) {
+    //     try {
+    //         const query = `
+    //         UPDATE chefs SET
+    //             name=($1)
+    //             WHERE id = $2
+    //         `
+    //         const values = [
+    //             data.name,
+    //             data.id
+    //         ]
 
-            return db.query(query, values)
-        } catch(err) {
-            console.error(err)
-        }
-    },
-    async updateAvatar({filename, path, fileId}) {
-        try {
+    //         return db.query(query, values)
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
+    // async updateAvatar({filename, path, fileId}) {
+    //     try {
 
-            const result = await db.query(`SELECT * FROM files WHERE id = $1`, [fileId])
-            const file = result.rows[0]
+    //         const result = await db.query(`SELECT * FROM files WHERE id = $1`, [fileId])
+    //         const file = result.rows[0]
 
-            fs.unlinkSync(file.path)
+    //         fs.unlinkSync(file.path)
 
-            const query = `
-            UPDATE files SET
-                name=($1),
-                path=($2)
-                WHERE id = $3
-            `
-            const values = [
-                filename,
-                path,
-                fileId
-            ]
+    //         const query = `
+    //         UPDATE files SET
+    //             name=($1),
+    //             path=($2)
+    //             WHERE id = $3
+    //         `
+    //         const values = [
+    //             filename,
+    //             path,
+    //             fileId
+    //         ]
 
-            return db.query(query, values)
-        } catch(err) {
-            console.error(err)
-        }
-    },
+    //         return db.query(query, values)
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
     async delete(id) {
         try {
 

@@ -4,14 +4,13 @@ const Recipe = require('../../models/admin/Recipes')
 
 module.exports = {
     async index(req, res) {
-        let results = await Chefs.all()
-        const chefs = results.rows
-
+        const chefs = await Chefs.findAll()
+    
         if (!chefs) return res.send("Chefs not found")
 
         async function getImage(chefId) {
-            let results = await Chefs.files(chefId)
-            const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
+            let files = await Chefs.files(chefId)
+            files = files.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
             
             return files[0]
         }
@@ -19,7 +18,8 @@ module.exports = {
         const chefsPromise = chefs.map(async chef => {
             chef.img = await getImage(chef.id)
             return chef
-        }).filter((chef, index) => index > 2 ? false : true)
+        })
+        // .filter((chef, index) => index > 2 ? false : true)
 
         const lastAdded = await Promise.all(chefsPromise)
         
@@ -42,12 +42,13 @@ module.exports = {
             return res.send('Please, send at last one image')
 
 
-        const filePromise = req.files.map(file => File.create({...file}))
-        let results = await filePromise[0]
-        const fileId = results.rows[0].id
+        let file = req.files.map(file => File.create({ name: file.filename, path: file.path}))
+        const file_id = await Promise.all(file)
 
-        results = await Chefs.create(req.body, fileId)
-        const chefId = results.rows[0].id
+       const chefId = await Chefs.create({
+            name: req.body.name,
+            file_id
+        })
         
         return res.redirect(`/admin/chefs/${chefId}`)
        
@@ -56,8 +57,8 @@ module.exports = {
         let results = await Chefs.find(req.params.id) 
         const chef = results.rows[0]
 
-        results = await Chefs.files(chef.id)
-        const files = results.rows.map(file => ({
+        let files = await Chefs.files(chef.id)
+        files = files.map(file => ({
             ...file,
             src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
         }))
@@ -67,8 +68,8 @@ module.exports = {
         const recipes = results.rows 
 
         async function getImage(recipeId) {
-            let results = await Recipe.files(recipeId)
-            const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
+            let files = await Recipe.files(recipeId)
+            files = files.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
             
             return files[0]
         }
@@ -88,8 +89,7 @@ module.exports = {
         const chef = results.rows[0]
 
         //get image
-        results = await Chefs.files(chef.id)
-        let files = results.rows
+        let files = await Chefs.files(chef.id)
         files = files.map(file => ({
             ...file,
             src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
@@ -107,13 +107,19 @@ module.exports = {
             }
         }
 
-        let results = await Chefs.files(req.body.id)
-        const fileId = results.rows[0].file_id
+        let files = await Chefs.files(req.body.id)
+        const fileId = files[0].file_id
 
-        const filePromise = req.files.map(file => Chefs.updateAvatar({...file, fileId}))
-        await Promise.all(filePromise)
+        const avatarUpdate = req.files.map(file => File.update(fileId, {
+            name: file.filename, 
+            path: file.path
+        }))
 
-        await Chefs.update(req.body) 
+        await Promise.all(avatarUpdate)
+
+        await Chefs.update(req.body.id, {
+            name: req.body.name
+        }) 
         
         return res.redirect(`/admin/chefs/${req.body.id}`)
     

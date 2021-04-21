@@ -58,17 +58,15 @@ module.exports = {
         LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
         WHERE recipes.user_id = $1`, [id])
     },
-    files(id) {
-        try {
-            return db.query(`
+    async files(id) {
+        const results = await db.query(`
             SELECT files.*, recipe_id, file_id 
             FROM files
             LEFT JOIN recipes_files
             ON (files.id = recipes_files.file_id)
             WHERE recipes_files.recipe_id = $1`, [id])
-        } catch(err) {
-            console.error(err)
-        }
+       
+        return results.rows
     },
     chefSelectOptions() {
         try {
