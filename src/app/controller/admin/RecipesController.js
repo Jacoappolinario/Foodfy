@@ -36,8 +36,8 @@ module.exports = {
         if (!recipes) return res.send("Recipes not found")
 
         async function getImage(recipeId) {
-            let results = await Recipe.files(recipeId)
-            const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
+            let files = await Recipe.files(recipeId)
+            files = files.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
             
             return files[0]
         }
@@ -45,7 +45,8 @@ module.exports = {
         const recipesPromise = recipes.map(async recipe => {
             recipe.img = await getImage(recipe.id)
             return recipe
-        }).filter((recipe, index) => index > 2 ? false : true)
+        })
+        // .filter((recipe, index) => index > 2 ? false : true)
 
         const lastAdded = await Promise.all(recipesPromise)
         
