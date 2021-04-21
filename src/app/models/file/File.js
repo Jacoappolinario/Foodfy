@@ -22,30 +22,18 @@ module.exports = {
 
     //     return db.query(query, values)
     // },
-<<<<<<< HEAD
-<<<<<<< HEAD
     async deleteImage(id) {
         try {
             const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
             const file = result.rows[0]
-=======
-=======
->>>>>>> 66751c2b6ae4597ded878473e2daf82ce5e9c10d
-    // async deleteImage(id) {
-    //     try {
-    //         const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
-    //         const file = result.rows[0]
-<<<<<<< HEAD
->>>>>>> 66751c2b6ae4597ded878473e2daf82ce5e9c10d
-=======
->>>>>>> 66751c2b6ae4597ded878473e2daf82ce5e9c10d
 
-    //         fs.unlinkSync(file.path)
 
-    //         return db.query(`DELETE FROM files WHERE id = $1`, [id])
+            fs.unlinkSync(file.path)
 
-    //     } catch(err) {
-    //         console.error(err)
-    //     }
-    // }
+            return db.query(`DELETE FROM files WHERE id = $1`, [id])
+
+        } catch(err) {
+            console.error(err)
+        }
+    }
 }
