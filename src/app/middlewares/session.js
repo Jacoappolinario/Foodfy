@@ -1,4 +1,4 @@
-const User = require('../models/admin/user')
+const User = require('../models/admin/User')
 
 function onlyUsers(req, res, next) {
     if (!req.session.userId)

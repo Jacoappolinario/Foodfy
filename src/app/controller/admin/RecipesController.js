@@ -1,7 +1,7 @@
 const Recipe = require('../../models/admin/Recipes')
 const File = require('../../models/file/File')
 const RecipeFile = require('../../models/file/RecipeFile')
-const User = require('../../models/admin/user')
+const User = require('../../models/admin/User')
 
 module.exports = {
     async index(req, res) {

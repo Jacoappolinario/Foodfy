@@ -1,4 +1,4 @@
-const User = require('../models/admin/user')
+const User = require('../models/admin/User')
 const { compare } = require('bcryptjs')
 
 async function login(req, res, next) {
