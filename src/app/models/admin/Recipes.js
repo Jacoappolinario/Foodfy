@@ -18,33 +18,33 @@ module.exports = {
             console.error(err)
         }
     },
-    createe(data) {
-        try {
-            const query = `
-                    INSERT INTO recipes (
-                        chef_id,
-                        user_id,
-                        title,
-                        ingredients,
-                        preparation,
-                        information
-                    ) VALUES ($1, $2, $3, $4, $5, $6)
-                    RETURNING id
-                    `
-            const values = [
-                data.chef_id,
-                data.user_id,
-                data.title,
-                data.ingredients,
-                data.preparation,
-                data.information
-            ]
+    // create(data) {
+    //     try {
+    //         const query = `
+    //                 INSERT INTO recipes (
+    //                     chef_id,
+    //                     user_id,
+    //                     title,
+    //                     ingredients,
+    //                     preparation,
+    //                     information
+    //                 ) VALUES ($1, $2, $3, $4, $5, $6)
+    //                 RETURNING id
+    //                 `
+    //         const values = [
+    //             data.chef_id,
+    //             data.user_id,
+    //             data.title,
+    //             data.ingredients,
+    //             data.preparation,
+    //             data.information
+    //         ]
 
-            return db.query(query, values)
-        } catch(err) {
-            console.error(err)
-        }
-    },
+    //         return db.query(query, values)
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
     find(id) {
         try {
             return db.query(`

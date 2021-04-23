@@ -1,4 +1,5 @@
 const Recipe = require('../../models/admin/Recipes')
+const Chef = require('../../models/admin/Chefs')
 const File = require('../../models/file/File')
 const RecipeFile = require('../../models/file/RecipeFile')
 
@@ -91,8 +92,14 @@ module.exports = {
         return res.redirect(`/admin/recipes/${recipeId}`)
     },
     async show(req, res) {
-        let results = await Recipe.find(req.params.id) 
-        const recipe = results.rows[0]
+        // let results = await Recipe.find(req.params.id) 
+        // const recipe = results.rows[0]
+
+        const recipe = await Recipe.findOne({ where: {id: req.params.id} })
+
+        const chef = await Chef.findOne({ where: {id: recipe.chef_id} })
+
+        recipe.author = chef.name
 
         let files  = await Recipe.files(recipe.id)
         files = files.map(file => ({
