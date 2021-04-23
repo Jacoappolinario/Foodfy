@@ -1,4 +1,3 @@
-const db = require('../../../config/db')
 const fs = require('fs')
 
 const Base = require('../Base')
@@ -22,18 +21,18 @@ module.exports = {
 
     //     return db.query(query, values)
     // },
-    async deleteImage(id) {
-        try {
-            const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
-            const file = result.rows[0]
+    // async deleteImage(id) {
+    //     try {
+    //         const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id])
+    //         const file = result.rows[0]
 
 
-            fs.unlinkSync(file.path)
+    //         fs.unlinkSync(file.path)
 
-            return db.query(`DELETE FROM files WHERE id = $1`, [id])
+    //         return db.query(`DELETE FROM files WHERE id = $1`, [id])
 
-        } catch(err) {
-            console.error(err)
-        }
-    }
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // }
 }

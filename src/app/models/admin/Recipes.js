@@ -1,8 +1,13 @@
 const db = require('../../../config/db')
 const fs = require('fs')
 
+const Base = require('../Base')
+
+Base.init({ table: 'recipes' })
+
 module.exports = {
-    all(){
+    ...Base,
+    allRecipes(){
         try {
             return db.query(`
             SELECT recipes.*, chefs.name AS author
@@ -13,7 +18,7 @@ module.exports = {
             console.error(err)
         }
     },
-    create(data) {
+    createe(data) {
         try {
             const query = `
                     INSERT INTO recipes (
@@ -27,7 +32,7 @@ module.exports = {
                     RETURNING id
                     `
             const values = [
-                data.chef,
+                data.chef_id,
                 data.user_id,
                 data.title,
                 data.ingredients,
