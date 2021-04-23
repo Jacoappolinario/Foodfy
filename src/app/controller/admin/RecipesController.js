@@ -1,7 +1,6 @@
 const Recipe = require('../../models/admin/Recipes')
 const File = require('../../models/file/File')
 const RecipeFile = require('../../models/file/RecipeFile')
-const User = require('../../models/admin/User')
 
 module.exports = {
     async index(req, res) {
@@ -91,38 +90,34 @@ module.exports = {
         
         return res.redirect(`/admin/recipes/${recipeId}`)
     },
-    // async show(req, res) {
-    //     let results = await Recipe.find(req.params.id) 
-    //     const recipe = results.rows[0]
+    async show(req, res) {
+        let results = await Recipe.find(req.params.id) 
+        const recipe = results.rows[0]
 
-    //     results = await Recipe.files(recipe.id)
-    //     const files = results.rows.map(file => ({
-    //         ...file,
-    //         src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
-    //     }))
+        let files  = await Recipe.files(recipe.id)
+        files = files.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+        }))
 
-    //     return res.render("admin/recipes/show", { recipe, files })
+        return res.render("admin/recipes/show", { recipe, files })
     
-    // },
-    // async edit(req, res) {
-    //     let results = await Recipe.find(req.params.id) 
-    //     const recipe = results.rows[0]
+    },
+    async edit(req, res) {
+        let results = await Recipe.find(req.params.id) 
+        const recipe = results.rows[0]
 
-    //     //get chefs options
-    //     results = await Recipe.chefSelectOptions()
-    //     const chefOptions = results.rows 
+        results = await Recipe.chefSelectOptions()
+        const chefOptions = results.rows 
 
-    //     //get imagens
-    //     results = await Recipe.files(recipe.id)
-    //     let files = results.rows
-    //     files = files.map(file => ({
-    //         ...file,
-    //         src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
-    //     }))
+        let files = await Recipe.files(recipe.id)
+        files = files.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+        }))
 
-        
-    //     return res.render("admin/recipes/edit", { recipe, chefOptions, files})
-    // },
+        return res.render("admin/recipes/edit", { recipe, chefOptions, files})
+    },
     // async put(req, res) {
     //     const keys = Object.keys(req.body)
 
