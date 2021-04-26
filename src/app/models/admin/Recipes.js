@@ -80,7 +80,7 @@ module.exports = {
             console.error(err)
         }
     },
-    update(data) {
+    updatee(data) {
         try {
             const query = `
             UPDATE recipes SET
@@ -93,7 +93,7 @@ module.exports = {
             `
         
             const values = [
-                data.chef,
+                data.chef_id,
                 data.title,
                 data.ingredients,
                 data.preparation,

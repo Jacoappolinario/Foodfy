@@ -98,6 +98,8 @@ module.exports = {
         const recipe = await Recipe.findOne({ where: {id: req.params.id} })
 
         const chef = await Chef.findOne({ where: {id: recipe.chef_id} })
+        //Colocar o 'updated_at' para a pegar os dados da query de acordo com os ultimos adicionados
+        // lembrar disso!!!
 
         recipe.author = chef.name
 
@@ -125,44 +127,44 @@ module.exports = {
 
         return res.render("admin/recipes/edit", { recipe, chefOptions, files})
     },
-    // async put(req, res) {
-    //     const keys = Object.keys(req.body)
+    async put(req, res) {
+        const keys = Object.keys(req.body)
 
-    //     for (key of keys) {
-    //         if (req.body[key] == "" && key != "removed_files") {
-    //             return res.send('Please, fill all fields!')
-    //         }
-    //     }
+        for (key of keys) {
+            if (req.body[key] == "" && key != "removed_files") {
+                return res.send('Please, fill all fields!')
+            }
+        }
 
-    //     if (req.files.length != 0) {
-    //         const newFilesPromise = req.files.map(file =>
-    //             File.create({...file}))
+        if (req.files.length != 0) {
+            const newFilesPromise = req.files.map(file =>
+                File.create({ name: file.filename, path: file.path }))
 
-    //         const filesResults = await Promise.all(newFilesPromise)
-    //         const recipeFile = filesResults.map(file => {
-    //             const fileId = file.rows[0].id
-    //             RecipeFile.create(req.body.id, fileId)
-    //         }) 
-
-    //         await Promise.all(recipeFile)
-    //     }
-
-    //     if (req.body.removed_files) {
-    //         // 1,2,3,
-    //         const removedFiles = req.body.removed_files.split(",") // [1,2,3]
-    //         const lastIndex = removedFiles.length - 1
-    //         removedFiles.splice(lastIndex, 1) // [1,2,3]
+            const files = await Promise.all(newFilesPromise)
+           
+            const recipesFilesPromise = files.map(fileId => RecipeFile.create({ 
+                recipe_id: req.body.id, file_id: fileId 
+            }))
             
-    //         const removedFilesPromise = removedFiles.map(id => File.deleteImage(id))
+            await Promise.all(recipesFilesPromise)
+        }
 
-    //         await Promise.all(removedFilesPromise)
-    //     }
+        if (req.body.removed_files) {
+            // 1,2,3,
+            const removedFiles = req.body.removed_files.split(",")
+            const lastIndex = removedFiles.length - 1
+            removedFiles.splice(lastIndex, 1) 
+            
+            const removedFilesPromise = removedFiles.map(id => File.deleteImage(id))
 
-    //     await Recipe.update(req.body)
+            await Promise.all(removedFilesPromise)
+        }
+
+        await Recipe.updatee(req.body)
         
-    //     return res.redirect(`/admin/recipes/${req.body.id}`)
+        return res.redirect(`/admin/recipes/${req.body.id}`)
         
-    // },
+    },
     // async delete(req, res) {
 
     //     await Recipe.delete(req.body.id) 
