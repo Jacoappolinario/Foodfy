@@ -116,6 +116,8 @@ module.exports = {
         let results = await Recipe.find(req.params.id) 
         const recipe = results.rows[0]
 
+        console.log(recipe.ingredients)
+
         results = await Recipe.chefSelectOptions()
         const chefOptions = results.rows 
 
@@ -145,7 +147,7 @@ module.exports = {
             const recipesFilesPromise = files.map(fileId => RecipeFile.create({ 
                 recipe_id: req.body.id, file_id: fileId 
             }))
-            
+
             await Promise.all(recipesFilesPromise)
         }
 
@@ -160,7 +162,18 @@ module.exports = {
             await Promise.all(removedFilesPromise)
         }
 
-        await Recipe.updatee(req.body)
+        let { chef_id, title, ingredients,
+            preparation, information, id } = req.body
+
+        // await Recipe.updatee(req.body)
+        await Recipe.update(req.body.id, {
+            chef_id, 
+            title, 
+            ingredients,
+            preparation, 
+            information, 
+            id
+        })
         
         return res.redirect(`/admin/recipes/${req.body.id}`)
         

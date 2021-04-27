@@ -71,13 +71,19 @@ const Base = {
         try {
             let update = []
 
-
             Object.keys(fields).map( key => {
-                // category_id=($1)
-                const line = `${key} = '${fields[key]}'`
-                update.push(line)
+                if ((key == 'ingredients') || (key == 'preparation')) {
+                    let ingredientsOrPreparation = fields[key].map(item => item = `'${item}'`)
+                    
+                    let line = `${key} = ARRAY [${ingredientsOrPreparation}]`
+                    update.push(line)
+                } else {
+                    line = `${key} = '${fields[key]}'`
+                    update.push(line)  
+                }
+
             })
-    
+
             let query = `UPDATE ${this.table} SET
             ${update.join(',')} WHERE id = ${id}
             `
