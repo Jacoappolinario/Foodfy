@@ -5,7 +5,7 @@ const Recipe = require('../../models/admin/Recipes')
 module.exports = {
     async index(req, res) {
         const chefs = await Chefs.findAll()
-    
+        
         if (!chefs) return res.send("Chefs not found")
 
         async function getImage(chefId) {
@@ -54,18 +54,15 @@ module.exports = {
        
     },
     async show(req, res) {
-        let results = await Chefs.find(req.params.id) 
-        const chef = results.rows[0]
-
+        const chef = await Chefs.findOne({ where: {id: req.params.id} })
+    
         let files = await Chefs.files(chef.id)
         files = files.map(file => ({
             ...file,
             src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
         }))
 
-        // Get recipe images
-        results = await Chefs.findRecipe(chef.id)
-        const recipes = results.rows 
+        const recipes = await Recipe.findAll({ where: {chef_id: chef.id} })
 
         async function getImage(recipeId) {
             let files = await Recipe.files(recipeId)
@@ -86,8 +83,8 @@ module.exports = {
         
     },
     async edit(req, res) {
-        let results = await Chefs.find(req.params.id) 
-        const chef = results.rows[0]
+        const chef = await Chefs.findOne({ where: {id: req.params.id} }) 
+        // const chef = results.rows[0]
 
         //get image
         let files = await Chefs.files(chef.id)

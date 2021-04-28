@@ -1,9 +1,11 @@
 const db = require('../../config/db')
 
 function find(filters, table) {
-    let query = `SELECT * FROM ${table}`
+    let query = `SELECT * FROM ${table} ORDER BY updated_at DESC`
 
     if (filters) {
+        query = `SELECT * FROM ${table}`
+
         Object.keys(filters).map(key => {
             // WHERE | OR | AND
             query += ` ${key}`
@@ -13,7 +15,7 @@ function find(filters, table) {
             })
         })
     }
-    
+
     return db.query(query)   
 }
 
@@ -94,9 +96,9 @@ const Base = {
             console.error(error);
         }
     },
-    // delete(id) {
-    //     return db.query(`DELETE FROM ${this.table} WHERE id = $1`, [id])
-    // }
+    delete(id) {
+        return db.query(`DELETE FROM ${this.table} WHERE id = $1`, [id])
+    }
 }
 
 module.exports = Base

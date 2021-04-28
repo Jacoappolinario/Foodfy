@@ -20,9 +20,7 @@ async function post(req, res, next) {
     }
 
     const { email } = req.body
-    const user = await User.findOne({ 
-        where: {email} 
-    })
+    const user = await User.findOne({ where: {email} })
 
     if (user) return res.render('admin/user/create', {
         user: req.body,

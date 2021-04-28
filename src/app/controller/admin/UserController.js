@@ -1,21 +1,53 @@
+const { hash } = require('bcryptjs')
 const User = require('../../models/admin/User')
+const mailer = require('../../../lib/mailer')
+const crypto = require('crypto')
+
+
+const userEmail = (name, password) => `
+<h2>Olá ${name}</h2>
+<p>Seu cadastro foi realizado com sucesso no Foodfy</p>
+<p>Sua senha: ${password}</p>
+<p>Guarde-a em local seguro.</p>
+`
 
 module.exports = {
     create(req, res) {
         return res.render("admin/user/create")
     },
     async post(req, res) {
+        try {
+            let { name, email, is_admin } = req.body
+        
+            let password = crypto.randomBytes(8).toString("hex")
 
-        await User.create(req.body)
+            await mailer.sendMail({
+                to: email,
+                from: 'no-reply@foodfy.com.br',
+                subject: 'Foodfy - Seja bem-vindo',
+                html: userEmail(name, password)
+            })
 
-        return res.render("admin/user/create", {
-            user: req.body,
-            success: "Usuário criado com sucesso!"
-        })
+            password = await hash(password, 8)
+    
+            await User.create({
+                name, 
+                email, 
+                password, 
+                is_admin: is_admin || false 
+            })
 
+            return res.render("admin/user/create", {
+                user: req.body,
+                success: "Usuário criado com sucesso!"
+            })
+            
+        } catch (error) {
+            console.error(error)
+        }
     },
     async list(req, res) {
-        let users = await User.all()
+        let users = await User.findAll()
         const filteredUsers = users.filter((users) => {
             return users.id != req.session.userId
         })

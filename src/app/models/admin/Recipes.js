@@ -80,32 +80,32 @@ module.exports = {
             console.error(err)
         }
     },
-    updatee(data) {
-        try {
-            const query = `
-            UPDATE recipes SET
-                chef_id=($1),
-                title=($2),
-                ingredients=($3),
-                preparation=($4),
-                information=($5)
-                WHERE id = $6  
-            `
+    // update(data) {
+    //     try {
+    //         const query = `
+    //         UPDATE recipes SET
+    //             chef_id=($1),
+    //             title=($2),
+    //             ingredients=($3),
+    //             preparation=($4),
+    //             information=($5)
+    //             WHERE id = $6  
+    //         `
         
-            const values = [
-                data.chef_id,
-                data.title,
-                data.ingredients,
-                data.preparation,
-                data.information,
-                data.id
-            ]
+    //         const values = [
+    //             data.chef_id,
+    //             data.title,
+    //             data.ingredients,
+    //             data.preparation,
+    //             data.information,
+    //             data.id
+    //         ]
 
-            return db.query(query, values) 
-        } catch(err) {
-            console.error(err)
-        }
-    },
+    //         return db.query(query, values) 
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
     async delete(id) {
         try {
             const result = await db.query(`

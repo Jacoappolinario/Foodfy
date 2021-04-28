@@ -57,7 +57,7 @@ module.exports = {
             FROM recipes
             LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
             WHERE chefs.id = $1
-            ORDER BY updated_at DESC`, [id])
+            `, [id])
         } catch(err) {
             console.error(err)
         }

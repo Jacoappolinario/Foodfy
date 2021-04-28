@@ -116,8 +116,6 @@ module.exports = {
         let results = await Recipe.find(req.params.id) 
         const recipe = results.rows[0]
 
-        console.log(recipe.ingredients)
-
         results = await Recipe.chefSelectOptions()
         const chefOptions = results.rows 
 
@@ -152,7 +150,6 @@ module.exports = {
         }
 
         if (req.body.removed_files) {
-            // 1,2,3,
             const removedFiles = req.body.removed_files.split(",")
             const lastIndex = removedFiles.length - 1
             removedFiles.splice(lastIndex, 1) 
@@ -165,7 +162,6 @@ module.exports = {
         let { chef_id, title, ingredients,
             preparation, information, id } = req.body
 
-        // await Recipe.updatee(req.body)
         await Recipe.update(req.body.id, {
             chef_id, 
             title, 
