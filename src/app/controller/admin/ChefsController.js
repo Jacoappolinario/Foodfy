@@ -84,9 +84,7 @@ module.exports = {
     },
     async edit(req, res) {
         const chef = await Chefs.findOne({ where: {id: req.params.id} }) 
-        // const chef = results.rows[0]
-
-        //get image
+        
         let files = await Chefs.files(chef.id)
         files = files.map(file => ({
             ...file,

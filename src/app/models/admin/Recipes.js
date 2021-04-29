@@ -7,17 +7,17 @@ Base.init({ table: 'recipes' })
 
 module.exports = {
     ...Base,
-    allRecipes(){
-        try {
-            return db.query(`
-            SELECT recipes.*, chefs.name AS author
-            From recipes
-            LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
-            ORDER BY updated_at DESC`)
-        } catch(err) {
-            console.error(err)
-        }
-    },
+    // allRecipes(){
+    //     try {
+    //         return db.query(`
+    //         SELECT recipes.*, chefs.name AS author
+    //         From recipes
+    //         LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
+    //         ORDER BY updated_at DESC`)
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
     // create(data) {
     //     try {
     //         const query = `
@@ -45,24 +45,24 @@ module.exports = {
     //         console.error(err)
     //     }
     // },
-    find(id) {
-        try {
-            return db.query(`
-                SELECT recipes.*, chefs.name AS chef_name
-                FROM recipes
-                LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-                WHERE recipes.id = $1`, [id])
-        } catch(err) {
-            console.error(err)
-        }
-    },
-    findMyRecipes(id) {
-        return db.query(`
-        SELECT recipes.*, chefs.name AS chef_name
-        FROM recipes
-        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-        WHERE recipes.user_id = $1`, [id])
-    },
+    // find(id) {
+    //     try {
+    //         return db.query(`
+    //             SELECT recipes.*, chefs.name AS chef_name
+    //             FROM recipes
+    //             LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+    //             WHERE recipes.id = $1`, [id])
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // },
+    // findMyRecipes(id) {
+    //     return db.query(`
+    //     SELECT recipes.*, chefs.name AS chef_name
+    //     FROM recipes
+    //     LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+    //     WHERE recipes.user_id = $1`, [id])
+    // },
     async files(id) {
         const results = await db.query(`
             SELECT files.*, recipe_id, file_id 
@@ -73,9 +73,11 @@ module.exports = {
 
         return results.rows
     },
-    chefSelectOptions() {
+    async chefSelectOptions() {
         try {
-            return db.query(`SELECT id,name FROM chefs`)
+            const results = await db.query(`SELECT id,name FROM chefs`)
+            return results.rows
+
         } catch(err) {
             console.error(err)
         }
@@ -106,24 +108,24 @@ module.exports = {
     //         console.error(err)
     //     }
     // },
-    async delete(id) {
-        try {
-            const result = await db.query(`
-                SELECT files.*, recipe_id, file_id 
-                FROM files
-                LEFT JOIN recipes_files
-                ON (files.id = recipes_files.file_id)
-                WHERE recipes_files.recipe_id = $1`, [id])
+    // async delete(id) {
+    //     try {
+    //         const result = await db.query(`
+    //             SELECT files.*, recipe_id, file_id 
+    //             FROM files
+    //             LEFT JOIN recipes_files
+    //             ON (files.id = recipes_files.file_id)
+    //             WHERE recipes_files.recipe_id = $1`, [id])
 
-            const file = result.rows[0]
+    //         const file = result.rows[0]
 
-            fs.unlinkSync(file.path)
+    //         fs.unlinkSync(file.path)
 
-            await db.query(`DELETE FROM recipes WHERE id = $1`, [id])
-            await db.query(`DELETE FROM files WHERE id = $1`, [file.id])
+    //         await db.query(`DELETE FROM recipes WHERE id = $1`, [id])
+    //         await db.query(`DELETE FROM files WHERE id = $1`, [file.id])
 
-        } catch(err) {
-            console.error(err)
-        }
-    }
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // }
 }
