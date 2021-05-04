@@ -3,6 +3,7 @@ const Chef = require('../../models/admin/Chefs')
 const File = require('../../models/file/File')
 const RecipeFile = require('../../models/file/RecipeFile')
 const LoadService = require('../../services/LoadRecipes')
+const fs = require('fs')
 
 module.exports = {
     async index(req, res) {
@@ -72,17 +73,6 @@ module.exports = {
         
     },
     async post(req, res) {
-        const keys = Object.keys(req.body)
-
-        for (key of keys) {
-            if (req.body[key] == "") {
-                return res.send("Please, fill all fields")
-            }
-        }
-
-        if (req.files.length == 0) 
-            return res.send('Please, send at last one image')
-
         let { title, chef_id, ingredients,
             preparation, information } = req.body
      
@@ -119,7 +109,6 @@ module.exports = {
                 }
             })
 
-            console.log(recipe)
 
             // let files  = await Recipe.files(recipe.id)
             // files = files.map(file => ({
@@ -152,14 +141,6 @@ module.exports = {
         return res.render("admin/recipes/edit", { recipe, chefOptions, files})
     },
     async put(req, res) {
-        const keys = Object.keys(req.body)
-
-        for (key of keys) {
-            if (req.body[key] == "" && key != "removed_files") {
-                return res.send('Please, fill all fields!')
-            }
-        }
-
         if (req.files.length != 0) {
             const newFilesPromise = req.files.map(file =>
                 File.create({ name: file.filename, path: file.path }))
@@ -199,8 +180,18 @@ module.exports = {
         
     },
     // async delete(req, res) {
+        
+    //     const files = await Recipe.files(req.body.id)
 
     //     await Recipe.delete(req.body.id) 
+       
+    //     files.map(file => {
+    //         try {
+    //             fs.unlinkSync(file.path)
+    //         } catch (err) {
+    //             console.error(err)
+    //         }
+    //     })  
         
     //     return res.redirect(`/admin/recipes`)
         

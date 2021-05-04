@@ -2,6 +2,8 @@ const Chefs = require('../../models/admin/Chefs')
 const File = require('../../models/file/File')
 const Recipe = require('../../models/admin/Recipes')
 const LoadService = require('../../services/LoadRecipes')
+const fs = require('fs')
+const db = require('../../../config/db')
 
 module.exports = {
     async index(req, res) {
@@ -31,18 +33,6 @@ module.exports = {
         return res.render("admin/chefs/create")
     },
     async post(req, res) {
-        const keys = Object.keys(req.body)
-
-        for (key of keys) {
-            if (req.body[key] == "" && key != "avatar_photo") {
-                return res.send("Please, fill all fields")
-            }
-        }
-
-        if (req.files.length == 0) 
-            return res.send('Please, send at last one image')
-
-
         let file = req.files.map(file => File.create({ name: file.filename, path: file.path}))
         const file_id = await Promise.all(file)
 
@@ -103,14 +93,6 @@ module.exports = {
         
     },
     async put(req, res) {
-        const keys = Object.keys(req.body)
-
-        for (key of keys) {
-            if (req.body[key] == "" && key != "avatar_photo") {
-                return res.send("Please, fill all fields")
-            }
-        }
-
         let files = await Chefs.files(req.body.id)
         const fileId = files[0].file_id
 
@@ -128,11 +110,21 @@ module.exports = {
         return res.redirect(`/admin/chefs/${req.body.id}`)
     
     },
-    async delete(req, res) {
-    
-        await Chefs.delete(req.body.id) 
+    // async delete(req, res) {
+    //     const file = await Chefs.files(req.body.id)
 
-        return res.redirect(`/admin/chefs`)
+    //     file.map(file => {
+    //         try {
+    //             fs.unlinkSync(file.path)
+    //         } catch (err) {
+    //             console.error(err)
+    //         }
+    //     })  
+
+    //     await Chefs.delete(req.body.id) 
+    //     await File.delete(file.id)
+
+    //     return res.redirect(`/admin/chefs`)
        
-    }
+    // }
 }

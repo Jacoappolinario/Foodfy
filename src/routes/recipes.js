@@ -14,8 +14,8 @@ routes.get('/recipes/create', onlyUsers, RecipesController.create)
 routes.get('/recipes/:id', onlyUsers, RecipesController.show)
 routes.get('/recipes/:id/edit', onlyUsers, RecipesValidator.checksAccess, RecipesController.edit)
 
-routes.post('/recipes', onlyUsers, multer.array("photos", 5), RecipesController.post)
-routes.put('/recipes', onlyUsers, multer.array("photos", 5), RecipesController.put)
+routes.post('/recipes', onlyUsers, multer.array("photos", 5), RecipesValidator.post, RecipesController.post)
+routes.put('/recipes', onlyUsers, multer.array("photos", 5), RecipesValidator.put, RecipesController.put)
 // routes.delete('/recipes', onlyUsers, RecipesController.delete)
 
 module.exports = routes
