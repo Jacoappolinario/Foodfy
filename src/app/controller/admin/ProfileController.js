@@ -2,15 +2,20 @@ const Profile = require('../../models/admin/Profile')
 
 module.exports = {
     async index(req, res) {
-        const { userId: id } = req.session
+        try {
+            const { userId: id } = req.session
 
-        const user = await Profile.findOne({ where: {id} })
-
-        if (!user) return res.render("admin/session/login", {
-            error: "Usuário não encontrado!"
-        })
-
-        return res.render("admin/profile/index", { user })
+            const user = await Profile.findOne({ where: {id} })
+    
+            if (!user) return res.render("admin/session/login", {
+                error: "Usuário não encontrado!"
+            })
+    
+            return res.render("admin/profile/index", { user })
+            
+        } catch (error) {
+            console.error(error)
+        }
     },
     async put(req, res) {
         try {

@@ -47,12 +47,17 @@ module.exports = {
         }
     },
     async list(req, res) {
-        let users = await User.findAll()
-        const filteredUsers = users.filter((users) => {
-            return users.id != req.session.userId
-        })
-
-        return res.render("admin/user/list", { users: filteredUsers })
+        try {
+            let users = await User.findAll()
+            const filteredUsers = users.filter((users) => {
+                return users.id != req.session.userId
+            })
+    
+            return res.render("admin/user/list", { users: filteredUsers })
+            
+        } catch (error) {
+            console.error(error);
+        }
     },
     async edit(req, res) {
         const { id } = req.params

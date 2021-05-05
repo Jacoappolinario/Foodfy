@@ -8,7 +8,7 @@
     <form method="POST" action="/admin/recipes" enctype="multipart/form-data">
         <div class="create-header">
             <h2>Criando receita</h2>
-            <button class="button" type="submit">Salvar receita</button>
+            <button class="button" type="submit" onclick="Validate.allFields(event)">Salvar receita</button>
         </div>
 
         {% include "admin/includes/recipes/fields.njk" %}
