@@ -83,7 +83,15 @@ module.exports = {
                 ...file,
                 src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
             }))
-            
+
+            const recipes = await LoadRecipesService.load('recipes', {
+                where: {
+                    chef_id: chef.id
+                }
+            })
+    
+            chef.total_recipes = recipes.length
+
             return res.render("admin/chefs/edit", { chef, files })
             
         } catch (error) {

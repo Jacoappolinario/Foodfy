@@ -24,6 +24,7 @@ async function format(recipe) {
     const files = await getImages(recipe.id)
     recipe.img = files[0].src
     recipe.files = files
+    recipe.file_id = files.id
 
     return recipe
 }
