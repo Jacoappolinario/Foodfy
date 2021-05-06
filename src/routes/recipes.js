@@ -16,6 +16,6 @@ routes.get('/recipes/:id/edit', onlyUsers, RecipesValidator.checksAccess, Recipe
 
 routes.post('/recipes', onlyUsers, multer.array("photos", 5), RecipesValidator.post, RecipesController.post)
 routes.put('/recipes', onlyUsers, multer.array("photos", 5), RecipesValidator.put, RecipesController.put)
-// routes.delete('/recipes', onlyUsers, RecipesController.delete)
+routes.delete('/recipes', onlyUsers, RecipesController.delete)
 
 module.exports = routes

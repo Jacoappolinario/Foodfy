@@ -2,6 +2,7 @@ const Recipe = require('../../models/admin/Recipes')
 const File = require('../../models/file/File')
 const RecipeFile = require('../../models/file/RecipeFile')
 const LoadRecipesService = require('../../services/LoadRecipes')
+const { unlinkSync } = require('fs')
 
 module.exports = {
     async index(req, res) {
@@ -147,21 +148,22 @@ module.exports = {
             console.error(error);
         }
     },
-    // async delete(req, res) {
+    async delete(req, res) {
         
-    //     const files = await Recipe.files(req.body.id)
+        const files = await Recipe.files(req.body.id)
 
-    //     await Recipe.delete(req.body.id) 
-       
-    //     files.map(file => {
-    //         try {
-    //             fs.unlinkSync(file.path)
-    //         } catch (err) {
-    //             console.error(err)
-    //         }
-    //     })  
+        await Recipe.delete(req.body.id) 
+     
+        files.map(async file => {
+            try {
+                await File.delete(file.file_id)
+                unlinkSync(file.path)
+            } catch (err) {
+                console.error(err)
+            }
+        })  
         
-    //     return res.redirect(`/admin/recipes`)
+        return res.redirect(`/admin/recipes`)
         
-    // }
+    }
 }
