@@ -113,24 +113,24 @@ module.exports = {
     //         console.error(err)
     //     }
     // },
-    async deletee(id) {
-        try {
+    // async deletee(id) {
+    //     try {
 
-            const result = await db.query(`
-                SELECT files.*, chefs.file_id 
-                FROM files
-                LEFT JOIN chefs ON (files.id = chefs.file_id)
-                WHERE chefs.id = $1`, [id])
+    //         const result = await db.query(`
+    //             SELECT files.*, chefs.file_id 
+    //             FROM files
+    //             LEFT JOIN chefs ON (files.id = chefs.file_id)
+    //             WHERE chefs.id = $1`, [id])
 
-            const file = result.rows[0]
+    //         const file = result.rows[0]
 
-            fs.unlinkSync(file.path)
+    //         fs.unlinkSync(file.path)
 
-            await db.query(`DELETE FROM files WHERE id = $1`, [file.id])
-            await db.query(`DELETE FROM chefs WHERE id = $1`, [id])
+    //         await db.query(`DELETE FROM chefs WHERE id = $1`, [id])
+    //         await db.query(`DELETE FROM files WHERE id = $1`, [file.id])
 
-        } catch(err) {
-            console.error(err)
-        }
-    }
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // }
 }

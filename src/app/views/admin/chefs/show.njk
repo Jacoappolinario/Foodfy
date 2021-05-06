@@ -14,12 +14,12 @@
 
 <div class="chefs__details">
     <div class="chef__image">
-        {% if not files[0] %}
+        {% if not files %}
         <img src="http://placehold.it/200x200?text=CHEF SEM FOTO" alt="">
         {% else %}
         <img 
-            src="{{ files[0].src }}" 
-            alt="{{ files[0].name }}"
+            src="{{ files.src }}" 
+            alt="{{ files.name }}"
         >
         {% endif %}
         

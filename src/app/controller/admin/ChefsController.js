@@ -1,6 +1,7 @@
 const Chefs = require('../../models/admin/Chefs')
 const File = require('../../models/file/File')
 const LoadRecipesService = require('../../services/LoadRecipes')
+const { unlinkSync } = require('fs')
 
 
 module.exports = {
@@ -54,12 +55,11 @@ module.exports = {
             const chef = await Chefs.findOne({ where: {id: req.params.id} })
     
             let files = await Chefs.files(chef.id)
-            files = files.map(file => ({
-                ...file,
-                src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
-            }))
+            files = {
+                ...files,
+                src: `${req.protocol}://${req.headers.host}${files[0].path.replace("public", "")}`
+            }
     
-            
             const recipes = await LoadRecipesService.load('recipes', {
                 where: {
                     chef_id: chef.id
@@ -112,21 +112,19 @@ module.exports = {
             console.error(error);
         }
     },
-    // async delete(req, res) {
-    //     const file = await Chefs.files(req.body.id)
+    async delete(req, res) {
+        try {
+            const avatar = await Chefs.files(req.body.id)
 
-    //     file.map(file => {
-    //         try {
-    //             fs.unlinkSync(file.path)
-    //         } catch (err) {
-    //             console.error(err)
-    //         }
-    //     })  
-
-    //     await Chefs.delete(req.body.id) 
-    //     await File.delete(file.id)
-
-    //     return res.redirect(`/admin/chefs`)
-       
-    // }
+            unlinkSync(avatar[0].path)
+              
+            await Chefs.delete(req.body.id)
+            await File.delete(avatar[0].file_id)
+            
+            return res.redirect(`/admin/chefs`)
+            
+        } catch (error) {
+            console.error(error);
+        }       
+    }
 }
