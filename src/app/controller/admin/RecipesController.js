@@ -99,6 +99,9 @@ module.exports = {
                 ...file,
                 src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
             }))
+
+            recipe.total_recipes = files.length 
+            console.log(recipe.total_recipes)
            
             return res.render("admin/recipes/edit", { recipe, chefOptions, files })
             
@@ -121,15 +124,13 @@ module.exports = {
                 await Promise.all(recipesFilesPromise)
                
             }
-
-            console.log(req.body)
     
             if (req.body.removed_files) {
-                // 1,2,3,
-                const removedFiles = req.body.removed_files.split(",") // [1,2,3]
+
+                const removedFiles = req.body.removed_files.split(",") 
                 const lastIndex = removedFiles.length - 1
                 console.log(lastIndex)
-                removedFiles.splice(lastIndex, 1) // [1,2,3]
+                removedFiles.splice(lastIndex, 1) 
                 
                 const removedFilesPromise = removedFiles.map(id => File.deleteImage(id))
     
