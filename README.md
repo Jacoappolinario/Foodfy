@@ -52,6 +52,10 @@ $ npm install
 $ npm start
 ```
 
+#### Para efetuar o login como admin utilize as seguintes informações
+Email: admin@foodfy.com<br>
+Senha: 12345
+
 ## 📕 Licença
 Lançado em 2020 (Trabalho em andamento) Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](/LICENSE) para mais detalhes.
 
