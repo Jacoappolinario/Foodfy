@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS foodfydb;
-CREATE DATABASE foodfydb;
+DROP DATABASE IF EXISTS foodfy; -- Essa linha pode ser ignora na primeira inserção do banco de dados.
+CREATE DATABASE foodfy; -- Caso tenha executado o postgres pela imagem do docker, ignore essa linha.
 
 CREATE TABLE "recipes" (
   "id" SERIAL UNIQUE PRIMARY KEY,
@@ -47,6 +47,9 @@ CREATE TABLE "users" (
 
 -- Foreign Key
 ALTER TABLE "recipes" ADD FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE;
+
+-- Insert admin
+INSERT INTO users(name, email, password, is_admin) VALUES ('admin', 'admin@foodfy.com', '$2a$08$623m07nhd9N/JAjZyrEO8uhn7MBW5a0bSEc9Ky5g5FjCorbi4gmPy', true);
 
 -- Create procedure
 CREATE FUNCTION trigger_set_timestamp()

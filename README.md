@@ -29,7 +29,19 @@ $ git clone https://github.com/Jacoappolinario/Foodfy.git
 $ cd Foodfy
 
 ```
-Adicione credenciais de acesso ao banco de dados no arquivo src / config / db.js.
+
+```bash
+## Configure o banco de dados
+sudo -u postgres createdb foodfy 
+
+## Obs: Caso utilize o Docker, você pode executar o seguinte comando
+sudo docker run --name foodfy -e POSTGRES_DB=foodfy -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres 
+
+## Agora copie toda query sql no arquivo foodfy.sql e execute no banco de dados.
+```
+
+Adicione credenciais de acesso ao banco de dados no arquivo src/config/db.js.<br>
+Adicione credenciais de acesso ao mailtrap /lib/mailer.js.
 
 ```bash
 # Baixe as dependências:
