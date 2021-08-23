@@ -41,7 +41,8 @@ sudo docker run --name foodfy -e POSTGRES_DB=foodfy -e POSTGRES_PASSWORD=postgre
 ```
 
 Adicione credenciais de acesso ao banco de dados no arquivo src/config/db.js.<br>
-Adicione credenciais de acesso ao mailtrap /lib/mailer.js.
+Obs: Caso tenha utilizado a instalação do Postgres pelo docker, as crendencias de acesso ao banco de dados não precisam ser alteradas.<br><br>
+Criei uma conta no Mailtrap e adicione credenciais de acesso no arquivo /lib/mailer.js.
 
 ```bash
 # Baixe as dependências:
