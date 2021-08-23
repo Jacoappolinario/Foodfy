@@ -56,6 +56,8 @@ $ npm start
 Email: admin@foodfy.com<br>
 Senha: 12345
 
+Rota de acesso: http://localhost:3000/admin/users/login
+
 ## 📕 Licença
 Lançado em 2020 (Trabalho em andamento) Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](/LICENSE) para mais detalhes.
 
