@@ -51,17 +51,5 @@ module.exports = {
         
         return res.render("site/chefs", { chefs: lastAdded })
         
-    },
-    // async search(req, res) {
-    //     const { filter } = req.query
-
-    //     if (filter) {
-    //         let results = await Site.findBy(filter)
-    //         const recipes = results.rows 
-                
-    //         return res.render("site/search", { filter, recipes })
-            
-    //     }
-        
-    // }
+    }
 }
