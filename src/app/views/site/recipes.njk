@@ -1,4 +1,5 @@
 {% extends "layouts/site.njk" %}
+{% import "site/parts/section-recipes.njk" as section %}
 
 {% block head %}
     <title>Receitas | Foodfy</title>
@@ -6,25 +7,7 @@
 
 {% block content %}
 <div class="recipes">
-<section class="cards">
-    {% for recipe in recipes %}
-    <div class="card" id="{{ recipe.id }}">
-        <div class="card__image-container">
-            <img src="{{ recipe.image }}" alt="Imagem de {{ recipe.image }}">
-        </div>
-
-        <div class="card__title">
-            <p>{{ recipe.title }}</p>
-        </div>
-
-        <div class="card__author">
-            <p>{{ recipe.author }}</p>
-        </div>
-    </div>
-    {% endfor %}
-
-</section>
-<script src="/scripts.js"></script>
+    {{section.recipes('', '', recipes)}}
 </div>
 {% endblock %}  
 

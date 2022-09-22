@@ -6,24 +6,29 @@
 
 {% block content %}
 
-    <div class="admin__content">
-        <h2>Gerenciar chefs</h2>
+<div class="show-header">
+    <h2>Gerenciar Chefs</h2>
+    {% if session.isAdmin %}
+    <a href="/admin/chefs/create" class="button">Novo chef</a>
+    {% endif %}
+</div>
 
-        <div class="chefs__cards-content">
-            {% for chef in chefs %}
-                <div class="card__chefs">
-                    <section class="chefs__list-image">
-                        <img src="{{ chef.avatar_url }}" alt="">
-                    </section>
+<div class="admin__content">
+    <div class="chefs__cards-content">
+        {% for chef in chefs %}
+            <div class="card__chefs">
+                <section class="chefs__list-image">
+                    <img src="{{ chef.img }}" alt="">
+                </section>
 
-                    <section class="chefs__list-name">
-                        <h1>{{ chef.name }}</h1>
+                <section class="chefs__list-name">
+                    <h1>{{ chef.name }}</h1>
 
-                        <a class="chefs__list-visualize" href="/admin/chefs/{{chef.id}}">Visualizar</a>
-                    </section>
+                    <a class="chefs__list-visualize" href="/admin/chefs/{{chef.id}}">Visualizar</a>
+                </section>
 
-                </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock content %}

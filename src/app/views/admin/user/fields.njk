@@ -1,0 +1,31 @@
+<div class="details">
+
+    <div class="item">
+        <div>Nome</div>
+        <div>
+            <input 
+            class="input__create" 
+            type="text" 
+            name="name"
+            value="{{ user.name }}"
+            >
+        </div>
+
+        <div class="checkbox">
+            <input type="checkbox" name="is_admin" value="true" {% if user.is_admin %} checked {% endif %}> Administrador
+        </div>
+    </div>
+
+    <div class="item">
+        <div>Email</div>
+        <div>
+            <input 
+            class="input__create" 
+            type="email" 
+            name="email"
+            value="{{ user.email }}"
+            >
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,39 @@
+{% extends "layouts/admin.njk" %}
+
+{% block head %}
+    <title>Gerenciar Receitas | {{ recipe.title }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="show-header">
+    <h2>Usuários</h2>
+    <a href="/admin/users/create" class="button">Novo usuário</a>
+</div>
+<div class="list_content">
+    {% for user in users %}
+    <div class="item">
+        <div>{{ user.name }}</div>
+        <p>{{ user.email }}</p>
+        <div class="list_options">
+            <ul>
+                <li>
+                    <a href="/admin/users/{{user.id}}/edit">Editar</a>
+                </li>
+                <li>
+                    <button type="submit" onclick="Message.confirmDelete()">Remover</button>
+                    <form id="form-delete" method="post" action="/admin/users?_method=DELETE">
+                        <input 
+                        type="hidden" 
+                        name="id" 
+                        value="{{ user.id }}">
+                    </form>
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}  
+
+        

@@ -6,18 +6,19 @@
 
 
 {% block content %}
-<div class="admin__content">
+
+<div class="show-header">
     <h2>Gerenciar receitas</h2>
+    </div>
+
+<div class="admin__content">
 
     <div class="card__admin">
         {% for recipe in recipes %}
         <div class="card__recipes">
             
             <section class="list__image">
-                <img 
-                src="{{ files.src }}" 
-                alt="{{ files.name }}"
-            >
+                <img src="{{ recipe.img }}">
             </section>
             
             <section>

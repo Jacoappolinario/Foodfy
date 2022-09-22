@@ -1,97 +1,82 @@
-@import "https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap";
+:root {
+    --primary-color: white;
+    --secondary-color: black;
+}
 
 * {
     margin: 0;
     padding: 0;
-    border: 0;
+    box-sizing: border-box;
+
+    text-decoration: none;
+    list-style-type: none;
+    border: none;
 }
 
-body {
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
-    color: #111111;  
-    position: relative;
-    padding-bottom: 50px;
+html, body {
     min-height: 100vh;
 }
 
-.content {
-    width: 940px;
-    margin: 0 auto;
-    padding-bottom: 60px;
-    box-sizing: border-box;
-}
-
-.links-bg {
-    background-color: white;
-} 
-
-.links__content {
-    width: 940px;
-    margin: 0 auto;
-    padding: 30px 0;
+body {
+    background-color: var(--primary-color);
+    font-family: 'Roboto', sans-serif;
+    color: #111111;  
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
-.links {
-    display: flex;
-    align-items: center;
+.container {
+    width: 90%;
+    max-width: 940px;
+    margin: 0 auto;
 }
 
-.links-logo img {
-    margin-right: 122.4px;
+footer {
+    margin-top: auto;
 }
 
-.links a {
-    font-size: 16;
-    line-height: 19px;
-    color: #111111;
-    text-decoration: none;
+footer {
+    background: #EEEEEE;
 }
 
-.links a + a {
-    margin-left: 30px;
-}
-
-.links a.active {
-    font-weight: bold;
-    color: black;
-}
-
-.links a:hover {
-    font-weight: bold;
-    transition: color 200ms;
-}
-
-.filter form {
-    display: grid;
-    grid-template-columns: 1fr 91px;
-    align-items: center;
-    grid-gap: 8px;
-}
-
-.filter form input {
-    background: #FFFFFF;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px;
-    width: 246px; 
-    padding: 11px 15px 10px 15px;
+footer p {
+    text-align: center;
+    font-size: 14px;
+    line-height: 16px;
+    color: #999999;
+    padding: 23px;
 }
 
 .button {
-    height: 37px;
-    padding: 9px 20px;
     background-color: #6558C3;
     color: white;
-    border-radius: 4px;
+    
+    padding: 9px 48px;
     font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
 }
+
+.button.delete {
+    background-color: #DC4747;
+    margin-right: 10px;
+}
+
+.button.cancel {
+    background-color: #8A8A8A;
+    margin-left: 16px;
+}
+
+.button.cancel:hover {
+    background-color: #DC4747;
+}
+
+/*=== Site Style ===*/
 
 .introduction {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 940px;
+    max-width: 940px;
     height: 366px;
     background-color: #FBDFDB;
     border-radius: 30px;
@@ -129,7 +114,7 @@ body {
     margin-top: 50px;
 }
 
-/*=== CARDS ===*/
+/*=== Cards ===*/
 
 .cards {
     max-width: 800px;
@@ -162,7 +147,7 @@ body {
     color: #777777;
 }
 
-/*=== about ===*/
+/*=== About ===*/
 
 .about {
     margin-top: 20px;
@@ -187,63 +172,6 @@ body {
     font-size: 18px;
     line-height: 28px;
     color: #444444;
-}
-
-/*=== MODAL ===*/
-
-.modal-overlay {
-    background-color: rgba(0, 0, 0, 0.7);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.modal {
-    background-color: white;
-    width: 660px;
-    height: 413px;
-    margin: 20vh auto;
-    border-radius: 16px;
-    position: relative;
-}
-
-.modal .close-modal {
-    font-size: 16px;
-    line-height: 19px;
-    color: #999999;
-    position: absolute;
-    top: 89%;
-    left: 43%;
-    cursor: pointer;
-}
-
-/*=== MODAL OVERLAY ===*/
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-content img {
-    width: 600px;
-    height: 200px;
-    border-radius: 15px;
-    margin: 30px 30px 20px;
-}
-
-.modal-title {
-    font-size: 24px;
-    line-height: 28px;
-    text-align: center;
-}
-
-.modal-author {
-    font-size: 18px;
-    text-align: center;
-    color: #777777;;
 }
 
 /*=== Recipes ===*/
@@ -310,6 +238,7 @@ body {
     font-size: 18px;
     line-height: 28px;
     color: #444444;
+    list-style: disc;
 }
 
 #preparation__modo {
@@ -330,6 +259,7 @@ body {
     color: #444444;
     margin-top: 20px;
     margin-left: 8px;
+    margin-bottom: 30px;
 }
 
 .hidden__div {
@@ -343,51 +273,6 @@ body {
 
 .padding {
     padding-bottom: 47px;
-}
-
-/*=== Chefs ===*/
-.chefs__cards-content {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-}
-
-.card__chefs{
-    background-color: white;
-    width: auto;
-    min-height: 80px;
-
-    display: grid;
-    grid-template-columns: 64px 176px;
-    gap: 20px;
-    align-items: center;
-}
-
-.chefs__list-image img {
-    width: 64px; 
-    height: 64px; 
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.chefs__list-name h1 {
-    font-size: 18px;
-    line-height: 21px;
-    color: #111111;
-}
-
-.chefs__list-name p {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #666666;
-}
-
-.chefs__list-visualize {
-    font-size: 14px;
-    font-weight: bold;
-    color: #6558C3;
-    text-decoration: none;
 }
 
 /*=== PAG 404 ===*/
@@ -420,30 +305,614 @@ body {
 
 /*=== Pag Search ===*/
 
-.title__search h3 {
+.title__search h1 {
     font-size: 24px;
     font-weight: bold;
 }
 
-/*=== Footer ===*/
+/*=== Admin Style ===*/
 
-.footer {
-    display: flex;
-    background: #EEEEEE;
-    height: 60px;
-    width: 100%;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+.admin__content h2 {
+    margin-top: 50px;
+    font-size: 24px;
+    line-height: 28px;
+    color: #111111;
+    font-weight: bold;
 }
 
-.footer p {
-    flex: 1;
-    text-align: center;
+.card__admin {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+
+.card__recipes{
+    background-color: white;
+    width: 400px;
+    min-height: 80px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.list__image img {
+    width: 172px; 
+    height: 80px;
+    border-radius: 8.57px;
+}
+
+.list__title h1 {
+    font-size: 18px;
+    line-height: 21px;
+    color: #111111;
+}
+
+.list__author p {
     font-size: 14px;
     line-height: 16px;
-    color: #999999;
-    padding: 23px;
+    color: #777777;
 }
 
+.list__visualize {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6558C3;
+    text-decoration: none;
+}
+
+
+/*=== Create ===*/
+
+.create-header {
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details {
+    margin-top: 30px;
+}
+
+.details .item div:nth-child(1) {
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+    color: #111111;
+    margin-bottom: 10px;
+}
+
+.item {
+    margin-bottom: 30px;
+}
+
+.input__create {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 15px 20px;
+}
+
+.input__create-information {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    height: 257px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: normal;
+    font-family: 'Roboto-Regular';
+    padding: 18px 20px;
+}
+
+.button-add {
+    font-size: 16px;
+    line-height: 19px;
+    color: #6558C3;
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/*=== Show ===*/
+
+.show-header {
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.show__details {
+    margin-top: 24px;
+}
+
+.show__ingredients {
+    margin-top: 31px;
+}
+
+/*=== Edit ===*/
+
+.ingredient,
+.preparation {
+    margin-top: 10px;
+}
+
+.edit-header {
+    margin-top: 55px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.edit-header h2 {
+    margin-right: auto;
+}
+
+/*=== Chefs ===*/ 
+
+.chefs__details {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.chef__image img {
+    margin-top: 42px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chef__name h1 {
+    margin-top: 30px;
+    font-size: 36px;
+    color: #111111;
+}
+
+.chef__amount-recipes p {
+    margin-top: 4px;
+    font-size: 20px;
+    color: #777777;
+}
+
+/*=== Index Chefs ===*/
+
+.chefs__cards-content {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.card__chefs{
+    background-color: white;
+    width: auto;
+    min-height: 80px;
+
+    display: grid;
+    grid-template-columns: 64px 176px;
+    gap: 20px;
+    align-items: center;
+}
+
+.chefs__list-image img {
+    width: 64px; 
+    height: 64px; 
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chefs__list-name h1 {
+    font-size: 18px;
+    line-height: 21px;
+    color: #111111;
+}
+
+.chefs__list-visualize {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6558C3;
+    text-decoration: none;
+}
+
+/*=== Details Recipes Admin ===*/
+
+.details__image img {
+    width: 940px;
+    height: 280px;
+    border-radius: 15px;
+}
+
+.details__title h1 {
+    margin-top: 50px;
+    font-size: 36px;
+    line-height: 42px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.details__author p {
+    font-size: 20px;
+    line-height: 24px;
+    color: #777777;
+    text-align: center;
+}
+
+.ingredients {
+    margin-top: 50px;
+}
+
+.header__div-admin h1 {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: bold;
+}
+
+.header__div-admin p {
+    font-size: 12px;
+    line-height: 14px;
+    color: #999999;
+    cursor: pointer;
+}
+
+#ingredients__details {
+    margin-top: 20px;
+    margin-bottom: 41px;
+}
+
+#ingredients__details p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    margin-left: 8px;
+}
+
+#preparation__modo {
+    margin-top: 20px;
+    margin-bottom: 41px;
+}
+
+#preparation__modo p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    margin-left: 8px;
+    
+}
+
+#additional__information p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    margin-top: 20px;
+    margin-left: 8px;
+}
+
+/*=== Photos Upload ===*/
+
+form .item #photos-upload {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+    
+    width: 149px;
+}
+
+form .item .photos-add {
+    border: 1px solid #DDDDDD;
+    border-radius: 3.5px;
+    color: #777777;
+    margin-top: 5.5px;
+
+    width: 149px;
+    height: 149px;
+
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+form .item .photos-add i {
+    font-size: 250%;
+}
+
+form .item #photos-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+form .item #photos-preview {
+    display: grid;
+    grid-template-columns: repeat(6, 149px);
+    grid-gap: 8px;
+    align-items: center;
+}
+
+form .item #photos-preview img {
+    border-radius: 3.5px;
+    width: 100%;
+    height: 149px;
+    object-fit: cover;
+}
+
+#photos-preview .photo {
+    position: relative;
+}
+
+#photos-preview .photo i {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    color: red;
+
+    width: 149px;
+    height: 149px;
+
+    /* Centralizar o icone no meio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 250%;
+    cursor: pointer;
+
+    transition: opacity 200ms;
+
+    opacity: 0;
+}
+
+#photos-preview .photo:hover i {
+    opacity: 1;
+}
+
+form .item #photos-upload p {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #6558C3;
+    color: white;
+
+    width: 100%;
+    text-align: center;
+
+    
+    font-size: 16px;
+}
+
+/*=== Avatar Upload ===*/
+
+form .item #avatar-upload {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    width: 180px;
+}
+
+form .item #avatar-upload p {
+    padding: 8px 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px -6px #333;
+    background-color: #6558C3;
+    color: white;
+
+    width: 139px;
+    text-align: center;
+
+    font-size: 16px;
+}
+
+form .item #avatar-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+/*=== Recipes gallery ===*/
+
+.gallery {
+    width: 100%;
+}
+
+.highlight > img {
+    width: 940px;
+    height: 280px;
+    border-radius: 15px;
+
+    object-fit: cover;
+
+    cursor: zoom-in;
+}
+
+.gallery-preview {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.gallery-preview img {
+    width: 50px;
+    height: 49.7px;
+    border: 1px solid #DDDDDD;
+    border-radius: 3.5px;
+
+    margin-left: 4px;
+
+    object-fit: cover;
+
+    opacity: 0.6;
+
+    cursor: pointer;
+
+    transition: 200ms;
+}
+
+.gallery-preview img:hover,
+.gallery-preview img.active {
+    opacity: 1;
+}
+
+/*=== Lightbox gallery ===*/
+
+.highlight .lightbox-target {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+
+    overflow: hidden;
+    z-index: 100;
+
+    top: -100%;
+    left: 0;
+    opacity: 0;
+
+    transition: opacity 400ms;
+}
+
+.highlight .lightbox-target img {
+    margin: auto;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+
+    width: 90%;
+    height: 90%;
+
+    object-fit: contain;
+}
+
+.highlight .lightbox-target a.lightbox-close {
+    width: 50px;
+    height: 50px;
+
+    background: white;
+
+    position: absolute;
+    top: -80px;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    transition: 400ms;
+}
+
+/*=== User Create ===*/
+
+.user-form .details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* gap: 40px; */
+}
+
+.user-form .details .item input[name="name"],
+.user-form .details .item input[name="email"] {
+    width: 450px;
+}
+
+.user-form .details .item .checkbox {
+    margin-top: 33px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.list_content {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    gap: 22px;
+}
+
+.list_content .item {
+    font-family: Helvetica;
+    font-size: 18px;
+    line-height: 22px;
+    color:#111111;
+}
+
+.list_content .item p {
+    margin-top: 4px;
+    font-family: Helvetica;
+    font-size: 14px;
+    color: #777777;
+}
+
+.list_content .item .list_options ul {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 40px 60px;
+    align-items: center;
+    gap: 16px;
+}
+
+.list_content .item .list_options ul li a {
+    font-family: Helvetica;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: bold;
+    color: #6558C3;
+}
+
+.list_content .item .list_options ul li button{
+    background: none;
+    font-family: Helvetica;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: bold;
+    color: #F55A5A;
+    cursor: pointer;
+}
+
+/* Validate */
+
+.input .error {
+    background-color: #e74c3c;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+}

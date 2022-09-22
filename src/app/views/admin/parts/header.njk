@@ -1,9 +1,42 @@
-<header class="links-bg-admin">
-    <div class="links-admin">
-        <div class="links-logo-admin">
-            <a href="/admin/recipes"><img src="/assets/logo-admin.png" alt=""></a>
-        </div>
-        <a href="/admin/recipes">Receitas</a>
-        <a href="/admin/chefs">Chefs</a>
+<header>
+    <div class="container">
+        <nav class="primary">
+            <a href="#">
+                <div class="logo">
+                    <img src="/assets/logo-admin.png" alt="">
+                </div>
+            </a>
+
+            <ul>
+                <li>
+                    <a href="/admin/my-recipes">minhas receitas</a>
+                </li>
+                <li>
+                    <a href="/admin/recipes">receitas</a>
+                </li>
+                <li> 
+                    <a href="/admin/chefs">chefs</a>
+                </li>
+                {% if session.isAdmin %}
+                <li>
+                    <a href="/admin/users">usuários</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        
+        <nav class="secondary">
+            <ul>
+                <li>
+                    <a href="/admin/profile">Minha Conta</a>
+                </li>
+                <li>
+                    <form class="exit" action="/admin/users/logout" method="POST">
+                        <button>sair</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        
     </div>
 </header>

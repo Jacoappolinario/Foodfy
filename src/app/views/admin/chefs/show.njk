@@ -7,19 +7,22 @@
 {% block content %}
 <div class="show-header">
     <h2>Chef: {{ chef.name }}</h2>
-    <a href="/admin/chefs/{{ chef.id }}/edit" class="button-admin">Editar Chef</a>
+    {% if session.isAdmin %}
+    <a href="/admin/chefs/{{ chef.id }}/edit" class="button">Editar Chef</a>
+    {% endif %}
 </div>
 
 <div class="chefs__details">
     <div class="chef__image">
-        {% if not files[0] %}
+        {% if not files %}
         <img src="http://placehold.it/200x200?text=CHEF SEM FOTO" alt="">
         {% else %}
         <img 
-            src="{{ files[0].src }}" 
-            alt="{{ files[0].name }}"
+            src="{{ files.src }}" 
+            alt="{{ files.name }}"
         >
         {% endif %}
+        
     </div>
 
     <div class="chef__name">
@@ -40,7 +43,7 @@
         <div class="card__recipes">
             
             <section class="list__image">
-                <img src="" alt="">
+                <img src="{{ recipe.img }}" alt="">
             </section>
             
             <section>

@@ -9,15 +9,15 @@
 <div class="edit-header">
     <h2>Editando Chef</h2>
     {% if chef.total_recipes == '0' %}
-        <button type="submit" form="form-delete" id="button-delete">Delete</button>
+        <button type="submit" class="button delete" onclick="Message.confirmDelete()">Delete</button>
     {% else %}
-        <button type="submit" form="form-delete" id="button-delete" onclick="ErrorMessage.error()">Delete</button>
+        <button type="submit" class="button delete" onclick="Message.error(event)">Delete</button>
     {% endif %}
-    <button type="submit" form="form-salvar" id="button-salvar">Salvar Chef</button>
+    <button type="submit" form="form-save" class="button">Salvar Chef</button>
 </div>
 
 
-<form id="form-salvar" method="POST" action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
+<form id="form-save" method="POST" action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
     {% include "admin/includes/chefs/fields.njk" %}
 
     <input 
@@ -32,8 +32,5 @@
     name="id" 
     value="{{ chef.id }}">
 </form>
-
-{% include "admin/includes/confirm.njk" %}
-
 
 {% endblock content %}

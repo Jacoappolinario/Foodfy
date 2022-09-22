@@ -1,0 +1,20 @@
+{% extends "layouts/site.njk" %}
+{% import "site/parts/section-recipes.njk" as section %}
+
+{% block head %}
+    <title>Search | {{ search.term }}</title>
+{% endblock %}
+
+{% block content %}     
+
+<section class="search-site">
+
+    <div class="title__search">
+        <h1>Buscando por "{{ search.term }}"</h1>
+        <p>{{ search.total }} encontrados</p>
+    </div>
+
+    {{section.recipes('', '', recipes)}}
+
+</section>
+{% endblock %}

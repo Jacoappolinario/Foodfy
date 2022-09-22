@@ -47,7 +47,7 @@
     <div class="item">
         <div>Chef</div>
         <div>
-            <select name="chef" class="input__create" >
+            <select name="chef_id" class="input__create" >
                 {% for chef in chefOptions %}
                     <option value="{{ chef.id }}" {% if recipe.chef_id == chef.id %} selected {% endif %}>
                         {{ chef.name }}

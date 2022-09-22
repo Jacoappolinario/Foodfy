@@ -1,0 +1,22 @@
+{% extends "layouts/admin.njk" %}
+
+{% block head %}
+    <title>{{ chef.name }} | Edit</title>
+{% endblock %}
+
+{% block content %}
+
+
+<form method="POST" action="/admin/users">
+    <div class="edit-header">
+        <h2>Criar Usuário</h2>
+        <button type="submit" class="button">Salvar</button>
+        <button type="reset" class="button cancel">Cancelar</button>
+    </div>
+    <div class="user-form">
+    {% include "admin/user/fields.njk" %}
+    </div>
+</form>
+
+
+{% endblock content %}

@@ -1,26 +1,33 @@
-<header class="links-bg">
-    <div class="links__content">
-        <div class="links">
-            <div class="links-logo">
-                <a href="/home"><img src="/assets/logo.png" alt="logo-foodfy"></a>
+<header>
+    <div class="container">
+        <a href="/">
+            <div class="logo">
+                <img src="/assets/logo.png" alt="logo-foodfy">
             </div>
-            <div>
-                <a href="/about">Sobre</a>
-                <a href="/recipes">Receitas</a>
-                <a href="/chefs">Chefs</a>
-            </div>
-        </div>
-        
-        <div class="filter">
-            <form action="/search" method="GET">
+        </a>
+
+        <nav class="primary">
+            <ul>
+                <li>
+                    <a href="/site/about">Sobre</a>
+                </li>
+                <li>
+                    <a href="/site/recipes">Receitas</a>
+                </li>
+                <li>
+                    <a href="/site/chefs">Chefs</a>
+                </li>
+            </ul>
+        </nav>
+
+        <form class="search" action="/site/search" method="GET">
                 <input 
                 type="text" 
                 name="filter" 
                 placeholder="Buscar uma receita" 
                 value="{{ filter }}">
 
-                <button class="button" type="submit">Buscar</button>
-            </form>
-        </div>
+                <button class="button filter" type="submit">Buscar</button>
+        </form>
     </div>
 </header>
